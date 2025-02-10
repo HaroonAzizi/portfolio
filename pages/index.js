@@ -1,11 +1,14 @@
 // pages/index.js
 import Head from "next/head";
+import { FaGithub } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>HaroonAzizi - Portfolio</title>
+        <title>Haroon Azizi</title>
         <meta name="description" content="Welcome to my portfolio" />
       </Head>
 
@@ -26,11 +29,31 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8">
-            Full Stack Developer & Designer
+            Software Engineer
           </p>
-          <button className="px-8 py-3 rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-semibold hover:opacity-90 transition-opacity">
-            View My Work
-          </button>
+          <Link href="/portfolio">
+            <button className="px-8 py-3 rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-semibold hover:opacity-90 transition-opacity">
+              Show My Work
+            </button>
+          </Link>
+          <div className="flex justify-center space-x-6 mt-6">
+            <a
+              href="https://x.com/az_haroon"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-teal-400 transition-colors"
+            >
+              <FaSquareXTwitter size={24} />
+            </a>
+            <a
+              href="https://github.com/HaroonAzizi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-teal-400 transition-colors"
+            >
+              <FaGithub size={24} />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -130,9 +153,11 @@ export default function Home() {
             I am always interested in hearing about new projects and
             opportunities.
           </p>
-          <button className="px-8 py-3 rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-semibold hover:opacity-90 transition-opacity">
-            Get In Touch
-          </button>
+          <Link href="/contact">
+            <button className="px-8 py-3 rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-semibold hover:opacity-90 transition-opacity">
+              Get In Touch
+            </button>
+          </Link>
         </div>
       </section>
     </>

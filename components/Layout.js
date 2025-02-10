@@ -1,6 +1,9 @@
 // components/Layout.js
 import Link from "next/link";
 import { useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
 
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,41 +11,88 @@ export default function Layout({ children }) {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation */}
-      <nav className="fixed w-full bg-[#0d1f2d] bg-opacity-90 backdrop-blur-sm z-50">
+      <nav className="fixed w-full bg-[#0d1f2d]/95 shadow-lg border-b border-teal-500/10 backdrop-blur-md z-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <Link
               href="/"
-              className="text-xl font-bold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent"
+              className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent"
             >
               HaroonAzizi
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              <Link href="/" className="hover:text-teal-400 transition-colors">
+            <div className="hidden md:flex space-x-8 px-6 py-2">
+              <Link
+                href="/"
+                className="hover:text-teal-400 transition-colors text-lg relative group"
+              >
                 Home
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
               </Link>
               <Link
                 href="/portfolio"
-                className="hover:text-teal-400 transition-colors"
+                className="hover:text-teal-400 transition-colors text-lg relative group"
               >
                 Portfolio
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
               </Link>
               <Link
                 href="/blog"
-                className="hover:text-teal-400 transition-colors"
+                className="hover:text-teal-400 transition-colors text-lg relative group"
               >
                 Blog
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
               </Link>
               <Link
                 href="/contact"
-                className="hover:text-teal-400 transition-colors"
+                className="hover:text-teal-400 transition-colors text-lg relative group"
               >
                 Contact
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
               </Link>
             </div>
+
+            {/* Mobile Navigation */}
+            {isMenuOpen && (
+              <div className="md:hidden">
+                <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0d1f2d] rounded-b-lg">
+                  <Link
+                    href="/"
+                    className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Home
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
+                  </Link>
+                  <Link
+                    href="/portfolio"
+                    className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Portfolio
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
+                  </Link>
+                  <Link
+                    href="/blog"
+                    className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Blog
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Contact
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
+                  </Link>
+                </div>
+              </div>
+            )}
 
             {/* Mobile menu button */}
             <button
@@ -113,26 +163,35 @@ export default function Layout({ children }) {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} HaroonAzizi. All rights reserved.
+              © {new Date().getFullYear()} Haroon Azizi. All rights reserved.
             </div>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            <div className="flex items-center space-x-6 mt-4 md:mt-0">
               <a
-                href="#"
-                className="text-gray-400 hover:text-teal-400 transition-colors"
+                href="https://github.com/HaroonAzizi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-teal-400 transition-colors flex items-center space-x-2"
               >
-                GitHub
+                <FaGithub size={20} />
+                <span>GitHub</span>
               </a>
               <a
-                href="#"
-                className="text-gray-400 hover:text-teal-400 transition-colors"
+                href="https://www.linkedin.com/in/haroon-azizi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-teal-400 transition-colors flex items-center space-x-2"
               >
-                LinkedIn
+                <FaLinkedin size={20} />
+                <span>LinkedIn</span>
               </a>
               <a
-                href="#"
-                className="text-gray-400 hover:text-teal-400 transition-colors"
+                href="https://x.com/az_haroon"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-teal-400 transition-colors flex items-center space-x-2"
               >
-                Twitter
+                <FaSquareXTwitter size={20} />
+                <span>X/Twitter</span>
               </a>
             </div>
           </div>
