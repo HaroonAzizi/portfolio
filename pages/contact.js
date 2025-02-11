@@ -139,6 +139,14 @@ export default function Contact() {
                   </h3>
                   <div className="flex space-x-4">
                     <a
+                      href="https://x.com/az_haroon"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 bg-teal-400/10 rounded-lg flex items-center justify-center text-teal-400 hover:bg-teal-400 hover:text-white transition-colors"
+                    >
+                      <FaSquareXTwitter size={20} />
+                    </a>
+                    <a
                       href="https://github.com/HaroonAzizi"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -153,14 +161,6 @@ export default function Contact() {
                       className="w-10 h-10 bg-teal-400/10 rounded-lg flex items-center justify-center text-teal-400 hover:bg-teal-400 hover:text-white transition-colors"
                     >
                       <FaLinkedin size={20} />
-                    </a>
-                    <a
-                      href="https://x.com/az_haroon"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 bg-teal-400/10 rounded-lg flex items-center justify-center text-teal-400 hover:bg-teal-400 hover:text-white transition-colors"
-                    >
-                      <FaSquareXTwitter size={20} />
                     </a>
                   </div>
                 </div>

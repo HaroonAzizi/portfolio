@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
       {/* Navigation */}
       <nav className="fixed w-full bg-[#0d1f2d]/95 shadow-lg border-b border-teal-500/10 backdrop-blur-md z-50">
         <div className="max-w-7xl mx-auto px-4">
@@ -156,16 +156,25 @@ export default function Layout({ children }) {
       </nav>
 
       {/* Main Content */}
-      <main className="pt-16">{children}</main>
+      <main className="pt-16 flex-grow">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-[#0d1f2d] mt-auto py-8">
+      <footer className="bg-[#0d1f2d] py-8">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm">
               © {new Date().getFullYear()} Haroon Azizi. All rights reserved.
             </div>
             <div className="flex items-center space-x-6 mt-4 md:mt-0">
+              <a
+                href="https://x.com/az_haroon"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-teal-400 transition-colors flex items-center space-x-2"
+              >
+                <FaSquareXTwitter size={20} />
+                <span>X/Twitter</span>
+              </a>
               <a
                 href="https://github.com/HaroonAzizi"
                 target="_blank"
@@ -183,15 +192,6 @@ export default function Layout({ children }) {
               >
                 <FaLinkedin size={20} />
                 <span>LinkedIn</span>
-              </a>
-              <a
-                href="https://x.com/az_haroon"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-teal-400 transition-colors flex items-center space-x-2"
-              >
-                <FaSquareXTwitter size={20} />
-                <span>X/Twitter</span>
               </a>
             </div>
           </div>

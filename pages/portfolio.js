@@ -19,12 +19,12 @@ export default function Portfolio() {
     },
     {
       id: 2,
-      title: "Task Management App",
+      title: "Aadat: task and habit tracker",
       description:
-        "A responsive task management application with real-time updates",
+        "A responsive task management application with real-time updates and GitHub like contribution graph",
       category: "frontend",
-      technologies: ["Next.js", "Firebase", "Tailwind"],
-      image: "/images/project2.jpg",
+      technologies: ["React", "Supabase", "Tailwind"],
+      image: "/images/aadat.jpg",
       liveLink: "#",
       githubLink: "#",
     },

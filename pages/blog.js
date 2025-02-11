@@ -1,44 +1,20 @@
-// pages/blog.js
 import { useState } from "react";
 import Head from "next/head";
+import { getAllPosts } from "../utils/blog";
+import Link from "next/link";
 
-export default function Blog() {
+export default function Blog({ blogPosts = [] }) {
+  // Add default empty array
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Sample blog posts data - replace with your actual blog posts
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Getting Started with Next.js",
-      excerpt:
-        "Learn the basics of Next.js and why it's the perfect framework for modern web applications.",
-      date: "Feb 10, 2025",
-      readTime: "5 min read",
-      category: "Development",
-      image: "/images/blog1.jpg",
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "Mastering Tailwind CSS",
-      excerpt:
-        "Discover how to build beautiful, responsive websites faster with Tailwind CSS.",
-      date: "Feb 8, 2025",
-      readTime: "7 min read",
-      category: "Design",
-      image: "/images/blog2.jpg",
-      featured: false,
-    },
-    // Add more blog posts as needed
-  ];
+  const filteredPosts =
+    blogPosts?.filter(
+      (post) =>
+        post?.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post?.category?.toLowerCase().includes(searchQuery.toLowerCase())
+    ) || [];
 
-  const filteredPosts = blogPosts.filter(
-    (post) =>
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const featuredPost = blogPosts.find((post) => post.featured);
+  const featuredPost = blogPosts?.find((post) => post.featured);
 
   return (
     <>
@@ -109,9 +85,12 @@ export default function Blog() {
                     <span className="mx-2">•</span>
                     <span>{featuredPost.readTime}</span>
                   </div>
-                  <button className="px-6 py-2 bg-gradient-to-r from-teal-400 to-cyan-500 text-white rounded-full hover:opacity-90 transition-opacity">
+                  <Link
+                    href={`/blog/${featuredPost.id}`}
+                    className="px-6 py-2 bg-gradient-to-r from-teal-400 to-cyan-500 text-white rounded-full hover:opacity-90 transition-opacity inline-block"
+                  >
                     Read More
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -145,9 +124,12 @@ export default function Blog() {
                       <span className="mx-2">•</span>
                       <span>{post.readTime}</span>
                     </div>
-                    <button className="text-teal-400 hover:text-teal-300 transition-colors">
+                    <Link
+                      href={`/blog/${post.id}`}
+                      className="text-teal-400 hover:text-teal-300 transition-colors"
+                    >
                       Read More →
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </article>
@@ -157,4 +139,22 @@ export default function Blog() {
       </section>
     </>
   );
+}
+
+export async function getStaticProps() {
+  try {
+    const blogPosts = getAllPosts();
+    return {
+      props: {
+        blogPosts,
+      },
+    };
+  } catch (error) {
+    console.error("Error loading blog posts:", error);
+    return {
+      props: {
+        blogPosts: [],
+      },
+    };
+  }
 }
