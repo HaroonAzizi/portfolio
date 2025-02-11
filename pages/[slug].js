@@ -7,7 +7,7 @@ export default function BlogPost({ post }) {
   return (
     <>
       <Head>
-        <title>{post.title} - HaroonAzizi</title>
+        <title>{post.title} - Haroon Azizi</title>
         <meta name="description" content={post.excerpt} />
       </Head>
 
