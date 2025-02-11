@@ -10,7 +10,8 @@ export function getPostBySlug(slug) {
     
     // Check if file exists
     if (!fs.existsSync(fullPath)) {
-      throw new Error(`Post file not found: ${slug}`);
+      console.warn(`Post file not found: ${slug}`);
+      return null;
     }
 
     const fileContents = fs.readFileSync(fullPath, 'utf8');

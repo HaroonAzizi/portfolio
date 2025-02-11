@@ -62,8 +62,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug);
-  const processedContent = await remark().use(html).process(post.content);
+  const post = getPostBySlug(`${params.slug}.md`);
+
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const processedContent = await remark().use(html).process(post.content || '');
   const contentHtml = processedContent.toString();
 
   return {
@@ -73,5 +80,19 @@ export async function getStaticProps({ params }) {
         contentHtml,
       },
     },
+  };
+}
+
+export async function getStaticPaths() {
+  const posts = getAllPosts();
+  const paths = posts.map((post) => ({
+    params: {
+      slug: post.id,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking', // Change to blocking to handle dynamic paths
   };
 }
