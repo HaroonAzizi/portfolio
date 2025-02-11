@@ -33,12 +33,23 @@ export default function BlogPost({ post }) {
 
       <article className="py-20 bg-gray-900">
         <div className="max-w-4xl mx-auto px-4">
+          {/* Add image display */}
+          {post.image && (
+            <div className="mb-8 rounded-lg overflow-hidden">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-[400px] object-cover"
+              />
+            </div>
+          )}
+
           <div className="mb-8">
             <span className="inline-block px-3 py-1 bg-teal-400/10 text-teal-400 rounded-full text-sm">
               {post.category}
             </span>
           </div>
-
+          
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             {post.title}
           </h1>

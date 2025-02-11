@@ -9,10 +9,11 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with React and Node.js",
+      title: "Clinic Manager",
+      description:
+        "A full-stack clinic manager app created with React and bundled with Electron",
       category: "fullstack",
-      technologies: ["React", "Node.js", "MongoDB"],
+      technologies: ["React", "SQLite", "Electron", "Tailwind"],
       image: "/images/project1.jpg", // Add your project images
       liveLink: "#",
       githubLink: "#",

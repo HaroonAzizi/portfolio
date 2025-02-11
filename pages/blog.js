@@ -28,12 +28,11 @@ export default function Blog({ blogPosts = [] }) {
         <div className="max-w-6xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
             <span className="bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent">
-              Blog & Articles
+              Blog
             </span>
           </h1>
           <p className="text-gray-300 text-center max-w-2xl mx-auto mb-8">
-            Thoughts, tutorials, and insights about web development, design, and
-            technology.
+            Tech, Productivity, and Life—Unfiltered.
           </p>
           {/* Search Bar */}
           <div className="max-w-xl mx-auto">
@@ -69,8 +68,14 @@ export default function Blog({ blogPosts = [] }) {
           <div className="max-w-6xl mx-auto px-4">
             <div className="bg-[#1a3444] rounded-lg overflow-hidden">
               <div className="md:flex">
-                <div className="md:w-1/2 h-64 md:h-auto bg-[#244056]">
-                  {/* Featured post image would go here */}
+                <div className="md:w-1/2 h-64 md:h-auto bg-[#244056] relative">
+                  {featuredPost.image && (
+                    <img
+                      src={featuredPost.image}
+                      alt={featuredPost.title}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                 </div>
                 <div className="md:w-1/2 p-8">
                   <span className="inline-block px-3 py-1 bg-teal-400/10 text-teal-400 rounded-full text-sm mb-4">
@@ -105,20 +110,26 @@ export default function Blog({ blogPosts = [] }) {
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="bg-[#1a3444] rounded-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="bg-[#1a3444] rounded-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col"
               >
-                <div className="h-48 bg-[#244056]">
-                  {/* Post image would go here */}
+                <div className="h-48 bg-[#244056] relative">
+                  {post.image && (
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                 </div>
-                <div className="p-6">
-                  <span className="inline-block px-3 py-1 bg-teal-400/10 text-teal-400 rounded-full text-sm mb-4">
+                <div className="p-6 flex flex-col flex-grow">
+                  <span className="inline-block px-3 py-1 bg-teal-400/10 text-teal-400 rounded-full text-sm mb-4 w-fit">
                     {post.category}
                   </span>
                   <h3 className="text-xl font-bold text-white mb-3">
                     {post.title}
                   </h3>
-                  <p className="text-gray-300 mb-4">{post.excerpt}</p>
-                  <div className="flex items-center justify-between">
+                  <p className="text-gray-300 mb-4 flex-grow">{post.excerpt}</p>
+                  <div className="flex items-center justify-between mt-auto">
                     <div className="text-sm text-gray-400">
                       <span>{post.date}</span>
                       <span className="mx-2">•</span>

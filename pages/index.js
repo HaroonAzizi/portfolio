@@ -60,7 +60,7 @@ export default function Home() {
               showRole ? "animate-fade-in animate-glow" : ""
             }`}
           >
-            Software Engineer & Entrepreneur
+            Software Engineer
           </p>
           <Link href="/portfolio">
             <button className="px-8 py-3 rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-semibold hover:opacity-90 transition-opacity">
