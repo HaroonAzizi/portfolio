@@ -57,7 +57,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking', // Using blocking fallback for dynamic paths
   };
 }
 
@@ -80,19 +80,5 @@ export async function getStaticProps({ params }) {
         contentHtml,
       },
     },
-  };
-}
-
-export async function getStaticPaths() {
-  const posts = getAllPosts();
-  const paths = posts.map((post) => ({
-    params: {
-      slug: post.id,
-    },
-  }));
-
-  return {
-    paths,
-    fallback: 'blocking', // Change to blocking to handle dynamic paths
   };
 }
