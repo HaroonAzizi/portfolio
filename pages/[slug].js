@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { getPostBySlug, getAllPosts } from "../../utils/blog";
+import { getPostBySlug, getAllPosts } from "../utils/blog";
 import { remark } from "remark";
 import html from "remark-html";
 
