@@ -5,7 +5,6 @@ import Head from "next/head";
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState("all");
 
-  // Sample projects data - replace with your actual projects
   const projects = [
     {
       id: 1,
@@ -14,7 +13,7 @@ export default function Portfolio() {
         "A full-stack clinic manager app created with React and bundled with Electron",
       category: "fullstack",
       technologies: ["React", "SQLite", "Electron", "Tailwind"],
-      image: "/images/project1.jpg", // Add your project images
+      image: "/images/project1.jpg", // Add images
       liveLink: "#",
       githubLink: "#",
     },
