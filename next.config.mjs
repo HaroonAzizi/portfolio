@@ -5,13 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  assetPrefix: "/",
-  // Add this section for build caching
-  experimental: {
-    turbotrace: {
-      enabled: true,
-    },
-  },
+  assetPrefix: "/"
 };
 
 export default nextConfig;
