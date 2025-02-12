@@ -95,10 +95,10 @@ export default function Contact() {
                     <div>
                       <p className="text-gray-400">Email</p>
                       <a
-                        href="mailto:aziziharoon15@gmail.com"
+                        href="mailto:hi@haroonazizi.com"
                         className="text-white hover:text-teal-400 transition-colors"
                       >
-                        aziziharoon15@gmail.com
+                        hi@haroonazizi.com
                       </a>
                     </div>
                   </div>

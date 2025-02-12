@@ -26,6 +26,7 @@ Reading has always been a way for me to grow, learn, and escape. In 2024, I mana
    Ferriss’s approach to lifestyle design opened my eyes to how much time we waste on repetitive tasks. By automating processes or outsourcing non-essential work, I’ve been able to focus on what truly matters—whether it’s personal growth, relationships, or passion projects. Time is the ultimate currency.
 
 4. The Almanack of Naval Ravikant by Eric Jorgenson
+
    **Lesson:** Seek wealth, not money—wealth is having assets that earn while you sleep.
    Naval’s distinction between money (a short-term reward) and wealth (long-term freedom) was a game-changer. It’s not just about earning more but about building systems and assets that generate passive income. This lesson has made me more intentional about investing in skills and opportunities that compound over time.
 
@@ -40,6 +41,7 @@ Reading has always been a way for me to grow, learn, and escape. In 2024, I mana
    This book showed me that you don’t need a huge budget or a grand plan to launch something meaningful. By starting with what you love and solving a small problem, you can build momentum. It’s a reminder that action, even imperfect, is better than waiting for the “perfect” moment.
 
 7. Grit by Angela Duckworth
+
    **Lesson:** Passion and perseverance trump talent alone.
    Duckworth’s research on grit reinforced that success isn’t just about being naturally gifted—it’s about showing up consistently, even when it’s hard. This lesson has helped me push through challenges in my work and personal life, reminding me that effort compounds over time.
 

@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [text, setText] = useState("");
   const [showRole, setShowRole] = useState(false);
-  const fullText = "Hey, I'm Haroon Azizi";
+  const fullText = "Hey, I'm Haroon";  // Combined the text
 
   useEffect(() => {
     let currentIndex = 0;
@@ -17,9 +17,8 @@ export default function Home() {
         setText(fullText.slice(0, currentIndex));
         currentIndex++;
 
-        // Show role after typing is complete
         if (currentIndex > fullText.length) {
-          setTimeout(() => setShowRole(true), 500); // Delay before showing role
+          setTimeout(() => setShowRole(true), 500);
         }
       } else {
         clearInterval(intervalId);
@@ -34,6 +33,9 @@ export default function Home() {
       <Head>
         <title>Haroon Azizi</title>
         <meta name="description" content="Welcome to my portfolio" />
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Mr+Bedfort&display=swap');
+        </style>
       </Head>
 
       {/* Hero Section */}
@@ -51,7 +53,9 @@ export default function Home() {
         <div className="relative z-10 text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent">
-              {text}
+              <span style={{ fontFamily: "'Mr Bedfort', cursive" }} className="font-normal text-5xl md:text-7xl">
+                {text}
+              </span>
               <span className="animate-blink">|</span>
             </span>
           </h1>
