@@ -53,46 +53,6 @@ export default function Layout({ children }) {
               </Link>
             </div>
 
-            {/* Mobile Navigation */}
-            {isMenuOpen && (
-              <div className="md:hidden">
-                <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0d1f2d] rounded-b-lg">
-                  <Link
-                    href="/"
-                    className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Home
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
-                  </Link>
-                  <Link
-                    href="/portfolio"
-                    className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Portfolio
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
-                  </Link>
-                  <Link
-                    href="/blog"
-                    className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Blog
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Contact
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
-                  </Link>
-                </div>
-              </div>
-            )}
-
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -116,37 +76,41 @@ export default function Layout({ children }) {
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation - Keep only this one */}
           {isMenuOpen && (
             <div className="md:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 bg-[#0d1f2d] rounded-b-lg">
                 <Link
                   href="/"
-                  className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors"
+                  className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
                 </Link>
                 <Link
                   href="/portfolio"
-                  className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors"
+                  className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Portfolio
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
                 </Link>
                 <Link
                   href="/blog"
-                  className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors"
+                  className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Blog
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
                 </Link>
                 <Link
                   href="/contact"
-                  className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors"
+                  className="block px-3 py-2 rounded-md hover:bg-[#1a3444] transition-colors relative group"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
                 </Link>
               </div>
             </div>
