@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && touch out/.nojekyll"
+    "deploy": "next build && touch out/.nojekyll && echo 'haroonazizi.com' > out/CNAME"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
