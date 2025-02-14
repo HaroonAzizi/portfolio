@@ -1,7 +1,7 @@
 ---
 title: "I Read 9 Books in 2024: Here Are 9 Lessons That Shaped My Year"
 excerpt: "From power dynamics to productivity hacks and entrepreneurial insights, each book left me with a unique lesson that I’ve carried into my life. Here’s a breakdown of the books I read and one key takeaway from each."
-date: "2024-02-12"
+date: "2025-02-12"
 readTime: "9 min read"
 category: "Books"
 featured: false

@@ -1,7 +1,7 @@
 ---
 title: "Who is Haroon Azizi?"
 excerpt: "Haroon writing about his own life and experiences"
-date: "2024-02-12"
+date: "2025-02-12"
 readTime: "4 min read"
 category: "Personal"
 featured: true
