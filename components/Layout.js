@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
