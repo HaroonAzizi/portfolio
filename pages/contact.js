@@ -1,6 +1,7 @@
 // pages/contact.js
 import { useState } from "react";
 import Head from "next/head";
+import emailjs from "@emailjs/browser";
 // Add these imports at the top with other imports
 import { FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
@@ -14,6 +15,7 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,20 +28,42 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Add your form submission logic here
-    // This is where you'd typically send the data to your backend
-
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitStatus({ type: '', message: '' });
+  
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
+  
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+  
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you! Your message has been sent successfully.'
+      });
+  
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
       });
-      // Add success message handling
-    }, 1000);
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "Oops! Something went wrong. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

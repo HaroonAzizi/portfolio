@@ -10,6 +10,7 @@
     "deploy": "next build && touch out/.nojekyll && echo 'haroonazizi.com' > out/CNAME"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.20",
     "gray-matter": "^4.0.3",
