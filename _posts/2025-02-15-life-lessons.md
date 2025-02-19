@@ -36,7 +36,7 @@ There’s something deeply fulfilling about helping someone for no reason, givin
 
 My resolution for 2025 was to code every day of the year—or at least 300+ days. I know it’s hard to maintain, but if I stick to it and make “being a programmer” my identity, it will be easier.
 
-Start from the first day of the year, the first day of the month, or even the first day of the week, and just stick to it. Here’s my GitHub contribution graph from 2025 (I haven't missed a day since the beginning of the year):
+Start from the first day of the year, the first day of the month, or even the first day of the week, and just stick to it.
 
 <p align="center">
   <img src="/images/github-graph.png" alt="GitHub Contribution Graph">
