@@ -1,5 +1,5 @@
 // pages/contact.js
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import emailjs from "@emailjs/browser";
 // Add these imports at the top with other imports
@@ -16,6 +16,10 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+
+  useEffect(() => {
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,8 +45,7 @@ export default function Contact() {
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        templateParams
       );
   
       setSubmitStatus({
