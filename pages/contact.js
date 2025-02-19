@@ -60,7 +60,6 @@ export default function Contact() {
         message: "",
       });
     } catch (error) {
-      console.error('EmailJS Error:', error);
       setSubmitStatus({
         type: "error",
         message: "Oops! Something went wrong. Please try again later.",
