@@ -133,7 +133,9 @@ export default function Home() {
                 <h3 className="text-xl font-semibold mb-2 text-teal-400">
                   Frontend
                 </h3>
-                <p className="text-gray-400">React, Next.js, Tailwind CSS</p>
+                <p className="text-gray-400">
+                  React Native, React, Next.js, Tailwind CSS
+                </p>
               </div>
               <div className="p-6 bg-[#1a3444] rounded-lg">
                 <h3 className="text-xl font-semibold mb-2 text-teal-400">
