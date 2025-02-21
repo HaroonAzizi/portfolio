@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [text, setText] = useState("");
   const [showRole, setShowRole] = useState(false);
-  const fullText = "Hey, I'm Haroon";  // Combined the text
+  const fullText = "Hey, I'm Haroon"; // Combined the text
 
   useEffect(() => {
     let currentIndex = 0;
@@ -32,9 +32,21 @@ export default function Home() {
     <>
       <Head>
         <title>Haroon Azizi</title>
-        <meta name="description" content="Welcome to my portfolio" />
+        <meta
+          name="description"
+          content="Haroon Azizi (هارون عزیزی) official website"
+        />
+        <meta property="og:title" content="Haroon Azizi" />
+        <meta
+          property="og:description"
+          content="Haroon Azizi, a full stack mobile app developer and software engineer with passion for corss platform development and a love for technology. 
+        Haroon is currently living in Afghanistan and his official website is www.haroonazizi.com. His name in persian / dari is هارون عزیزی. You can also follow him on
+        X/Twitter at @az_haroon (www.x.com/az_haroon) where he posts about himself, his journey and tech reviews and hot takes."
+        />
+
         <style>
-          @import url('https://fonts.googleapis.com/css2?family=Mr+Bedfort&display=swap');
+          @import
+          url('https://fonts.googleapis.com/css2?family=Mr+Bedfort&display=swap');
         </style>
       </Head>
 
@@ -53,7 +65,10 @@ export default function Home() {
         <div className="relative z-10 text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent">
-              <span style={{ fontFamily: "'Mr Bedfort', cursive" }} className="font-normal text-5xl md:text-7xl">
+              <span
+                style={{ fontFamily: "'Mr Bedfort', cursive" }}
+                className="font-normal text-5xl md:text-7xl"
+              >
                 {text}
               </span>
               <span className="animate-blink">|</span>
