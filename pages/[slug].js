@@ -7,7 +7,7 @@ export default function BlogPost({ post }) {
   return (
     <>
       <Head>
-        <title>{post.title} - Haroon Azizi</title>
+        <title>{post.title} | Haroon Azizi</title>
         <meta name="description" content={post.excerpt} />
       </Head>
 
@@ -57,7 +57,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: 'blocking', // Using blocking fallback for dynamic paths
+    fallback: "blocking", // Using blocking fallback for dynamic paths
   };
 }
 
@@ -70,7 +70,9 @@ export async function getStaticProps({ params }) {
     };
   }
 
-  const processedContent = await remark().use(html).process(post.content || '');
+  const processedContent = await remark()
+    .use(html)
+    .process(post.content || "");
   const contentHtml = processedContent.toString();
 
   return {

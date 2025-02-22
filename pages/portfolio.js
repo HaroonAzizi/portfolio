@@ -46,7 +46,7 @@ export default function Portfolio() {
   return (
     <>
       <Head>
-        <title>Portfolio - HaroonAzizi</title>
+        <title>Portfolio | Haroon Azizi</title>
         <meta name="description" content="My portfolio projects" />
       </Head>
 

@@ -32,8 +32,8 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ type: '', message: '' });
-  
+    setSubmitStatus({ type: "", message: "" });
+
     try {
       const templateParams = {
         from_name: formData.name,
@@ -41,18 +41,18 @@ export default function Contact() {
         subject: formData.subject,
         message: formData.message,
       };
-  
+
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         templateParams
       );
-  
+
       setSubmitStatus({
-        type: 'success',
-        message: 'Thank you! Your message has been sent successfully.'
+        type: "success",
+        message: "Thank you! Your message has been sent successfully.",
       });
-  
+
       setFormData({
         name: "",
         email: "",
@@ -72,7 +72,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact Haroon Azizi</title>
+        <title>Contact | Haroon Azizi</title>
         <meta name="description" content="Get in touch with me" />
       </Head>
 
