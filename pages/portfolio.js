@@ -1,4 +1,3 @@
-// pages/portfolio.js
 import { useState } from "react";
 import Head from "next/head";
 
@@ -13,7 +12,7 @@ export default function Portfolio() {
         "A full-stack clinic manager app created with React and bundled with Electron",
       category: "fullstack",
       technologies: ["React", "SQLite", "Electron", "Tailwind"],
-      image: "/images/project1.jpg", // Add images
+      image: "/images/project1.jpg",
       liveLink: "#",
       githubLink: "#",
     },
@@ -28,7 +27,6 @@ export default function Portfolio() {
       liveLink: "#",
       githubLink: "#",
     },
-    // Add more projects as needed
   ];
 
   const categories = [
