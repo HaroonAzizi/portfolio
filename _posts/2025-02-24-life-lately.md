@@ -2,9 +2,9 @@
 title: "Life, lately"
 excerpt: "I sometimes feel I'm living in the lowest days of my life, and it scares me to know that life will get even heavier as I get older"
 date: "2025-02-24"
-readTime: "4 min read"
+readTime: "2 min read"
 category: "Personal"
-featured: true
+featured: false
 image: "/images/haroon.png"
 ---
 
