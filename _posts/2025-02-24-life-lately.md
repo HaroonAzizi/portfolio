@@ -18,4 +18,4 @@ I think I'm crazy or maybe not "thankful" enough because in February I had two b
 
 I don't know, I wish for the best and hopefully next time I write about my best days and more positive stuff.
 
-Thanks again for reading and following my [X/Twitter](x.com/az_haroon) :)
+Thanks again for reading and following my [X/Twitter](x.com/az_haroon)

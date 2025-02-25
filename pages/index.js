@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [text, setText] = useState("");
   const [showRole, setShowRole] = useState(false);
-  const fullText = "Hey, I'm Haroon"; // Combined the text
+  const fullText = "Hey, I'm Haroon";
 
   useEffect(() => {
     let currentIndex = 0;
