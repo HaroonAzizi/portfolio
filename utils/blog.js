@@ -1,8 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-const postsDirectory = path.join(process.cwd(), '_posts');
+const postsDirectory = path.join(process.cwd(), "_posts");
 
 export function getPostBySlug(slug) {
   try {
@@ -17,11 +17,16 @@ export function getPostBySlug(slug) {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
+    // Convert date to YYYY-MM-DD format
+    const date = data.date instanceof Date ? 
+      data.date.toISOString().split('T')[0] : 
+      data.date;
+
     return {
       slug,
       title: data.title,
       excerpt: data.excerpt,
-      date: data.date,
+      date,
       readTime: data.readTime,
       category: data.category,
       content,
@@ -36,28 +41,34 @@ export function getPostBySlug(slug) {
 export function getAllPosts() {
   try {
     if (!fs.existsSync(postsDirectory)) {
-      console.warn('_posts directory not found');
+      console.warn("_posts directory not found");
       return [];
     }
 
     const fileNames = fs.readdirSync(postsDirectory);
     const allPostsData = fileNames
-      .filter(fileName => fileName.endsWith('.md'))
+      .filter((fileName) => fileName.endsWith(".md"))
       .map((fileName) => {
-        const id = fileName.replace(/\.md$/, '');
+        const id = fileName.replace(/\.md$/, "");
         const fullPath = path.join(postsDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data } = matter(fileContents);
+
+        // Convert date to YYYY-MM-DD format
+        const date = data.date instanceof Date ? 
+          data.date.toISOString().split('T')[0] : 
+          data.date;
 
         return {
           id,
           ...data,
+          date,
         };
       });
 
     return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
   } catch (error) {
-    console.error('Error reading blog posts:', error);
+    console.error("Error reading blog posts:", error);
     return [];
   }
 }

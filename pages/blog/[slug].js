@@ -101,6 +101,7 @@ export async function getStaticProps({ params }) {
       post: {
         ...post,
         contentHtml,
+        date: post.date instanceof Date ? post.date.toISOString().split('T')[0] : post.date
       },
     },
   };

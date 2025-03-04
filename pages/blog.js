@@ -154,7 +154,11 @@ export default function Blog({ blogPosts = [] }) {
 
 export async function getStaticProps() {
   try {
-    const blogPosts = getAllPosts();
+    const blogPosts = getAllPosts().map(post => ({
+      ...post,
+      date: post.date instanceof Date ? post.date.toISOString() : post.date
+    }));
+    
     return {
       props: {
         blogPosts,
