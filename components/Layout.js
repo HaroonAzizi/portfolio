@@ -26,32 +26,38 @@ export default function Layout({ children }) {
             <div className="hidden md:flex space-x-8 px-6 py-2">
               <Link
                 href="/"
-                className="hover:text-teal-400 transition-colors text-lg relative group"
+                className="mt-2 hover:text-teal-400 transition-colors text-lg relative group"
               >
                 Home
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
               </Link>
               <Link
                 href="/portfolio"
-                className="hover:text-teal-400 transition-colors text-lg relative group"
+                className="mt-2 hover:text-teal-400 transition-colors text-lg relative group"
               >
                 Portfolio
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
               </Link>
               <Link
                 href="/blog"
-                className="hover:text-teal-400 transition-colors text-lg relative group"
+                className="mt-2 hover:text-teal-400 transition-colors text-lg relative group"
               >
                 Blog
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
               </Link>
               <Link
                 href="/contact"
-                className="hover:text-teal-400 transition-colors text-lg relative group"
+                className="mt-2 hover:text-teal-400 transition-colors text-lg relative group"
               >
                 Contact
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all group-hover:w-full"></span>
               </Link>
+              <a
+                href="https://type.haroonazizi.com"
+                className="px-4 py-1 border-2 border-teal-500 rounded-md text-teal-400 hover:bg-teal-500 hover:text-white transition-all duration-300 text-lg flex items-center self-center"
+              >
+                <span>Typing Test</span>
+              </a>
             </div>
 
             {/* Mobile menu button */}

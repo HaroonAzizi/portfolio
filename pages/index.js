@@ -86,6 +86,13 @@ export default function Home() {
               Show My Work
             </button>
           </Link>
+
+          <a href="https://type.haroonazizi.com">
+            <button className="ml-4 px-8 py-3 rounded-full bg-gradient-to-r from-red-400 to-red-500 text-white font-semibold hover:opacity-90 transition-opacity">
+              Typing Speed Test
+            </button>
+          </a>
+
           <div className="flex justify-center space-x-6 mt-6">
             <a
               href="https://x.com/az_haroon"
