@@ -1,6 +1,6 @@
 // pages/index.js
 import Head from "next/head";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaLinkedinIn } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -79,20 +79,22 @@ export default function Home() {
               showRole ? "animate-fade-in animate-glow" : ""
             }`}
           >
-            Software Engineer
+            Software Developer
           </p>
-          <Link href="/portfolio">
-            <button className="px-8 py-3 rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-semibold hover:opacity-90 transition-opacity">
-              Show My Work
-            </button>
-          </Link>
 
-          <a href="https://type.haroonazizi.com">
-            <button className="ml-4 px-8 py-3 rounded-full bg-gradient-to-r from-red-400 to-red-500 text-white font-semibold hover:opacity-90 transition-opacity">
-              Typing Speed Test
-            </button>
-          </a>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+            <Link href="/portfolio">
+              <button className="w-full sm:w-auto px-8 py-3 rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-semibold hover:opacity-90 transition-opacity">
+                Show My Work
+              </button>
+            </Link>
 
+            <a href="https://type.haroonazizi.com">
+              <button className="w-full sm:w-auto px-8 py-3 rounded-full bg-gradient-to-r from-red-400 to-red-500 text-white font-semibold hover:opacity-90 transition-opacity">
+                Typing Test
+              </button>
+            </a>
+          </div>
           <div className="flex justify-center space-x-6 mt-6">
             <a
               href="https://x.com/az_haroon"
@@ -109,6 +111,14 @@ export default function Home() {
               className="text-gray-300 hover:text-teal-400 transition-colors"
             >
               <FaGithub size={24} />
+            </a>
+            <a
+              href="https://linkedin.com/in/Haroon-Azizi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-teal-400 transition-colors"
+            >
+              <FaLinkedin size={24} />
             </a>
           </div>
         </div>
