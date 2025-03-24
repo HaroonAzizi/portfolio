@@ -51,19 +51,33 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Custom theme colors
+        theme: {
+          'primary': '#0F172A',      // Dark blue background
+          'secondary': '#1E293B',    // Lighter blue for cards
+          'accent': '#7C3AED',       // Purple accent (replacing teal)
+          'accent-light': '#A78BFA', // Light purple for hover states
+          'text': '#F8FAFC',         // Light text
+          'text-muted': '#94A3B8',   // Muted text
+          'code-bg': '#0D1117',      // GitHub-like code background
+        }
       },
       typography: {
         DEFAULT: {
           css: {
             a: {
-              color: '#34D399', // Teal-400 color
+              color: '#A78BFA', // Purple accent color
               '&:hover': {
-                color: '#2DD4BF', // Teal-300 color for hover state
+                color: '#7C3AED', // Darker purple for hover state
               },
               textDecoration: 'none',
             },
           },
         },
+      },
+      boxShadow: {
+        'glow': '0 0 15px rgba(124, 58, 237, 0.5)',
+        'glow-lg': '0 0 30px rgba(124, 58, 237, 0.5)',
       },
     },
   },

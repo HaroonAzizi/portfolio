@@ -2,9 +2,9 @@ import { useState } from "react";
 import Head from "next/head";
 import { getAllPosts } from "../utils/blog";
 import Link from "next/link";
+import { FaSearch, FaCalendarAlt, FaClock } from "react-icons/fa";
 
 export default function Blog({ blogPosts = [] }) {
-  // Add default empty array
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredPosts =
@@ -24,15 +24,17 @@ export default function Blog({ blogPosts = [] }) {
       </Head>
 
       {/* Hero Section */}
-      <section className="py-20 bg-[#0d1f2d]">
+      <section className="py-20 bg-theme-primary">
         <div className="max-w-6xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
-            <span className="bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-theme-accent to-theme-accent-light bg-clip-text text-transparent">
               Blog
             </span>
           </h1>
-          <p className="text-gray-300 text-center max-w-2xl mx-auto mb-8">
-            Tech, Productivity, and Life—Unfiltered.
+          <p className="text-theme-text text-center max-w-2xl mx-auto mb-8 font-mono">
+            <span className="text-theme-accent">console.log(</span>
+            "Tech, Productivity, and Life—Unfiltered."
+            <span className="text-theme-accent">);</span>
           </p>
           {/* Search Bar */}
           <div className="max-w-xl mx-auto">
@@ -42,21 +44,9 @@ export default function Blog({ blogPosts = [] }) {
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-6 py-3 rounded-full bg-[#1a3444] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                className="w-full px-6 py-3 rounded-full bg-theme-secondary text-theme-text placeholder-theme-text-muted focus:outline-none focus:ring-2 focus:ring-theme-accent"
               />
-              <svg
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+              <FaSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-theme-text-muted" />
             </div>
           </div>
         </div>
@@ -64,11 +54,11 @@ export default function Blog({ blogPosts = [] }) {
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="py-12 bg-gray-900">
+        <section className="py-12 bg-theme-primary">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="bg-[#1a3444] rounded-lg overflow-hidden">
+            <div className="glass-card overflow-hidden">
               <div className="md:flex">
-                <div className="md:w-1/2 h-64 md:h-auto bg-[#244056] relative">
+                <div className="md:w-1/2 h-64 md:h-auto bg-theme-secondary relative">
                   {featuredPost.image && (
                     <img
                       src={featuredPost.image}
@@ -78,21 +68,23 @@ export default function Blog({ blogPosts = [] }) {
                   )}
                 </div>
                 <div className="md:w-1/2 p-8">
-                  <span className="inline-block px-3 py-1 bg-teal-400/10 text-teal-400 rounded-full text-sm mb-4">
+                  <span className="inline-block px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-sm mb-4 font-mono">
                     Featured
                   </span>
-                  <h2 className="text-2xl font-bold text-white mb-4">
+                  <h2 className="text-2xl font-bold text-theme-text mb-4">
                     {featuredPost.title}
                   </h2>
-                  <p className="text-gray-300 mb-6">{featuredPost.excerpt}</p>
-                  <div className="flex items-center text-sm text-gray-400 mb-6">
+                  <p className="text-theme-text-muted mb-6">{featuredPost.excerpt}</p>
+                  <div className="flex items-center text-sm text-theme-text-muted mb-6 font-mono">
+                    <FaCalendarAlt className="mr-2" />
                     <span>{featuredPost.date}</span>
                     <span className="mx-2">•</span>
+                    <FaClock className="mr-2" />
                     <span>{featuredPost.readTime}</span>
                   </div>
                   <Link
                     href={`/blog/${featuredPost.id}`}
-                    className="px-6 py-2 bg-gradient-to-r from-teal-400 to-cyan-500 text-white rounded-full hover:opacity-90 transition-opacity inline-block"
+                    className="btn-modern inline-block"
                   >
                     Read More
                   </Link>
@@ -104,15 +96,15 @@ export default function Blog({ blogPosts = [] }) {
       )}
 
       {/* Blog Posts Grid */}
-      <section className="py-12 bg-gray-900">
+      <section className="py-12 bg-theme-primary">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="bg-[#1a3444] rounded-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col"
+                className="glass-card overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-glow flex flex-col"
               >
-                <div className="h-48 bg-[#244056] relative">
+                <div className="h-48 bg-theme-secondary relative">
                   {post.image && (
                     <img
                       src={post.image}
@@ -122,22 +114,24 @@ export default function Blog({ blogPosts = [] }) {
                   )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <span className="inline-block px-3 py-1 bg-teal-400/10 text-teal-400 rounded-full text-sm mb-4 w-fit">
+                  <span className="inline-block px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-sm mb-4 w-fit font-mono">
                     {post.category}
                   </span>
-                  <h3 className="text-xl font-bold text-white mb-3">
+                  <h3 className="text-xl font-bold text-theme-text mb-3">
                     {post.title}
                   </h3>
-                  <p className="text-gray-300 mb-4 flex-grow">{post.excerpt}</p>
+                  <p className="text-theme-text-muted mb-4 flex-grow">{post.excerpt}</p>
                   <div className="flex items-center justify-between mt-auto">
-                    <div className="text-sm text-gray-400">
+                    <div className="text-sm text-theme-text-muted font-mono flex items-center">
+                      <FaCalendarAlt className="mr-2" />
                       <span>{post.date}</span>
                       <span className="mx-2">•</span>
+                      <FaClock className="mr-2" />
                       <span>{post.readTime}</span>
                     </div>
                     <Link
                       href={`/blog/${post.id}`}
-                      className="text-teal-400 hover:text-teal-300 transition-colors"
+                      className="text-theme-accent hover:text-theme-accent-light transition-colors"
                     >
                       Read More →
                     </Link>
