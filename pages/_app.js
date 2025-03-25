@@ -1,4 +1,3 @@
-// pages/_app.js
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 import Head from "next/head";
@@ -44,7 +43,7 @@ function MyApp({ Component, pageProps }) {
           name="twitter:image"
           content="https://haroonazizi.com/images/og-image.jpg"
         />
-        
+
         {/* Preload fonts */}
         <link
           rel="preload"

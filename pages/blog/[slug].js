@@ -10,14 +10,13 @@ export default function BlogPost({ post }) {
     return (
       <div className="py-20 bg-theme-primary min-h-screen">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold text-theme-text mb-4">Post Not Found</h1>
+          <h1 className="text-4xl font-bold text-theme-text mb-4">
+            Post Not Found
+          </h1>
           <p className="text-theme-text-muted mb-8">
             The blog post you&apos;re looking for doesn&apos;t exist.
           </p>
-          <Link
-            href="/blog"
-            className="btn-modern inline-flex items-center"
-          >
+          <Link href="/blog" className="btn-modern inline-flex items-center">
             <FaArrowLeft className="mr-2" />
             Back to Blog
           </Link>
@@ -36,8 +35,8 @@ export default function BlogPost({ post }) {
       <article className="py-20 bg-theme-primary">
         <div className="max-w-4xl mx-auto px-4">
           {/* Back to blog link */}
-          <Link 
-            href="/blog" 
+          <Link
+            href="/blog"
             className="inline-flex items-center text-theme-text-muted hover:text-theme-accent mb-8 transition-colors"
           >
             <FaArrowLeft className="mr-2" />
@@ -51,7 +50,7 @@ export default function BlogPost({ post }) {
               {post.category}
             </span>
           </div>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-theme-text">
             {post.title}
           </h1>
@@ -117,7 +116,10 @@ export async function getStaticProps({ params }) {
       post: {
         ...post,
         contentHtml,
-        date: post.date instanceof Date ? post.date.toISOString().split('T')[0] : post.date
+        date:
+          post.date instanceof Date
+            ? post.date.toISOString().split("T")[0]
+            : post.date,
       },
     },
   };
