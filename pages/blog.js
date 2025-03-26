@@ -74,7 +74,9 @@ export default function Blog({ blogPosts = [] }) {
                   <h2 className="text-2xl font-bold text-theme-text mb-4">
                     {featuredPost.title}
                   </h2>
-                  <p className="text-theme-text-muted mb-6">{featuredPost.excerpt}</p>
+                  <p className="text-theme-text-muted mb-6">
+                    {featuredPost.excerpt}
+                  </p>
                   <div className="flex items-center text-sm text-theme-text-muted mb-6 font-mono">
                     <FaCalendarAlt className="mr-2" />
                     <span>{featuredPost.date}</span>
@@ -114,26 +116,43 @@ export default function Blog({ blogPosts = [] }) {
                   )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <span className="inline-block px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-sm mb-4 w-fit font-mono">
-                    {post.category}
-                  </span>
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="inline-block px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs font-mono">
+                      {post.category}
+                    </span>
+                    <span className="text-theme-text-muted text-xs font-mono">
+                      {post.date}
+                    </span>
+                  </div>
                   <h3 className="text-xl font-bold text-theme-text mb-3">
                     {post.title}
                   </h3>
-                  <p className="text-theme-text-muted mb-4 flex-grow">{post.excerpt}</p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <div className="text-sm text-theme-text-muted font-mono flex items-center">
-                      <FaCalendarAlt className="mr-2" />
-                      <span>{post.date}</span>
-                      <span className="mx-2">•</span>
-                      <FaClock className="mr-2" />
-                      <span>{post.readTime}</span>
+                  <p className="text-theme-text-muted mb-6 flex-grow line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between mt-auto pt-3 border-t border-theme-accent/10">
+                    <div className="text-xs text-theme-text-muted font-mono">
+                      {post.readTime}
                     </div>
                     <Link
                       href={`/blog/${post.id}`}
-                      className="text-theme-accent hover:text-theme-accent-light transition-colors"
+                      className="text-theme-accent text-sm font-mono inline-flex items-center"
                     >
-                      Read More →
+                      Read More
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 ml-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
                     </Link>
                   </div>
                 </div>
@@ -148,11 +167,11 @@ export default function Blog({ blogPosts = [] }) {
 
 export async function getStaticProps() {
   try {
-    const blogPosts = getAllPosts().map(post => ({
+    const blogPosts = getAllPosts().map((post) => ({
       ...post,
-      date: post.date instanceof Date ? post.date.toISOString() : post.date
+      date: post.date instanceof Date ? post.date.toISOString() : post.date,
     }));
-    
+
     return {
       props: {
         blogPosts,
