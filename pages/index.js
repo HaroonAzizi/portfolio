@@ -293,7 +293,7 @@ function Developer() {
             <div className="glass-card overflow-hidden group">
               <div className="h-48 bg-theme-secondary relative">
                 <img
-                  src="/images/aadat.jpg"
+                  src="/images/project2.jpg"
                   alt="Aadat Task Tracker"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
