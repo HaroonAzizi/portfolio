@@ -11,28 +11,31 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  // In your Home component, add a new state for social icons
   const [text, setText] = useState("");
   const [showRole, setShowRole] = useState(false);
+  const [showSocials, setShowSocials] = useState(false);
   const fullText = "Hey, I'm Haroon";
-
+  
   useEffect(() => {
     let currentIndex = 0;
     const intervalId = setInterval(() => {
       if (currentIndex <= fullText.length) {
         setText(fullText.slice(0, currentIndex));
         currentIndex++;
-
+  
         if (currentIndex > fullText.length) {
           setTimeout(() => setShowRole(true), 500);
+          setTimeout(() => setShowSocials(true), 1200); // Show socials after role appears
         }
       } else {
         clearInterval(intervalId);
       }
     }, 100);
-
+  
     return () => clearInterval(intervalId);
   }, []);
-
+  
   return (
     <>
       <Head>
@@ -157,7 +160,9 @@ function Developer() {
               href="https://x.com/az_haroon"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-theme-text-muted hover:text-theme-accent transition-colors"
+              className={`text-theme-text-muted hover:text-theme-accent transition-colors transform ${
+                showSocials ? "animate-social-1" : "opacity-0"
+              }`}
             >
               <FaSquareXTwitter size={24} />
             </a>
@@ -165,7 +170,9 @@ function Developer() {
               href="https://github.com/HaroonAzizi"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-theme-text-muted hover:text-theme-accent transition-colors"
+              className={`text-theme-text-muted hover:text-theme-accent transition-colors transform ${
+                showSocials ? "animate-social-2" : "opacity-0"
+              }`}
             >
               <FaGithub size={24} />
             </a>
@@ -173,7 +180,9 @@ function Developer() {
               href="https://linkedin.com/in/Haroon-Azizi"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-theme-text-muted hover:text-theme-accent transition-colors"
+              className={`text-theme-text-muted hover:text-theme-accent transition-colors transform ${
+                showSocials ? "animate-social-3" : "opacity-0"
+              }`}
             >
               <FaLinkedin size={24} />
             </a>
@@ -377,7 +386,7 @@ function Developer() {
         </div>
       </section>
 
-      {/* Blog Section */}
+      {/* Latest Articles Section */}
       <section className="py-20 bg-theme-primary">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">
@@ -387,88 +396,85 @@ function Developer() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Blog Card 1 */}
-            <div className="glass-card overflow-hidden group">
-              <div className="h-48 bg-theme-secondary relative">
-                <div className="absolute top-0 right-0 bg-theme-accent text-white text-xs px-3 py-1 font-mono">
-                  Mar 4, 2025
+            <Link href="/blog/2025-03-04-restart" className="block">
+              <div className="glass-card p-6 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-glow border-t-4 border-theme-accent">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs font-mono">
+                    Personal
+                  </span>
+                  <span className="text-theme-text-muted text-xs font-mono">Mar 4, 2025</span>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-              <div className="p-6">
-                <span className="inline-block px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs mb-4 font-mono">
-                  Personal
-                </span>
-                <h3 className="text-xl font-bold text-theme-text mb-2">
+                <h3 className="text-xl font-bold text-theme-text mb-3 group-hover:text-theme-accent transition-colors">
                   Restart
                 </h3>
-                <p className="text-theme-text-muted mb-4">
+                <p className="text-theme-text-muted mb-4 line-clamp-3">
                   Sometimes we need to press the restart button in our lives to
                   get back on track...
                 </p>
-                <Link
-                  href="/blog/2025-03-04-restart"
-                  className="text-theme-accent hover:text-theme-accent-light transition-colors"
-                >
-                  Read More →
-                </Link>
+                <div className="flex justify-end mt-auto pt-2">
+                  <span className="text-theme-accent text-sm font-mono inline-flex items-center">
+                    Read More 
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </div>
               </div>
-            </div>
+            </Link>
 
             {/* Blog Card 2 */}
-            <div className="glass-card overflow-hidden group">
-              <div className="h-48 bg-theme-secondary relative">
-                <div className="absolute top-0 right-0 bg-theme-accent text-white text-xs px-3 py-1 font-mono">
-                  Feb 15, 2025
+            <Link href="/blog/2025-02-15-life-lessons" className="block">
+              <div className="glass-card p-6 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-glow border-t-4 border-theme-accent">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs font-mono">
+                    Productivity
+                  </span>
+                  <span className="text-theme-text-muted text-xs font-mono">Feb 15, 2025</span>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-              <div className="p-6">
-                <span className="inline-block px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs mb-4 font-mono">
-                  Productivity
-                </span>
-                <h3 className="text-xl font-bold text-theme-text mb-2">
+                <h3 className="text-xl font-bold text-theme-text mb-3 group-hover:text-theme-accent transition-colors">
                   Life Lessons
                 </h3>
-                <p className="text-theme-text-muted mb-4">
+                <p className="text-theme-text-muted mb-4 line-clamp-3">
                   Key lessons I've learned about productivity, focus, and
                   achieving goals...
                 </p>
-                <Link
-                  href="/blog/2025-02-15-life-lessons"
-                  className="text-theme-accent hover:text-theme-accent-light transition-colors"
-                >
-                  Read More →
-                </Link>
+                <div className="flex justify-end mt-auto pt-2">
+                  <span className="text-theme-accent text-sm font-mono inline-flex items-center">
+                    Read More 
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </div>
               </div>
-            </div>
+            </Link>
 
             {/* Blog Card 3 */}
-            <div className="glass-card overflow-hidden group">
-              <div className="h-48 bg-theme-secondary relative">
-                <div className="absolute top-0 right-0 bg-theme-accent text-white text-xs px-3 py-1 font-mono">
-                  Feb 12, 2025
+            <Link href="/blog/2025-02-12-haroon-azizi" className="block">
+              <div className="glass-card p-6 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-glow border-t-4 border-theme-accent">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs font-mono">
+                    Introduction
+                  </span>
+                  <span className="text-theme-text-muted text-xs font-mono">Feb 12, 2025</span>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-              <div className="p-6">
-                <span className="inline-block px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs mb-4 font-mono">
-                  Introduction
-                </span>
-                <h3 className="text-xl font-bold text-theme-text mb-2">
+                <h3 className="text-xl font-bold text-theme-text mb-3 group-hover:text-theme-accent transition-colors">
                   Haroon Azizi
                 </h3>
-                <p className="text-theme-text-muted mb-4">
+                <p className="text-theme-text-muted mb-4 line-clamp-3">
                   An introduction to who I am, my journey in tech, and what I'm
                   working on...
                 </p>
-                <Link
-                  href="/blog/2025-02-12-haroon-azizi"
-                  className="text-theme-accent hover:text-theme-accent-light transition-colors"
-                >
-                  Read More →
-                </Link>
+                <div className="flex justify-end mt-auto pt-2">
+                  <span className="text-theme-accent text-sm font-mono inline-flex items-center">
+                    Read More 
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
           <div className="text-center mt-12">
             <Link href="/blog">
@@ -495,7 +501,7 @@ function Developer() {
               <span className="text-theme-accent  text-xl">message</span>
               <span className="text-white text-lg"> = </span>
               <span className="bg-gradient-to-r from-theme-accent to-theme-accent-light bg-clip-text text-transparent">
-                "Let's work together"
+                "Let&apos;s work together"
               </span>
             </h2>
             <p className="text-theme-text-muted mb-8 font-mono">
@@ -505,7 +511,10 @@ function Developer() {
             </p>
           </div>
           <Link href="/contact">
-            <button className="btn-modern">Get In Touch</button>
+            <button className="btn-modern animate-pulse-glow relative overflow-hidden group">
+              <span className="relative z-10">Get In Touch</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-theme-accent via-theme-accent-light to-theme-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></span>
+            </button>
           </Link>
         </div>
       </section>

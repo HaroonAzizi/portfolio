@@ -205,3 +205,77 @@
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3);
 }
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px 0 rgba(124, 58, 237, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px 5px rgba(124, 58, 237, 0.8);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* After your existing animations, add these new ones */
+
+@keyframes social-appear-1 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes social-appear-2 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes social-appear-3 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-social-1 {
+  animation: social-appear-1 0.6s ease-out forwards;
+}
+
+.animate-social-2 {
+  animation: social-appear-2 0.6s ease-out forwards 0.2s;
+  animation-fill-mode: both;
+}
+
+.animate-social-3 {
+  animation: social-appear-3 0.6s ease-out forwards 0.4s;
+  animation-fill-mode: both;
+}
