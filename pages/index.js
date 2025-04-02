@@ -16,14 +16,14 @@ export default function Home() {
   const [showRole, setShowRole] = useState(false);
   const [showSocials, setShowSocials] = useState(false);
   const fullText = "Hey, I'm Haroon";
-  
+
   useEffect(() => {
     let currentIndex = 0;
     const intervalId = setInterval(() => {
       if (currentIndex <= fullText.length) {
         setText(fullText.slice(0, currentIndex));
         currentIndex++;
-  
+
         if (currentIndex > fullText.length) {
           setTimeout(() => setShowRole(true), 500);
           setTimeout(() => setShowSocials(true), 1200); // Show socials after role appears
@@ -32,10 +32,10 @@ export default function Home() {
         clearInterval(intervalId);
       }
     }, 100);
-  
+
     return () => clearInterval(intervalId);
   }, []);
-  
+
   return (
     <>
       <Head>
@@ -270,10 +270,10 @@ function Developer() {
                   <div className="p-4 w-full">
                     <div className="flex gap-3 mb-2">
                       <span className="px-2 py-1 bg-theme-accent/80 text-white text-xs rounded font-mono">
-                        React
+                        NextJs
                       </span>
                       <span className="px-2 py-1 bg-theme-accent/80 text-white text-xs rounded font-mono">
-                        Electron
+                        Prisma
                       </span>
                     </div>
                   </div>
@@ -402,7 +402,9 @@ function Developer() {
                   <span className="px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs font-mono">
                     Personal
                   </span>
-                  <span className="text-theme-text-muted text-xs font-mono">Mar 4, 2025</span>
+                  <span className="text-theme-text-muted text-xs font-mono">
+                    Mar 4, 2025
+                  </span>
                 </div>
                 <h3 className="text-xl font-bold text-theme-text mb-3 group-hover:text-theme-accent transition-colors">
                   Restart
@@ -413,9 +415,20 @@ function Developer() {
                 </p>
                 <div className="flex justify-end mt-auto pt-2">
                   <span className="text-theme-accent text-sm font-mono inline-flex items-center">
-                    Read More 
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    Read More
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -429,7 +442,9 @@ function Developer() {
                   <span className="px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs font-mono">
                     Productivity
                   </span>
-                  <span className="text-theme-text-muted text-xs font-mono">Feb 15, 2025</span>
+                  <span className="text-theme-text-muted text-xs font-mono">
+                    Feb 15, 2025
+                  </span>
                 </div>
                 <h3 className="text-xl font-bold text-theme-text mb-3 group-hover:text-theme-accent transition-colors">
                   Life Lessons
@@ -440,9 +455,20 @@ function Developer() {
                 </p>
                 <div className="flex justify-end mt-auto pt-2">
                   <span className="text-theme-accent text-sm font-mono inline-flex items-center">
-                    Read More 
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    Read More
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -456,7 +482,9 @@ function Developer() {
                   <span className="px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs font-mono">
                     Introduction
                   </span>
-                  <span className="text-theme-text-muted text-xs font-mono">Feb 12, 2025</span>
+                  <span className="text-theme-text-muted text-xs font-mono">
+                    Feb 12, 2025
+                  </span>
                 </div>
                 <h3 className="text-xl font-bold text-theme-text mb-3 group-hover:text-theme-accent transition-colors">
                   Haroon Azizi
@@ -467,9 +495,20 @@ function Developer() {
                 </p>
                 <div className="flex justify-end mt-auto pt-2">
                   <span className="text-theme-accent text-sm font-mono inline-flex items-center">
-                    Read More 
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    Read More
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
                     </svg>
                   </span>
                 </div>
