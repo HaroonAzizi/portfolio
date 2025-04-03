@@ -325,7 +325,8 @@ function Developer() {
                 </h3>
                 <p className="text-theme-text-muted mb-4">
                   A responsive task management application with real-time
-                  updates and GitHub-like contribution graph.
+                  updates and GitHub-like contribution graph, built to track
+                  habits and make you more productive.
                 </p>
                 <div className="flex justify-between items-center">
                   <Link
