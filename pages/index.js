@@ -54,7 +54,7 @@ export default function Home() {
 
         <style>
           @import
-          url('https://fonts.googleapis.com/css2?family=Mr+Bedfort&display=swap');
+          url(&apos;https://fonts.googleapis.com/css2?family=Mr+Bedfort&display=swap&apos;);
         </style>
       </Head>
 
@@ -451,7 +451,7 @@ function Developer() {
                   Life Lessons
                 </h3>
                 <p className="text-theme-text-muted mb-4 line-clamp-3">
-                  Key lessons I've learned about productivity, focus, and
+                  Key lessons I&apos;ve learned about productivity, focus, and
                   achieving goals...
                 </p>
                 <div className="flex justify-end mt-auto pt-2">
@@ -491,8 +491,8 @@ function Developer() {
                   Haroon Azizi
                 </h3>
                 <p className="text-theme-text-muted mb-4 line-clamp-3">
-                  An introduction to who I am, my journey in tech, and what I'm
-                  working on...
+                  An introduction to who I am, my journey in tech, and what
+                  I&apos;m working on...
                 </p>
                 <div className="flex justify-end mt-auto pt-2">
                   <span className="text-theme-accent text-sm font-mono inline-flex items-center">
@@ -541,12 +541,13 @@ function Developer() {
               <span className="text-theme-accent  text-xl">message</span>
               <span className="text-white text-lg"> = </span>
               <span className="bg-gradient-to-r from-theme-accent to-theme-accent-light bg-clip-text text-transparent">
-                "Let&apos;s work together"
+                &quot;Let&apos;s work together&quot;
               </span>
             </h2>
             <p className="text-theme-text-muted mb-8 font-mono">
               <span className="text-theme-accent">console.log(</span>
-              "Have a project in mind? I'd love to hear about it!"
+              &quot;Have a project in mind? I&apos;d love to hear about
+              it!&quot;
               <span className="text-theme-accent">);</span>
             </p>
           </div>
