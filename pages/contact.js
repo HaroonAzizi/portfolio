@@ -140,11 +140,11 @@ export default function Contact() {
             <span className="text-white">() {`{`}</span>
             <br />
             <span className="text-theme-text-muted ml-4">
-              // Have a question or want to work together?
+              {`// Have a question or want to work together?`}
             </span>
             <br />
             <span className="text-theme-text-muted ml-4">
-              // I&apos;d love to hear from you!
+              {`// I'd love to hear from you!`}
             </span>
             <br />
             <span className="text-white">{`}`}</span>
@@ -241,10 +241,11 @@ export default function Contact() {
                     React, React Native, Node.js, Express, MongoDB
                   </p>
                   <p className="text-theme-text-muted mb-2">
-                    $ echo "Let's build something amazing together!"
+                    &apos;$ echo &quot;Let&apos;s build something amazing
+                    together!&quot;
                   </p>
                   <p className="text-theme-accent">
-                    Let's build something amazing together!
+                    Let&apos;s build something amazing together!
                   </p>
                   <p className="text-theme-text-muted mt-4 flex items-center">
                     $ <span className="animate-blink ml-2">|</span>
