@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useState } from "react";
-import { FaGithub } from "react-icons/fa";
+import { FaClock, FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaBrain } from "react-icons/fa";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { FaCode, FaTerminal } from "react-icons/fa";
 
@@ -47,13 +47,13 @@ export default function Layout({ children }) {
                 Blog
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
               </Link>
-              <Link
-                href="/pomodoro"
+              <a
+                href="https://type.haroonazizi.com"
                 className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium"
               >
-                Pomodoro
+                Typing Test
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
-              </Link>
+              </a>
               <Link
                 href="/contact"
                 className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium"
@@ -61,13 +61,14 @@ export default function Layout({ children }) {
                 Contact
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
               </Link>
-              <a
-                href="https://type.haroonazizi.com"
+
+              <Link
+                href="/pomodoro"
                 className="px-4 py-1 border-2 border-theme-accent rounded-md text-theme-accent hover:bg-theme-accent hover:text-white transition-all duration-300 text-lg flex items-center self-center"
               >
-                <FaTerminal className="mr-2" />
-                <span>Typing Test</span>
-              </a>
+                <FaClock className="mr-2" />
+                <span>Pomodoro</span>
+              </Link>
             </div>
 
             {/* Mobile menu button */}
@@ -121,20 +122,29 @@ export default function Layout({ children }) {
                   Blog
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
                 </Link>
-                <Link
-                  href="/pomodoro"
+                <a
+                  href="https://type.haroonazizi.com"
                   className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Pomodoro
+                  Typing Test
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
-                </Link>
+                </a>
                 <Link
                   href="/contact"
                   className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
+                </Link>
+
+                <Link
+                  href="/pomodoro"
+                  className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Pomodoro
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
                 </Link>
               </div>

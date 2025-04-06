@@ -1,6 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
-import { FaPlay, FaPause, FaRedo, FaCoffee, FaBrain } from "react-icons/fa";
+import {
+  FaPlay,
+  FaPause,
+  FaRedo,
+  FaCoffee,
+  FaBrain,
+  FaClock,
+} from "react-icons/fa";
 
 export default function Pomodoro() {
   // Timer states
@@ -106,7 +113,7 @@ export default function Pomodoro() {
             <div className="mb-6 flex items-center">
               {mode === "focus" ? (
                 <div className="flex items-center text-theme-accent">
-                  <FaBrain className="mr-2 text-2xl" />
+                  <FaClock className="mr-2 text-2xl" />
                   <span className="text-xl font-mono">Focus Time</span>
                 </div>
               ) : (
