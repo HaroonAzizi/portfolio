@@ -81,9 +81,9 @@ export default function Portfolio() {
             <span className="text-theme-accent-light">projects</span>
             <span className="text-white"> = </span>
             <span className="text-theme-text-muted">
-              "A collection of my work showcasing my skills in web development
-              and design. Each project represents unique challenges and
-              solutions."
+              &quot;A collection of my work showcasing my skills in web
+              development and design. Each project represents unique challenges
+              and solutions.&quot;
             </span>
           </p>
         </div>
@@ -242,12 +242,13 @@ export default function Portfolio() {
               <span className="text-theme-accent">message</span>
               <span className="text-white"> = </span>
               <span className="bg-gradient-to-r from-theme-accent to-theme-accent-light bg-clip-text text-transparent">
-                "Interested in collaborating?"
+                &quot;Interested in collaborating?&quot;
               </span>
             </h2>
             <p className="text-theme-text-muted mb-8 font-mono">
               <span className="text-theme-accent">console.log(</span>
-              "I'm always open to discussing new projects or opportunities."
+              &quot;I&apos;m always open to discussing new projects or
+              opportunities.&quot;
               <span className="text-theme-accent">);</span>
             </p>
           </div>

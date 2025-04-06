@@ -33,7 +33,7 @@ export default function Blog({ blogPosts = [] }) {
           </h1>
           <p className="text-theme-text text-center max-w-2xl mx-auto mb-8 font-mono">
             <span className="text-theme-accent">console.log(</span>
-            "Tech, Productivity, and Life—Unfiltered."
+            &quot;Tech, Productivity, and Life—Unfiltered.&quot;
             <span className="text-theme-accent">);</span>
           </p>
           {/* Search Bar */}
