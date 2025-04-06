@@ -48,6 +48,13 @@ export default function Layout({ children }) {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
               </Link>
               <Link
+                href="/pomodoro"
+                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium"
+              >
+                Pomodoro
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
+              </Link>
+              <Link
                 href="/contact"
                 className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium"
               >
@@ -115,6 +122,14 @@ export default function Layout({ children }) {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
                 </Link>
                 <Link
+                  href="/pomodoro"
+                  className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Pomodoro
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
+                </Link>
+                <Link
                   href="/contact"
                   className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
                   onClick={() => setIsMenuOpen(false)}
@@ -152,7 +167,7 @@ export default function Layout({ children }) {
                 className="text-theme-text-muted hover:text-theme-accent transition-colors flex items-center space-x-2"
               >
                 <FaSquareXTwitter size={20} />
-                <span className="font-mono text-sm">X/Twitter</span>
+                {/* <span className="font-mono text-sm">X/Twitter</span> */}
               </a>
               <a
                 href="https://github.com/HaroonAzizi"
@@ -161,7 +176,7 @@ export default function Layout({ children }) {
                 className="text-theme-text-muted hover:text-theme-accent transition-colors flex items-center space-x-2"
               >
                 <FaGithub size={20} />
-                <span className="font-mono text-sm">GitHub</span>
+                {/* <span className="font-mono text-sm">GitHub</span> */}
               </a>
               <a
                 href="https://www.linkedin.com/in/haroon-azizi"
@@ -170,7 +185,7 @@ export default function Layout({ children }) {
                 className="text-theme-text-muted hover:text-theme-accent transition-colors flex items-center space-x-2"
               >
                 <FaLinkedin size={20} />
-                <span className="font-mono text-sm">LinkedIn</span>
+                {/* <span className="font-mono text-sm">LinkedIn</span> */}
               </a>
             </div>
           </div>
