@@ -24,7 +24,10 @@ export default function Pomodoro() {
   useEffect(() => {
     if (timeLeft === 0) {
       if (audioRef.current) {
-        audioRef.current.play();
+        // Add error handling for audio playback
+        audioRef.current.play().catch((error) => {
+          console.error("Audio playback failed:", error);
+        });
       }
 
       if (mode === "focus") {
@@ -39,6 +42,20 @@ export default function Pomodoro() {
       }
     }
   }, [timeLeft, mode]);
+
+  // Add a new useEffect to initialize audio
+  useEffect(() => {
+    // Initialize audio when component mounts
+    audioRef.current = new Audio("/sounds/bell.mp3");
+
+    return () => {
+      // Cleanup audio when component unmounts
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   // Timer logic
   useEffect(() => {
@@ -83,37 +100,50 @@ export default function Pomodoro() {
           name="description"
           content="Boost your productivity with Haroon Azizi's Pomodoro timer. A minimalist focus tool to help you work efficiently with timed work and break sessions."
         />
-        <meta name="keywords" content="pomodoro timer, focus timer, productivity tool, time management, Haroon Azizi, work timer, study timer" />
+        <meta
+          name="keywords"
+          content="pomodoro timer, focus timer, productivity tool, time management, Haroon Azizi, work timer, study timer"
+        />
         <link rel="canonical" href="https://haroonazizi.com/focus" />
-        
-        <meta property="og:title" content="Focus Timer | Haroon Azizi - Pomodoro Technique" />
-        <meta property="og:description" content="Boost your productivity with this Pomodoro timer. A minimalist focus tool to help you work efficiently." />
+
+        <meta
+          property="og:title"
+          content="Focus Timer | Haroon Azizi - Pomodoro Technique"
+        />
+        <meta
+          property="og:description"
+          content="Boost your productivity with this Pomodoro timer. A minimalist focus tool to help you work efficiently."
+        />
         <meta property="og:url" content="https://haroonazizi.com/focus" />
         <meta property="og:type" content="website" />
-        
+
         <meta name="twitter:title" content="Focus Timer | Haroon Azizi" />
-        <meta name="twitter:description" content="Boost your productivity with this Pomodoro timer. Work efficiently with timed sessions." />
-        
+        <meta
+          name="twitter:description"
+          content="Boost your productivity with this Pomodoro timer. Work efficiently with timed sessions."
+        />
+
         {/* Schema.org structured data for Web Application */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "Pomodoro Focus Timer",
-            "applicationCategory": "Productivity",
-            "operatingSystem": "Any",
-            "offers": {
+            name: "Pomodoro Focus Timer",
+            applicationCategory: "Productivity",
+            operatingSystem: "Any",
+            offers: {
               "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "USD"
+              price: "0",
+              priceCurrency: "USD",
             },
-            "author": {
+            author: {
               "@type": "Person",
-              "name": "Haroon Azizi",
-              "url": "https://haroonazizi.com"
+              name: "Haroon Azizi",
+              url: "https://haroonazizi.com",
             },
-            "description": "A minimalist Pomodoro timer to boost your productivity with timed work and break sessions",
-            "url": "https://haroonazizi.com/focus"
+            description:
+              "A minimalist Pomodoro timer to boost your productivity with timed work and break sessions",
+            url: "https://haroonazizi.com/focus",
           })}
         </script>
       </Head>
@@ -238,11 +268,11 @@ export default function Pomodoro() {
         </div>
       </section>
 
-      {/* Audio element for notification */}
-      <audio ref={audioRef} preload="auto">
+      {/* Remove this audio element as we're creating it programmatically now */}
+      {/* <audio ref={audioRef} preload="auto">
         <source src="/sounds/bell.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
-      </audio>
+      </audio> */}
     </>
   );
 }
