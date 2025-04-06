@@ -5,6 +5,7 @@ import {
   FaLinkedinIn,
   FaCode,
   FaTerminal,
+  FaClock,
 } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
@@ -15,10 +16,17 @@ export default function Home() {
   const [text, setText] = useState("");
   const [showRole, setShowRole] = useState(false);
   const [showSocials, setShowSocials] = useState(false);
+  const [showButtons, setShowButtons] = useState(false); // New state for buttons animation
   const fullText = "Hey, I'm Haroon";
 
   useEffect(() => {
     let currentIndex = 0;
+    
+    // Set buttons to show immediately
+    setShowButtons(true);
+    // Show social links sooner
+    setTimeout(() => setShowSocials(true), 800); // Reduced from 1500ms to 800ms
+    
     const intervalId = setInterval(() => {
       if (currentIndex <= fullText.length) {
         setText(fullText.slice(0, currentIndex));
@@ -26,12 +34,12 @@ export default function Home() {
 
         if (currentIndex > fullText.length) {
           setTimeout(() => setShowRole(true), 500);
-          setTimeout(() => setShowSocials(true), 1200); // Show socials after role appears
+          // Social links are already set to show sooner
         }
       } else {
         clearInterval(intervalId);
       }
-    }, 100);
+    }, 100); // Keep original typing speed
 
     return () => clearInterval(intervalId);
   }, []);
@@ -142,18 +150,31 @@ function Developer() {
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
             <Link href="/portfolio">
-              <button className="btn-modern w-full sm:w-auto flex items-center justify-center">
+              <button
+                className={`btn-modern w-full sm:w-auto flex items-center justify-center transition-all duration-500 ${
+                  showButtons
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+              >
+                
                 <FaCode className="mr-2" />
                 Show My Work
               </button>
             </Link>
 
-            <a href="https://type.haroonazizi.com">
-              <button className="btn-modern w-full sm:w-auto bg-red-500 hover:bg-red-600 flex items-center justify-center">
-                <FaTerminal className="mr-2" />
-                Typing Test
+            <Link href="/focus">
+              <button
+                className={`btn-modern w-full sm:w-auto bg-red-500 hover:bg-red-600 flex items-center justify-center transition-all duration-500 ${
+                  showButtons
+                    ? "opacity-100 translate-y-0 delay-200"
+                    : "opacity-0 translate-y-10"
+                }`}
+              >
+                <FaClock className="mr-2" />
+                Focus
               </button>
-            </a>
+            </Link>
           </div>
           <div className="flex justify-center space-x-6 mt-6">
             <a

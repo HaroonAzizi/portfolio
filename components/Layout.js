@@ -63,11 +63,11 @@ export default function Layout({ children }) {
               </Link>
 
               <Link
-                href="/pomodoro"
+                href="/focus"
                 className="px-4 py-1 border-2 border-theme-accent rounded-md text-theme-accent hover:bg-theme-accent hover:text-white transition-all duration-300 text-lg flex items-center self-center"
               >
                 <FaClock className="mr-2" />
-                <span>Pomodoro</span>
+                <span>Focus</span>
               </Link>
             </div>
 
@@ -140,11 +140,11 @@ export default function Layout({ children }) {
                 </Link>
 
                 <Link
-                  href="/pomodoro"
+                  href="/focus"
                   className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Pomodoro
+                  Focus
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
                 </Link>
               </div>
