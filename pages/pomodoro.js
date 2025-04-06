@@ -8,23 +8,23 @@ export default function Pomodoro() {
   const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutes in seconds
   const [isActive, setIsActive] = useState(false);
   const [cycles, setCycles] = useState(0);
-  
+
   // Refs
   const timerRef = useRef(null);
   const audioRef = useRef(null);
-  
+
   // Handle timer completion
   useEffect(() => {
     if (timeLeft === 0) {
       if (audioRef.current) {
         audioRef.current.play();
       }
-      
+
       if (mode === "focus") {
         // Switch to break mode
         setMode("break");
         setTimeLeft(5 * 60); // 5 minutes break
-        setCycles(prev => prev + 1);
+        setCycles((prev) => prev + 1);
       } else {
         // Switch back to focus mode
         setMode("focus");
@@ -32,31 +32,33 @@ export default function Pomodoro() {
       }
     }
   }, [timeLeft, mode]);
-  
+
   // Timer logic
   useEffect(() => {
     if (isActive) {
       timerRef.current = setInterval(() => {
-        setTimeLeft(prev => prev - 1);
+        setTimeLeft((prev) => prev - 1);
       }, 1000);
     } else if (timerRef.current) {
       clearInterval(timerRef.current);
     }
-    
+
     return () => {
       if (timerRef.current) {
         clearInterval(timerRef.current);
       }
     };
   }, [isActive]);
-  
+
   // Format time as MM:SS
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${mins.toString().padStart(2, "0")}:${secs
+      .toString()
+      .padStart(2, "0")}`;
   };
-  
+
   // Timer controls
   const startTimer = () => setIsActive(true);
   const pauseTimer = () => setIsActive(false);
@@ -65,14 +67,17 @@ export default function Pomodoro() {
     setMode("focus");
     setTimeLeft(25 * 60);
   };
-  
+
   return (
     <>
       <Head>
         <title>Pomodoro Timer | Haroon Azizi</title>
-        <meta name="description" content="A minimalist Pomodoro timer to boost your productivity" />
+        <meta
+          name="description"
+          content="A minimalist Pomodoro timer to boost your productivity"
+        />
       </Head>
-      
+
       {/* Hero Section */}
       <section className="py-20 bg-theme-primary">
         <div className="max-w-6xl mx-auto px-4">
@@ -86,12 +91,13 @@ export default function Pomodoro() {
             <span className="text-theme-accent-light">productivity</span>
             <span className="text-white"> = </span>
             <span className="text-theme-text-muted">
-              &quot;Focus for 25 minutes, then take a 5-minute break. Repeat for optimal results.&quot;
+              &quot;Focus for 25 minutes, then take a 5-minute break. Repeat for
+              optimal results.&quot;
             </span>
           </p>
         </div>
       </section>
-      
+
       {/* Timer Section */}
       <section className="py-12 bg-theme-primary">
         <div className="max-w-md mx-auto px-4">
@@ -110,36 +116,37 @@ export default function Pomodoro() {
                 </div>
               )}
             </div>
-            
+
             {/* Timer display */}
             <div className="text-7xl font-mono mb-8 font-bold bg-gradient-to-r from-theme-accent to-theme-accent-light bg-clip-text text-transparent">
               {formatTime(timeLeft)}
             </div>
-            
+
             {/* Cycles counter */}
             <div className="mb-8 text-theme-text-muted font-mono">
-              Completed cycles: <span className="text-theme-accent">{cycles}</span>
+              Completed cycles:{" "}
+              <span className="text-theme-accent">{cycles}</span>
             </div>
-            
+
             {/* Controls */}
             <div className="flex space-x-4">
               {!isActive ? (
-                <button 
+                <button
                   onClick={startTimer}
                   className="p-4 bg-theme-accent text-white rounded-full hover:bg-theme-accent-light transition-colors shadow-glow"
                 >
                   <FaPlay />
                 </button>
               ) : (
-                <button 
+                <button
                   onClick={pauseTimer}
                   className="p-4 bg-theme-secondary text-white rounded-full hover:bg-gray-700 transition-colors"
                 >
                   <FaPause />
                 </button>
               )}
-              
-              <button 
+
+              <button
                 onClick={resetTimer}
                 className="p-4 bg-theme-secondary text-white rounded-full hover:bg-gray-700 transition-colors"
               >
@@ -147,21 +154,25 @@ export default function Pomodoro() {
               </button>
             </div>
           </div>
-          
+
           {/* Progress bar */}
           <div className="mt-8 h-2 bg-theme-secondary rounded-full overflow-hidden">
-            <div 
-              className={`h-full ${mode === "focus" ? "bg-theme-accent" : "bg-theme-accent-light"}`}
-              style={{ 
-                width: `${mode === "focus" 
-                  ? ((25 * 60 - timeLeft) / (25 * 60)) * 100 
-                  : ((5 * 60 - timeLeft) / (5 * 60)) * 100}%` 
+            <div
+              className={`h-full ${
+                mode === "focus" ? "bg-theme-accent" : "bg-theme-accent-light"
+              }`}
+              style={{
+                width: `${
+                  mode === "focus"
+                    ? ((25 * 60 - timeLeft) / (25 * 60)) * 100
+                    : ((5 * 60 - timeLeft) / (5 * 60)) * 100
+                }%`,
               }}
             ></div>
           </div>
         </div>
       </section>
-      
+
       {/* Instructions Section */}
       <section className="py-12 bg-theme-primary">
         <div className="max-w-2xl mx-auto px-4">
@@ -186,7 +197,7 @@ export default function Pomodoro() {
           </div>
         </div>
       </section>
-      
+
       {/* Audio element for notification */}
       <audio ref={audioRef} preload="auto">
         <source src="/sounds/bell.mp3" type="audio/mpeg" />

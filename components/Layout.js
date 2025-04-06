@@ -155,7 +155,11 @@ export default function Layout({ children }) {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-theme-text-muted text-sm">
               <span className="font-mono">
-                © {new Date().getFullYear()} Haroon Azizi.{" "}
+                © {new Date().getFullYear()}{" "}
+                <a className="hover: text-white" href="https:haroonazizi.com">
+                  Haroon Azizi
+                </a>
+                .{" "}
               </span>
               <span className="font-mono text-xs"> All rights reserved</span>
             </div>
