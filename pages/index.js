@@ -21,12 +21,12 @@ export default function Home() {
 
   useEffect(() => {
     let currentIndex = 0;
-    
+
     // Set buttons to show immediately
     setShowButtons(true);
     // Show social links sooner
     setTimeout(() => setShowSocials(true), 800); // Reduced from 1500ms to 800ms
-    
+
     const intervalId = setInterval(() => {
       if (currentIndex <= fullText.length) {
         setText(fullText.slice(0, currentIndex));
@@ -47,23 +47,65 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Haroon Azizi</title>
+        <title>Haroon Azizi | Software Developer & Full Stack Engineer</title>
         <meta
           name="description"
-          content="Haroon Azizi (هارون عزیزی) official website"
+          content="Haroon Azizi (هارون عزیزی) is a full stack web and mobile developer specializing in React, React Native, and Node.js. Explore my portfolio, projects and blog."
         />
-        <meta property="og:title" content="Haroon Azizi" />
+        <meta
+          name="keywords"
+          content="Haroon Azizi, هارون عزیزی, Software Developer, Full Stack Developer, React Native Developer, Mobile App Developer, Web Developer, Afghanistan"
+        />
+        <link rel="canonical" href="https://haroonazizi.com" />
+
+        <meta
+          property="og:title"
+          content="Haroon Azizi | Software Developer & Full Stack Engineer"
+        />
         <meta
           property="og:description"
-          content="Haroon Azizi, a full stack mobile app developer and software engineer with passion for corss platform development and a love for technology. 
-        Haroon is currently living in Afghanistan and his official website is www.haroonazizi.com. His name in persian / dari is هارون عزیزی. You can also follow him on
-        X/Twitter at @az_haroon (www.x.com/az_haroon) where he posts about himself, his journey and tech reviews and hot takes."
+          content="Haroon Azizi (هارون عزیزی) is a full stack developer specializing in React, React Native, and Node.js. Based in Afghanistan, creating modern web and mobile applications."
+        />
+        <meta property="og:url" content="https://haroonazizi.com" />
+        <meta property="og:type" content="website" />
+
+        <meta
+          name="twitter:title"
+          content="Haroon Azizi | Software Developer"
+        />
+        <meta
+          name="twitter:description"
+          content="Full stack developer specializing in React, React Native and Node.js. Based in Afghanistan."
         />
 
         <style>
           @import
           url(&apos;https://fonts.googleapis.com/css2?family=Mr+Bedfort&display=swap&apos;);
         </style>
+
+        {/* Schema.org structured data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Haroon Azizi",
+            alternateName: "هارون عزیزی",
+            url: "https://haroonazizi.com",
+            image: "https://haroonazizi.com/images/haroon.png",
+            sameAs: [
+              "https://twitter.com/az_haroon",
+              "https://github.com/HaroonAzizi",
+              "https://linkedin.com/in/Haroon-Azizi",
+            ],
+            jobTitle: "Software Developer",
+            worksFor: {
+              "@type": "Organization",
+              name: "Freelance",
+            },
+            description:
+              "Full stack developer specializing in React, React Native, and Node.js",
+          })}
+        </script>
       </Head>
 
       {/* Hero Section */}
@@ -157,7 +199,6 @@ function Developer() {
                     : "opacity-0 translate-y-10"
                 }`}
               >
-                
                 <FaCode className="mr-2" />
                 Show My Work
               </button>

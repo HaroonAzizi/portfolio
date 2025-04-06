@@ -11,7 +11,7 @@ import {
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState("all");
 
-  // First, let's update the projects data to include flags for closed source and no demo
+  // Your existing projects data
   const projects = [
     {
       id: 1,
@@ -63,8 +63,41 @@ export default function Portfolio() {
   return (
     <>
       <Head>
-        <title>Portfolio | Haroon Azizi</title>
-        <meta name="description" content="My portfolio projects" />
+        <title>Portfolio | Haroon Azizi - Software Development Projects</title>
+        <meta 
+          name="description" 
+          content="Explore Haroon Azizi's software development projects including web applications, mobile apps, and full-stack solutions built with React, React Native, and Node.js." 
+        />
+        <meta name="keywords" content="Haroon Azizi portfolio, software projects, React projects, React Native apps, full stack development, web development, mobile app development" />
+        <link rel="canonical" href="https://haroonazizi.com/portfolio" />
+        
+        <meta property="og:title" content="Portfolio | Haroon Azizi - Software Development Projects" />
+        <meta property="og:description" content="Explore Haroon Azizi's software development projects including web applications, mobile apps, and full-stack solutions." />
+        <meta property="og:url" content="https://haroonazizi.com/portfolio" />
+        <meta property="og:type" content="website" />
+        
+        <meta name="twitter:title" content="Portfolio | Haroon Azizi" />
+        <meta name="twitter:description" content="Software development projects by Haroon Azizi - React, React Native, and Node.js applications." />
+        
+        {/* Schema.org structured data for Portfolio */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "headline": "Haroon Azizi's Portfolio",
+            "description": "Software development projects by Haroon Azizi",
+            "url": "https://haroonazizi.com/portfolio",
+            "author": {
+              "@type": "Person",
+              "name": "Haroon Azizi",
+              "url": "https://haroonazizi.com"
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://haroonazizi.com/portfolio"
+            }
+          })}
+        </script>
       </Head>
 
       {/* Hero Section */}

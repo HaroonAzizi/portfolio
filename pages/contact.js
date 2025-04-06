@@ -75,8 +75,55 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact | Haroon Azizi</title>
-        <meta name="description" content="Get in touch with me" />
+        <title>Contact | Haroon Azizi - Get In Touch</title>
+        <meta
+          name="description"
+          content="Get in touch with Haroon Azizi for software development projects, collaborations, or just to say hello. Contact form and social media links available."
+        />
+        <meta
+          name="keywords"
+          content="contact Haroon Azizi, hire software developer, software development services, React developer, React Native developer, Afghanistan developer"
+        />
+        <link rel="canonical" href="https://haroonazizi.com/contact" />
+
+        <meta
+          property="og:title"
+          content="Contact | Haroon Azizi - Get In Touch"
+        />
+        <meta
+          property="og:description"
+          content="Get in touch with Haroon Azizi for software development projects, collaborations, or just to say hello."
+        />
+        <meta property="og:url" content="https://haroonazizi.com/contact" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:title" content="Contact | Haroon Azizi" />
+        <meta
+          name="twitter:description"
+          content="Get in touch with Haroon Azizi for software development projects or collaborations."
+        />
+
+        {/* Schema.org structured data for Contact Page */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact Haroon Azizi",
+            description:
+              "Get in touch with Haroon Azizi for software development projects or collaborations",
+            url: "https://haroonazizi.com/contact",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://haroonazizi.com/contact",
+            },
+            author: {
+              "@type": "Person",
+              name: "Haroon Azizi",
+              email: "hi@haroonazizi.com",
+              url: "https://haroonazizi.com",
+            },
+          })}
+        </script>
       </Head>
 
       {/* Hero Section */}

@@ -18,6 +18,19 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#0F172A" />
 
+        {/* Default SEO meta tags - will be overridden by page-specific ones */}
+        <meta
+          name="description"
+          content="Haroon Azizi - Software Engineer specializing in web and mobile development. Explore my portfolio, projects, and blog."
+        />
+        <meta
+          name="keywords"
+          content="Haroon Azizi, Software Engineer, Web Developer, Mobile Developer, React, React Native, JavaScript, Portfolio, Pomodoro Timer, Pomodoro, Typing Test"
+        />
+        <meta name="author" content="Haroon Azizi" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English" />
+
         {/* Open Graph meta tags */}
         <meta property="og:title" content="Haroon Azizi - Software Engineer" />
         <meta
@@ -30,10 +43,13 @@ function MyApp({ Component, pageProps }) {
         />
         <meta property="og:url" content="https://haroonazizi.com" />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Haroon Azizi" />
+        <meta property="og:locale" content="en_US" />
 
         {/* Twitter Card meta tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@az_haroon" />
+        <meta name="twitter:creator" content="@az_haroon" />
         <meta name="twitter:title" content="Haroon Azizi - Software Engineer" />
         <meta
           name="twitter:description"
@@ -43,6 +59,9 @@ function MyApp({ Component, pageProps }) {
           name="twitter:image"
           content="https://haroonazizi.com/images/og-image.jpg"
         />
+
+        {/* Canonical URL - will be set per page */}
+        <link rel="canonical" href="https://haroonazizi.com" />
 
         {/* Preload fonts */}
         <link
