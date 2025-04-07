@@ -1,13 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
-import {
-  FaPlay,
-  FaPause,
-  FaRedo,
-  FaCoffee,
-  FaBrain,
-  FaClock,
-} from "react-icons/fa";
+import { FaPlay, FaPause, FaRedo, FaCoffee, FaClock } from "react-icons/fa";
 
 export default function Pomodoro() {
   // Timer states
