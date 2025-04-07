@@ -5,6 +5,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin, FaBrain } from "react-icons/fa";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { FaCode, FaTerminal } from "react-icons/fa";
+import DomainAd from "./DomainAd";
 
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -157,6 +158,7 @@ export default function Layout({ children }) {
       <main className="pt-16 flex-grow">
         {children}
         <SpeedInsights />
+        <DomainAd />
       </main>
 
       {/* Footer */}

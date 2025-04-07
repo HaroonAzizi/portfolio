@@ -219,7 +219,61 @@
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* After your existing animations, add these new ones */
+/* Add these animations at the end of your globals.css file */
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse-text {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-text-delay {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+.animate-pulse-text {
+  animation: pulse-text 3s ease-in-out infinite;
+}
+
+.animate-pulse-text-delay {
+  animation: pulse-text-delay 3s ease-in-out infinite;
+}
 
 @keyframes social-appear-1 {
   0% {
