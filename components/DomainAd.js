@@ -9,24 +9,29 @@ export default function DomainAd() {
   useEffect(() => {
     // Check if user has previously closed the ad
     const adClosed = localStorage.getItem("domainAdClosed");
-
-    if (adClosed === "true") {
+    const closedTime = parseInt(localStorage.getItem("domainAdClosedTime") || "0");
+    const currentTime = new Date().getTime();
+    const showAgainAfter = 60 * 60 * 1000; // 1 hour in milliseconds
+    
+    // Only keep it closed if it was closed recently
+    if (adClosed === "true" && (currentTime - closedTime) < showAgainAfter) {
       setIsVisible(false);
       return;
     }
-
+  
     // Show ad after 5 seconds
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 5000);
-
+  
     return () => clearTimeout(timer);
   }, []);
-
+  
   const handleClose = () => {
     setIsVisible(false);
-    // Store that user has closed the ad
+    // Store that user has closed the ad along with the timestamp
     localStorage.setItem("domainAdClosed", "true");
+    localStorage.setItem("domainAdClosedTime", new Date().getTime().toString());
   };
 
   const handleMinimize = () => {
