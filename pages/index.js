@@ -347,16 +347,17 @@ function Developer() {
                 </h3>
                 <p className="text-theme-text-muted mb-4">
                   A full-stack clinic management application with patient
-                  records, appointment scheduling, and billing.
+                  records, appointment scheduling, and billing. The app is built
+                  using NextJs and is already used in multiple dental clinics.
                 </p>
-                <div className="flex justify-between items-center">
+                {/* <div className="flex justify-between items-center">
                   <Link
                     href="/portfolio"
                     className="text-theme-accent hover:text-theme-accent-light transition-colors"
                   >
                     View Details →
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -390,14 +391,14 @@ function Developer() {
                   updates and GitHub-like contribution graph, built to track
                   habits and make you more productive.
                 </p>
-                <div className="flex justify-between items-center">
+                {/* <div className="flex justify-between items-center">
                   <Link
                     href="/portfolio"
                     className="text-theme-accent hover:text-theme-accent-light transition-colors"
                   >
                     View Details →
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -405,18 +406,18 @@ function Developer() {
             <div className="glass-card overflow-hidden group">
               <div className="h-48 bg-theme-secondary relative">
                 <img
-                  src="/images/project3.jpg"
-                  alt="Mobile App"
+                  src="/images/typing.png"
+                  alt="Typing Test"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-4 w-full">
                     <div className="flex gap-3 mb-2">
                       <span className="px-2 py-1 bg-theme-accent/80 text-white text-xs rounded font-mono">
-                        React Native
+                        NextJs
                       </span>
                       <span className="px-2 py-1 bg-theme-accent/80 text-white text-xs rounded font-mono">
-                        Firebase
+                        Twilwind
                       </span>
                     </div>
                   </div>
@@ -424,20 +425,22 @@ function Developer() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-theme-text mb-2">
-                  Mobile App (Coming Soon)
+                  Typing Test App
                 </h3>
                 <p className="text-theme-text-muted mb-4">
-                  A cross-platform mobile application built with React Native,
-                  currently in development.
+                  Test your typing speed and accuracy with this interactive app.
+                  Built with Next.js and Tailwind CSS, it features real-time
+                  feedback, customizable tests, and detailed performance
+                  analytics.
                 </p>
-                <div className="flex justify-between items-center">
+                {/* <div className="flex justify-between items-center">
                   <Link
                     href="/portfolio"
                     className="text-theme-accent hover:text-theme-accent-light transition-colors"
                   >
                     View Details →
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

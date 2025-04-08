@@ -31,6 +31,23 @@ export default function Portfolio() {
     },
     {
       id: 2,
+      title: "Typing Speed Test",
+      description:
+        "A beautifully designed typing app using NextJs with the funtionality to record the WPM and show you a graph of your typing speed.",
+      category: "fullstack",
+      technologies: ["NextJs", "Tailwind"],
+      image: "/images/typing.png",
+      liveLink: "https://type.haroonazizi.com",
+      githubLink: "https://github.com/HaroonAzizi/typing-app",
+      isClosedSource: false,
+      noLiveDemo: false,
+      closedSourceReason:
+        "This project is a personal project and the code hasn't been yet published.",
+      noLiveDemoReason:
+        "The project is for local useage of clinics only and isn't hosted anywhere.",
+    },
+    {
+      id: 3,
       title: "Aadat: task and habit tracker",
       description:
         "A responsive task management application with real-time updates and GitHub like contribution graph",
