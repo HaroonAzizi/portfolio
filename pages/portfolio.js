@@ -34,7 +34,7 @@ export default function Portfolio() {
       description:
         "A responsive task management application with real-time updates and GitHub like contribution graph",
       category: "frontend",
-      technologies: ["React", "Supabase", "Tailwind"],
+      technologies: ["React", "Supabase"],
       image: "/images/aadat.jpg",
       liveLink: "#",
       githubLink: "#",
