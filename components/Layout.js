@@ -29,38 +29,38 @@ export default function Layout({ children }) {
             <div className="hidden md:flex space-x-8 px-6 py-2">
               <Link
                 href="/"
-                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium"
+                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
               >
                 Home
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-theme-accent to-theme-accent-light transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-full shadow-glow"></span>
               </Link>
               <Link
                 href="/portfolio"
-                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium"
+                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
               >
                 Portfolio
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-theme-accent to-theme-accent-light transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-full shadow-glow"></span>
               </Link>
               <Link
                 href="/blog"
-                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium"
+                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
               >
                 Blog
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-theme-accent to-theme-accent-light transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-full shadow-glow"></span>
               </Link>
               <a
                 href="https://type.haroonazizi.com"
-                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium"
+                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
               >
                 Typing Test
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-theme-accent to-theme-accent-light transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-full shadow-glow"></span>
               </a>
               <Link
                 href="/contact"
-                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium"
+                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
               >
                 Contact
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-theme-accent to-theme-accent-light transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-full shadow-glow"></span>
               </Link>
 
               <Link
