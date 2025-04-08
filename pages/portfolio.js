@@ -11,7 +11,6 @@ import {
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState("all");
 
-  // Your existing projects data
   const projects = [
     {
       id: 1,
@@ -47,7 +46,6 @@ export default function Portfolio() {
     },
   ];
 
-  // Then update the Projects Grid section
   const categories = [
     { id: "all", name: "All" },
     { id: "frontend", name: "Frontend" },
@@ -64,38 +62,49 @@ export default function Portfolio() {
     <>
       <Head>
         <title>Portfolio | Haroon Azizi - Software Development Projects</title>
-        <meta 
-          name="description" 
-          content="Explore Haroon Azizi's software development projects including web applications, mobile apps, and full-stack solutions built with React, React Native, and Node.js." 
+        <meta
+          name="description"
+          content="Explore Haroon Azizi's software development projects including web applications, mobile apps, and full-stack solutions built with React, React Native, and Node.js."
         />
-        <meta name="keywords" content="Haroon Azizi portfolio, software projects, React projects, React Native apps, full stack development, web development, mobile app development" />
+        <meta
+          name="keywords"
+          content="Haroon Azizi portfolio, software projects, React projects, React Native apps, full stack development, web development, mobile app development"
+        />
         <link rel="canonical" href="https://haroonazizi.com/portfolio" />
-        
-        <meta property="og:title" content="Portfolio | Haroon Azizi - Software Development Projects" />
-        <meta property="og:description" content="Explore Haroon Azizi's software development projects including web applications, mobile apps, and full-stack solutions." />
+
+        <meta
+          property="og:title"
+          content="Portfolio | Haroon Azizi - Software Development Projects"
+        />
+        <meta
+          property="og:description"
+          content="Explore Haroon Azizi's software development projects including web applications, mobile apps, and full-stack solutions."
+        />
         <meta property="og:url" content="https://haroonazizi.com/portfolio" />
         <meta property="og:type" content="website" />
-        
+
         <meta name="twitter:title" content="Portfolio | Haroon Azizi" />
-        <meta name="twitter:description" content="Software development projects by Haroon Azizi - React, React Native, and Node.js applications." />
-        
-        {/* Schema.org structured data for Portfolio */}
+        <meta
+          name="twitter:description"
+          content="Software development projects by Haroon Azizi - React, React Native, and Node.js applications."
+        />
+
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "headline": "Haroon Azizi's Portfolio",
-            "description": "Software development projects by Haroon Azizi",
-            "url": "https://haroonazizi.com/portfolio",
-            "author": {
+            headline: "Haroon Azizi's Portfolio",
+            description: "Software development projects by Haroon Azizi",
+            url: "https://haroonazizi.com/portfolio",
+            author: {
               "@type": "Person",
-              "name": "Haroon Azizi",
-              "url": "https://haroonazizi.com"
+              name: "Haroon Azizi",
+              url: "https://haroonazizi.com",
             },
-            "mainEntityOfPage": {
+            mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://haroonazizi.com/portfolio"
-            }
+              "@id": "https://haroonazizi.com/portfolio",
+            },
           })}
         </script>
       </Head>
@@ -151,26 +160,28 @@ export default function Portfolio() {
               <div key={project.id} className="flip-card h-[300px]">
                 <div className="flip-card-inner">
                   {/* Front of card */}
-                  <div className="flip-card-front glass-card overflow-hidden border-t-4 border-theme-accent p-6 flex flex-col">
-                    <h3 className="text-xl font-bold text-theme-text mb-3 flex items-center">
-                      <FaLaptopCode className="mr-2 text-theme-accent" />
-                      {project.title}
-                    </h3>
-                    <p className="text-theme-text-muted mb-6">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                      {project.technologies.map((tech, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-sm font-mono"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                  <div className="flip-card-front glass-card overflow-hidden border-t-4 border-theme-accent p-6 flex flex-col h-full relative">
+                    <div className="flex-1 flex flex-col">
+                      <h3 className="text-xl font-bold text-theme-text mb-3 flex items-center">
+                        <FaLaptopCode className="mr-2 text-theme-accent" />
+                        {project.title}
+                      </h3>
+                      <p className="text-theme-text-muted mb-6">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, index) => (
+                          <span
+                            key={index}
+                            className="px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-sm font-mono"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
-                    <div className="flex gap-4 pt-4 border-t border-theme-accent/10 mt-auto">
+                    <div className="flex flex-nowrap justify-between gap-2 pt-4 border-t border-theme-accent/10 absolute bottom-6 left-6 right-6">
                       <button
                         onClick={(e) => {
                           if (project.noLiveDemo) {
@@ -181,9 +192,9 @@ export default function Portfolio() {
                             window.open(project.liveLink, "_blank");
                           }
                         }}
-                        className="px-4 py-2 bg-theme-accent text-white rounded hover:bg-theme-accent-light transition-colors text-sm flex items-center"
+                        className="px-3 py-2 bg-theme-accent text-white rounded hover:bg-theme-accent-light transition-colors text-sm flex items-center whitespace-nowrap"
                       >
-                        <FaExternalLinkAlt className="mr-2" />
+                        <FaExternalLinkAlt className="mr-1" />
                         Live Demo
                       </button>
                       <button
@@ -196,9 +207,9 @@ export default function Portfolio() {
                             window.open(project.githubLink, "_blank");
                           }
                         }}
-                        className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 transition-colors text-sm flex items-center"
+                        className="px-3 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 transition-colors text-sm flex items-center whitespace-nowrap"
                       >
-                        <FaGithub className="mr-2" />
+                        <FaGithub className="mr-1" />
                         GitHub
                       </button>
                     </div>
