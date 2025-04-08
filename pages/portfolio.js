@@ -23,10 +23,11 @@ export default function Portfolio() {
       liveLink: "#",
       githubLink: "#",
       isClosedSource: true,
-      noLiveDemo: false,
+      noLiveDemo: true,
       closedSourceReason:
-        "This project is under NDA and the source code is proprietary.",
-      noLiveDemoReason: "",
+        "This project is a personal project and the code hasn't been yet published.",
+      noLiveDemoReason:
+        "The project is for local useage of clinics only and isn't hosted anywhere.",
     },
     {
       id: 2,
@@ -37,7 +38,7 @@ export default function Portfolio() {
       technologies: ["React", "Supabase"],
       image: "/images/aadat.jpg",
       liveLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/HaroonAzizi/aadat",
       isClosedSource: false,
       noLiveDemo: true,
       closedSourceReason: "",
