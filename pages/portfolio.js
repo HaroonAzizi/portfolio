@@ -16,9 +16,9 @@ export default function Portfolio() {
       id: 1,
       title: "Clinic Manager",
       description:
-        "A full-stack clinic manager app created with React and bundled with Electron",
+        "A full-stack clinic manager app created with NextJS and styled with TailwindCSS designed to make the patient registration and prescription writing easier for doctors.",
       category: "fullstack",
-      technologies: ["React", "SQLite", "Electron", "Tailwind"],
+      technologies: ["React", "SQLite", "Tailwind"],
       image: "/images/project1.jpg",
       liveLink: "#",
       githubLink: "#",
@@ -59,6 +59,40 @@ export default function Portfolio() {
       isClosedSource: false,
       noLiveDemo: true,
       closedSourceReason: "",
+      noLiveDemoReason:
+        "The live demo is currently unavailable as the project is being migrated to a new server.",
+    },
+    {
+      id: 4,
+      title: "Attendance Plus",
+      description:
+        "Imagine having a FaceID enabled attendance in your class or workplace - That is what Attendace Plus does.",
+      category: "fullstack",
+      technologies: ["Python", "OpenCV", "Pandas"],
+      image: "/images/aadat.jpg",
+      liveLink: "#",
+      githubLink: "#",
+      isClosedSource: true,
+      noLiveDemo: true,
+      closedSourceReason:
+        "This is a paid project and if you want to have access to its source code, please contact me.",
+      noLiveDemoReason:
+        "The live demo is currently unavailable as the project is being migrated to a new server.",
+    },
+    {
+      id: 5,
+      title: "Unite",
+      description:
+        "Unite is a video conferancing app which helps you connect with your family and loved ones. Video calls in Unite do not have limits like Zoom and Google Meet.",
+      category: "frontend",
+      technologies: ["NextJS", "Prisma", "NodeJS"],
+      image: "/images/aadat.jpg",
+      liveLink: "#",
+      githubLink: "#",
+      isClosedSource: true,
+      noLiveDemo: true,
+      closedSourceReason:
+        "This is a paid project and if you want to have access to its source code, please contact me.",
       noLiveDemoReason:
         "The live demo is currently unavailable as the project is being migrated to a new server.",
     },
