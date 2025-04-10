@@ -96,6 +96,23 @@ export default function Portfolio() {
       noLiveDemoReason:
         "The live demo is currently unavailable as the project is being migrated to a new server.",
     },
+    {
+      id: 6,
+      title: "Programming Contest App",
+      description:
+        "A LeetCode.com like app, used for local programming contest around univeristies for the computers on the same network without the need to be connected to the internet. Fully implemented and used in Kardan University.",
+      category: "frontend",
+      technologies: ["React", "Django", "PostgreSQL"],
+      image: "/images/aadat.jpg",
+      liveLink: "#",
+      githubLink: "#",
+      isClosedSource: true,
+      noLiveDemo: true,
+      closedSourceReason:
+        "This is a paid project and if you want to have access to its source code, please contact me.",
+      noLiveDemoReason:
+        "The live demo is currently unavailable as the project is being migrated to a new server.",
+    },
   ];
 
   const categories = [
