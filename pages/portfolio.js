@@ -176,6 +176,21 @@ export default function Portfolio() {
             },
           })}
         </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Haroon Azizi's Portfolio",
+            description:
+              "Explore Haroon Azizi's software development projects including web applications, mobile apps, and full-stack solutions.",
+            url: "https://haroonazizi.com/portfolio",
+            author: {
+              "@type": "Person",
+              name: "Haroon Azizi",
+              url: "https://haroonazizi.com",
+            },
+          })}
+        </script>
       </Head>
 
       {/* Hero Section */}

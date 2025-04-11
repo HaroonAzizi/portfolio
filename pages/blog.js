@@ -20,43 +20,71 @@ export default function Blog({ blogPosts = [] }) {
     <>
       <Head>
         <title>Blog | Haroon Azizi - Tech, Productivity, and Life</title>
-        <meta 
-          name="description" 
-          content="Explore Haroon Azizi's blog about software development, productivity tips, and life experiences. Articles on React, React Native, and more." 
+        <meta
+          name="description"
+          content="Explore Haroon Azizi's blog about software development, productivity tips, and life experiences. Articles on React, React Native, and more."
         />
-        <meta name="keywords" content="Haroon Azizi blog, software development blog, tech blog, productivity tips, React Native, React, web development" />
+        <meta
+          name="keywords"
+          content="Haroon Azizi blog, software development blog, tech blog, productivity tips, React Native, React, web development"
+        />
         <link rel="canonical" href="https://haroonazizi.com/blog" />
-        
-        <meta property="og:title" content="Blog | Haroon Azizi - Tech, Productivity, and Life" />
-        <meta property="og:description" content="Explore Haroon Azizi's blog about software development, productivity tips, and life experiences." />
+
+        <meta
+          property="og:title"
+          content="Blog | Haroon Azizi - Tech, Productivity, and Life"
+        />
+        <meta
+          property="og:description"
+          content="Explore Haroon Azizi's blog about software development, productivity tips, and life experiences."
+        />
         <meta property="og:url" content="https://haroonazizi.com/blog" />
         <meta property="og:type" content="website" />
-        
+
         <meta name="twitter:title" content="Blog | Haroon Azizi" />
-        <meta name="twitter:description" content="Tech, Productivity, and Life—Unfiltered. Articles by Haroon Azizi." />
-        
+        <meta
+          name="twitter:description"
+          content="Tech, Productivity, and Life—Unfiltered. Articles by Haroon Azizi."
+        />
+
         {/* Schema.org structured data for Blog */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
-            "headline": "Haroon Azizi's Blog",
-            "description": "Articles about software development, productivity, and life experiences",
-            "url": "https://haroonazizi.com/blog",
-            "author": {
+            headline: "Haroon Azizi's Blog",
+            description:
+              "Articles about software development, productivity, and life experiences",
+            url: "https://haroonazizi.com/blog",
+            author: {
               "@type": "Person",
-              "name": "Haroon Azizi",
-              "url": "https://haroonazizi.com"
+              name: "Haroon Azizi",
+              url: "https://haroonazizi.com",
             },
-            "publisher": {
+            publisher: {
               "@type": "Person",
-              "name": "Haroon Azizi",
-              "url": "https://haroonazizi.com"
+              name: "Haroon Azizi",
+              url: "https://haroonazizi.com",
             },
-            "mainEntityOfPage": {
+            mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://haroonazizi.com/blog"
-            }
+              "@id": "https://haroonazizi.com/blog",
+            },
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: "Haroon Azizi's Blog",
+            description:
+              "Explore Haroon Azizi's blog about software development, productivity tips, and life experiences.",
+            url: "https://haroonazizi.com/blog",
+            author: {
+              "@type": "Person",
+              name: "Haroon Azizi",
+              url: "https://haroonazizi.com",
+            },
           })}
         </script>
       </Head>
