@@ -100,7 +100,7 @@ export default function Portfolio() {
       id: 6,
       title: "Programming Contest App",
       description:
-        "A LeetCode.com like app, used for contests inside campus on the same network without internet connection. Fully implemented and used in Kardan University.",
+        "A web app use for contests inside campus on the same network without internet connection. Fully implemented and used in Kardan University.",
       category: "frontend",
       technologies: ["React", "Django", "PostgreSQL"],
       image: "/images/aadat.jpg",
