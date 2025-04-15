@@ -10,6 +10,7 @@ import {
 import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+// import clarity from "@microsoft/clarity";
 
 export default function Home() {
   // In your Home component, add a new state for social icons
