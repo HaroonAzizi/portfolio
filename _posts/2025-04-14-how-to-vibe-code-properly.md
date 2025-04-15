@@ -16,7 +16,7 @@ Some people (including myself) believe that vibe coding is the future of coding 
 
 I've been messing around with vibe coding for a while and man, that is so cool. It makes you feel like you're in a sci-fi movie. You just give your IDE a prompt and it generates code for you. I vibe coded so many projects with AI and today I will share everything here:
 
-Just before we start, I would really appreciate you following my [Twitter/X](x.com/az_haroon) account.
+Just before we start, I would really appreciate you following my [Twitter/X](https://x.com/az_haroon) account.
 
 ## First steps
 
@@ -41,4 +41,4 @@ Now that you've gotten the whole explanation of each phase from the chatbot, wha
 
 We are working with Artificial Intelligence so of course human inputs will be needed and you will have to make the AI understand how to approach what you want it to create. Also, keep in mind that AI is not that good with security related stuff, so make sure to review the codes of the apps which must be secure or make a professional audit your code for security vulnerabilities.
 
-This was the easiest I could describe the vibe coding process. I know it isn't complete and I would love to hear your approach on how to vibe code properly. I don't have a _comments_ section on my website, yet, since I don't have a CMS so you can send me your inputs and comments through email [hi@haroonazizi.com](mailto:hi@haroonazizi.com) or send me a DM on my Twitter [@az_haroon](x.com/az_haroon).
+This was the easiest I could describe the vibe coding process. I know it isn't complete and I would love to hear your approach on how to vibe code properly. I don't have a _comments_ section on my website, yet, since I don't have a CMS so you can send me your inputs and comments through email [hi@haroonazizi.com](mailto:hi@haroonazizi.com) or send me a DM on my Twitter [@az_haroon](https://x.com/az_haroon).
