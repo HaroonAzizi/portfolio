@@ -5,15 +5,32 @@ import emailjs from "@emailjs/browser";
 import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import clarity from "@microsoft/clarity";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+    clarity.init("r4blj97gqw"); // Replace "yourProjectId" with your actual Clarity project ID
   }, []);
 
   return (
     <>
       <Head>
+        {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-8TY1JXQTN4"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-8TY1JXQTN4');
+            `,
+          }}
+        />
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#0F172A" />

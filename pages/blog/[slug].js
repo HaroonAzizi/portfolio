@@ -28,48 +28,85 @@ export default function BlogPost({ post }) {
   return (
     <>
       <Head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-8TY1JXQTN4"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-8TY1JXQTN4');
+            `,
+          }}
+        />
         <title>{post.title} | Haroon Azizi</title>
         <meta name="description" content={post.excerpt} />
-        <meta name="keywords" content={`${post.category}, Haroon Azizi, blog, ${post.title.toLowerCase()}`} />
-        <link rel="canonical" href={`https://haroonazizi.com/blog/${post.slug}`} />
-        
+        <meta
+          name="keywords"
+          content={`${
+            post.category
+          }, Haroon Azizi, blog, ${post.title.toLowerCase()}`}
+        />
+        <link
+          rel="canonical"
+          href={`https://haroonazizi.com/blog/${post.slug}`}
+        />
+
         <meta property="og:title" content={`${post.title} | Haroon Azizi`} />
         <meta property="og:description" content={post.excerpt} />
-        <meta property="og:url" content={`https://haroonazizi.com/blog/${post.slug}`} />
+        <meta
+          property="og:url"
+          content={`https://haroonazizi.com/blog/${post.slug}`}
+        />
         <meta property="og:type" content="article" />
-        {post.image && <meta property="og:image" content={`https://haroonazizi.com${post.image}`} />}
-        
+        {post.image && (
+          <meta
+            property="og:image"
+            content={`https://haroonazizi.com${post.image}`}
+          />
+        )}
+
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt} />
-        {post.image && <meta name="twitter:image" content={`https://haroonazizi.com${post.image}`} />}
-        
+        {post.image && (
+          <meta
+            name="twitter:image"
+            content={`https://haroonazizi.com${post.image}`}
+          />
+        )}
+
         {/* Schema.org structured data for BlogPosting */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "headline": post.title,
-            "description": post.excerpt,
-            "image": post.image ? `https://haroonazizi.com${post.image}` : "https://haroonazizi.com/images/og-image.jpg",
-            "datePublished": post.date,
-            "dateModified": post.date,
-            "author": {
+            headline: post.title,
+            description: post.excerpt,
+            image: post.image
+              ? `https://haroonazizi.com${post.image}`
+              : "https://haroonazizi.com/images/og-image.jpg",
+            datePublished: post.date,
+            dateModified: post.date,
+            author: {
               "@type": "Person",
-              "name": "Haroon Azizi",
-              "url": "https://haroonazizi.com"
+              name: "Haroon Azizi",
+              url: "https://haroonazizi.com",
             },
-            "publisher": {
+            publisher: {
               "@type": "Person",
-              "name": "Haroon Azizi",
-              "url": "https://haroonazizi.com"
+              name: "Haroon Azizi",
+              url: "https://haroonazizi.com",
             },
-            "mainEntityOfPage": {
+            mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://haroonazizi.com/blog/${post.slug}`
+              "@id": `https://haroonazizi.com/blog/${post.slug}`,
             },
-            "keywords": `${post.category}, blog, ${post.title.toLowerCase()}`,
-            "articleSection": post.category,
-            "wordCount": post.content.split(/\s+/).length
+            keywords: `${post.category}, blog, ${post.title.toLowerCase()}`,
+            articleSection: post.category,
+            wordCount: post.content.split(/\s+/).length,
           })}
         </script>
       </Head>
