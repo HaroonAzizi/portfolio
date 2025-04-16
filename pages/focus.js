@@ -3,9 +3,17 @@ import Head from "next/head";
 import { FaPlay, FaPause, FaRedo, FaCoffee, FaClock } from "react-icons/fa";
 
 export default function Pomodoro() {
+  // Timer presets (in seconds)
+  const timerPresets = {
+    short: { focus: 25 * 60, break: 5 * 60, label: "25 min" },
+    medium: { focus: 45 * 60, break: 10 * 60, label: "45 min" },
+    long: { focus: 60 * 60, break: 15 * 60, label: "60 min" },
+  };
+
   // Timer states
+  const [preset, setPreset] = useState("short");
   const [mode, setMode] = useState("focus"); // focus or break
-  const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(timerPresets.short.focus); // default to short preset
   const [isActive, setIsActive] = useState(false);
   const [cycles, setCycles] = useState(0);
 
@@ -26,15 +34,15 @@ export default function Pomodoro() {
       if (mode === "focus") {
         // Switch to break mode
         setMode("break");
-        setTimeLeft(5 * 60); // 5 minutes break
+        setTimeLeft(timerPresets[preset].break);
         setCycles((prev) => prev + 1);
       } else {
         // Switch back to focus mode
         setMode("focus");
-        setTimeLeft(25 * 60);
+        setTimeLeft(timerPresets[preset].focus);
       }
     }
-  }, [timeLeft, mode]);
+  }, [timeLeft, mode, preset]);
 
   // Add a new useEffect to initialize audio
   useEffect(() => {
@@ -82,7 +90,15 @@ export default function Pomodoro() {
   const resetTimer = () => {
     setIsActive(false);
     setMode("focus");
-    setTimeLeft(25 * 60);
+    setTimeLeft(timerPresets[preset].focus);
+  };
+
+  // Change timer preset
+  const changePreset = (newPreset) => {
+    setIsActive(false);
+    setPreset(newPreset);
+    setMode("focus");
+    setTimeLeft(timerPresets[newPreset].focus);
   };
 
   return (
@@ -168,7 +184,7 @@ export default function Pomodoro() {
             <span className="text-theme-accent-light">productivity</span>
             <span className="text-white"> = </span>
             <span className="text-theme-text-muted">
-              &quot;Focus for 25 minutes, then take a 5-minute break. Repeat for
+              &quot;Focus for your chosen time, then take a break. Repeat for
               optimal results.&quot;
             </span>
           </p>
@@ -178,6 +194,23 @@ export default function Pomodoro() {
       {/* Timer Section */}
       <section className="py-12 bg-theme-primary">
         <div className="max-w-md mx-auto px-4">
+          {/* Timer preset selector */}
+          <div className="mb-6 flex justify-center space-x-4">
+            {Object.keys(timerPresets).map((key) => (
+              <button
+                key={key}
+                onClick={() => changePreset(key)}
+                className={`px-4 py-2 rounded-full font-mono transition-colors ${
+                  preset === key
+                    ? "bg-theme-accent text-white shadow-glow"
+                    : "bg-theme-secondary text-theme-text-muted hover:bg-gray-700"
+                }`}
+              >
+                {timerPresets[key].label}
+              </button>
+            ))}
+          </div>
+
           <div className="glass-card p-8 rounded-lg shadow-glow flex flex-col items-center">
             {/* Mode indicator */}
             <div className="mb-6 flex items-center">
@@ -241,8 +274,12 @@ export default function Pomodoro() {
               style={{
                 width: `${
                   mode === "focus"
-                    ? ((25 * 60 - timeLeft) / (25 * 60)) * 100
-                    : ((5 * 60 - timeLeft) / (5 * 60)) * 100
+                    ? ((timerPresets[preset].focus - timeLeft) /
+                        timerPresets[preset].focus) *
+                      100
+                    : ((timerPresets[preset].break - timeLeft) /
+                        timerPresets[preset].break) *
+                      100
                 }%`,
               }}
             ></div>
@@ -266,20 +303,17 @@ export default function Pomodoro() {
               How to use the Pomodoro Technique:
             </h2>
             <ol className="list-decimal list-inside text-theme-text-muted space-y-2 font-mono">
-              <li>Focus intensely for 25 minutes</li>
-              <li>Take a short 5-minute break</li>
-              <li>After 4 cycles, take a longer break (15-30 minutes)</li>
+              <li>Select your preferred focus duration</li>
+              <li>Focus intensely during the work period</li>
+              <li>Take a short break when the timer ends</li>
+              <li>
+                After 4 cycles, consider taking a longer break (15-30 minutes)
+              </li>
               <li>Repeat to maximize productivity and prevent burnout</li>
             </ol>
           </div>
         </div>
       </section>
-
-      {/* Remove this audio element as we're creating it programmatically now */}
-      {/* <audio ref={audioRef} preload="auto">
-        <source src="/sounds/bell.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio> */}
     </>
   );
 }
