@@ -197,17 +197,24 @@ export default function Pomodoro() {
           {/* Timer preset selector */}
           <div className="mb-6 flex justify-center space-x-4">
             {Object.keys(timerPresets).map((key) => (
-              <button
-                key={key}
-                onClick={() => changePreset(key)}
-                className={`px-4 py-2 rounded-full font-mono transition-colors ${
-                  preset === key
-                    ? "bg-theme-accent text-white shadow-glow"
-                    : "bg-theme-secondary text-theme-text-muted hover:bg-gray-700"
-                }`}
-              >
-                {timerPresets[key].label}
-              </button>
+              <div key={key} className="relative group">
+                <button
+                  onClick={() => changePreset(key)}
+                  className={`px-4 py-2 rounded-full font-mono transition-colors ${
+                    preset === key
+                      ? "bg-theme-accent text-white shadow-glow"
+                      : "bg-theme-secondary text-theme-text-muted hover:bg-gray-700"
+                  }`}
+                >
+                  {timerPresets[key].label}
+                </button>
+                {/* Tooltip that appears on hover */}
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-theme-secondary text-theme-text-muted text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                  Focus: {Math.floor(timerPresets[key].focus / 60)} mins, Break:{" "}
+                  {Math.floor(timerPresets[key].break / 60)} mins
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-theme-secondary"></div>
+                </div>
+              </div>
             ))}
           </div>
 
