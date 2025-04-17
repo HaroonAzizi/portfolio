@@ -397,7 +397,7 @@ function Developer() {
                 <p className="text-theme-text-muted mb-4">
                   Ryazi21 is an AI-powered mathematics app designed to help
                   students learn, practice and solve math problems. Trained on
-                  Afghanistan&apos;s mathematics books
+                  Afghanistan&apos;s mathematics books.
                 </p>
                 {/* <div className="flex justify-between items-center">
                   <Link
