@@ -108,7 +108,7 @@ export default function DomainAd() {
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center animate-pulse-text-delay">
                     <span className="text-slate-300 font-mono text-base sm:text-lg">
-                      Your Brand Here
+                      <a href="mailto:hi@haroonazizi.com"> Your Brand Here</a>
                     </span>
                   </div>
                 </div>

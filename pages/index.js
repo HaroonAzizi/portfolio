@@ -1,12 +1,5 @@
 import Head from "next/head";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaLinkedinIn,
-  FaCode,
-  FaTerminal,
-  FaClock,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaCode, FaClock } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -278,9 +271,9 @@ function Developer() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-theme-text">
-                I am a passionate developer with expertise in building modern
-                web and mobile applications. My journey in tech started with a
-                curiosity for creating beautiful, functional websites.
+                I am a developer with expertise in building modern web and
+                mobile applications. My journey in tech started with a curiosity
+                for creating beautiful, functional websites.
               </p>
               <p className="text-theme-text">
                 I specialize in full-stack web and mobile app development, with
@@ -381,17 +374,17 @@ function Developer() {
               <div className="h-48 bg-theme-secondary relative">
                 <img
                   src="/images/project2.jpg"
-                  alt="Aadat Task Tracker"
+                  alt="Math + AI"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-4 w-full">
                     <div className="flex gap-3 mb-2">
                       <span className="px-2 py-1 bg-theme-accent/80 text-white text-xs rounded font-mono">
-                        React
+                        React Native
                       </span>
                       <span className="px-2 py-1 bg-theme-accent/80 text-white text-xs rounded font-mono">
-                        Supabase
+                        AI
                       </span>
                     </div>
                   </div>
@@ -399,12 +392,12 @@ function Developer() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-theme-text mb-2">
-                  Aadat: Task Tracker
+                  Ryazi21 - Math and AI (coming soon)
                 </h3>
                 <p className="text-theme-text-muted mb-4">
-                  A responsive task management application with real-time
-                  updates and GitHub-like contribution graph, built to track
-                  habits and make you more productive.
+                  Ryazi21 is an AI-powered mathematics app designed to help
+                  students learn, practice and solve math problems. Trained on
+                  Afghanistan&apos;s mathematics books
                 </p>
                 {/* <div className="flex justify-between items-center">
                   <Link
