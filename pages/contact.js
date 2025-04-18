@@ -252,7 +252,7 @@ export default function Contact() {
                   <p className="text-theme-text mb-4">haroon</p>
                   <p className="text-theme-text-muted mb-2">$ cat skills.txt</p>
                   <p className="text-theme-text mb-4">
-                    React, React Native, Node.js, Express, MongoDB
+                    NextJs, React, React Native, Node.js, Express, MongoDB
                   </p>
                   <p className="text-theme-text-muted mb-2">
                     &apos;$ echo &quot;Let&apos;s build something amazing
