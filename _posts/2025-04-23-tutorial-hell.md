@@ -15,7 +15,7 @@ I got an email yesterday from a student who's stuck in the _"tutorial hell"_ and
 
 ---
 
-### His email:
+## His email:
 
 Dear Sir,
 
@@ -31,7 +31,7 @@ Thank you for your time. I look forward to your response.
 
 Best regards,
 
-### My answer:
+## My answer:
 
 Dear Idress,
 
