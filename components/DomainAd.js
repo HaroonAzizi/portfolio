@@ -94,16 +94,25 @@ export default function DomainAd() {
             {/* Ad Content */}
             <div className="p-3 sm:p-4 bg-slate-900/80">
               <div className="text-center mb-3 sm:mb-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-blue-400 mb-1 sm:mb-2">
-                  <a href="https://code.af">code.af</a>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">
+                  <span className="text-blue-400 to text-blue-500">
+                    <a href="https://code.af">code</a>
+                  </span>
+                  <span>
+                    <a href="https://code.af">.af</a>
+                  </span>
                 </h3>
+
                 <div className="font-mono text-xs sm:text-sm text-slate-300 mb-2 sm:mb-3">
                   Premium Tech Domain
                 </div>
                 <div className="relative h-10 sm:h-12 mb-3 sm:mb-4 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center animate-pulse-text">
-                    <span className="text-blue-400 font-mono font-bold text-base sm:text-lg">
-                      code.af
+                    <span className="text-blue-500 font-mono font-bold text-base sm:text-lg">
+                      code
+                    </span>
+                    <span className="text-blue-600 font-mono font-bold text-base sm:text-lg">
+                      .af
                     </span>
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center animate-pulse-text-delay">
