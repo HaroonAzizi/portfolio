@@ -470,22 +470,22 @@ function Developer() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Blog Card 1 */}
-            <Link href="/blog/2025-03-04-restart" className="block">
+            <Link href="/blog/2025-04-23-tutorial-hell" className="block">
               <div className="glass-card p-6 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-glow border-t-4 border-theme-accent">
                 <div className="flex justify-between items-center mb-4">
                   <span className="px-3 py-1 bg-theme-accent/10 text-theme-accent rounded-full text-xs font-mono">
-                    Personal
+                    Coding
                   </span>
                   <span className="text-theme-text-muted text-xs font-mono">
-                    Mar 4, 2025
+                    Apr 23, 2025
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-theme-text mb-3 group-hover:text-theme-accent transition-colors">
-                  Restart
+                  How to escape tutorial hell
                 </h3>
                 <p className="text-theme-text-muted mb-4 line-clamp-3">
-                  Sometimes we need to press the restart button in our lives to
-                  get back on track...
+                  I got an email yesterday from a student who&apos;s stuck in
+                  the &quot;tutorial hell&quot;...
                 </p>
                 <div className="flex justify-end mt-auto pt-2">
                   <span className="text-theme-accent text-sm font-mono inline-flex items-center">
