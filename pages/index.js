@@ -591,7 +591,7 @@ function Developer() {
           </div>
           <div className="text-center mt-12">
             <Link href="/blog">
-              <button className="btn-modern">Read All Articles</button>
+              <button className="btn-modern">Read All</button>
             </Link>
           </div>
         </div>
