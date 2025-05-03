@@ -168,7 +168,7 @@ export default function Layout({ children }) {
             <div className="text-theme-text-muted text-sm">
               <span className="font-mono">
                 © {new Date().getFullYear()}{" "}
-                <a className="hover: text-white" href="https:haroonazizi.com">
+                <a className="hover: text-white" href="https://haroonazizi.com">
                   Haroon Azizi
                 </a>
                 .{" "}
