@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router"; // Import useRouter
 import { FaClock, FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin, FaBrain } from "react-icons/fa";
@@ -9,6 +10,11 @@ import DomainAd from "./DomainAd";
 
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter(); // Get router instance
+  const currentPath = router.pathname; // Get current path
+
+  // Helper function to determine active state
+  const isActive = (path) => currentPath === path;
 
   return (
     <div className="min-h-screen bg-theme-primary text-theme-text flex flex-col">
@@ -29,43 +35,58 @@ export default function Layout({ children }) {
             <div className="hidden md:flex space-x-8 px-6 py-2">
               <Link
                 href="/"
-                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
+                className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
+                  isActive("/")
+                    ? "text-theme-accent"
+                    : "hover:text-theme-accent" // Use accent color for active
+                }`}
               >
                 Home
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-theme-accent to-theme-accent-light transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-full shadow-glow"></span>
               </Link>
               <Link
                 href="/portfolio"
-                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
+                className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
+                  isActive("/portfolio")
+                    ? "text-theme-accent" // Use accent color for active
+                    : "hover:text-theme-accent"
+                }`}
               >
                 Portfolio
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-theme-accent to-theme-accent-light transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-full shadow-glow"></span>
               </Link>
               <Link
                 href="/blog"
-                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
+                className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
+                  isActive("/blog") || currentPath.startsWith("/blog/")
+                    ? "text-theme-accent" // Use accent color for active
+                    : "hover:text-theme-accent"
+                }`}
               >
                 Blog
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-theme-accent to-theme-accent-light transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-full shadow-glow"></span>
               </Link>
               <a
                 href="https://type.haroonazizi.com"
                 className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
               >
                 Typing Test
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-theme-accent to-theme-accent-light transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-full shadow-glow"></span>
               </a>
               <Link
                 href="/contact"
-                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
+                className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
+                  isActive("/contact")
+                    ? "text-theme-accent" // Use accent color for active
+                    : "hover:text-theme-accent"
+                }`}
               >
                 Contact
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-theme-accent to-theme-accent-light transform translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-full shadow-glow"></span>
               </Link>
 
               <Link
                 href="/focus"
-                className="px-4 py-1 border-2 border-theme-accent rounded-md text-theme-accent hover:bg-theme-accent hover:text-white transition-all duration-300 text-lg flex items-center self-center"
+                className={`px-4 py-1 border-2 rounded-md transition-all duration-300 text-lg flex items-center self-center ${
+                  isActive("/focus")
+                    ? "border-theme-accent bg-theme-accent text-white shadow-glow"
+                    : "border-theme-accent text-theme-accent hover:bg-theme-accent hover:text-white"
+                }`}
               >
                 <FaClock className="mr-2" />
                 <span>Focus</span>
@@ -101,27 +122,36 @@ export default function Layout({ children }) {
               <div className="px-2 pt-2 pb-3 space-y-1 bg-theme-primary rounded-b-lg glass-card">
                 <Link
                   href="/"
-                  className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
+                  className={`block px-3 py-2 rounded-md transition-colors relative group ${
+                    isActive("/")
+                      ? "bg-theme-secondary text-theme-accent" // Keep accent text and secondary bg
+                      : "hover:bg-theme-secondary"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
                 </Link>
                 <Link
                   href="/portfolio"
-                  className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
+                  className={`block px-3 py-2 rounded-md transition-colors relative group ${
+                    isActive("/portfolio")
+                      ? "bg-theme-secondary text-theme-accent" // Keep accent text and secondary bg
+                      : "hover:bg-theme-secondary"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Portfolio
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
                 </Link>
                 <Link
                   href="/blog"
-                  className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
+                  className={`block px-3 py-2 rounded-md transition-colors relative group ${
+                    isActive("/blog") || currentPath.startsWith("/blog/")
+                      ? "bg-theme-secondary text-theme-accent" // Keep accent text and secondary bg
+                      : "hover:bg-theme-secondary"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Blog
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
                 </Link>
                 <a
                   href="https://type.haroonazizi.com"
@@ -129,24 +159,29 @@ export default function Layout({ children }) {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Typing Test
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
                 </a>
                 <Link
                   href="/contact"
-                  className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
+                  className={`block px-3 py-2 rounded-md transition-colors relative group ${
+                    isActive("/contact")
+                      ? "bg-theme-secondary text-theme-accent" // Keep accent text and secondary bg
+                      : "hover:bg-theme-secondary"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
                 </Link>
 
                 <Link
                   href="/focus"
-                  className="block px-3 py-2 rounded-md hover:bg-theme-secondary transition-colors relative group"
+                  className={`block px-3 py-2 rounded-md transition-colors relative group ${
+                    isActive("/focus")
+                      ? "bg-theme-secondary text-theme-accent" // Keep accent text and secondary bg
+                      : "hover:bg-theme-secondary"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Focus
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-theme-accent transition-all group-hover:w-full"></span>
                 </Link>
               </div>
             </div>

@@ -280,36 +280,55 @@ export default function Portfolio() {
                     </div>
 
                     <div className="flex flex-nowrap justify-between gap-2 pt-4 border-t border-theme-accent/10 absolute bottom-6 left-6 right-6">
-                      <button
-                        onClick={(e) => {
-                          if (project.noLiveDemo) {
+                      {project.liveLink && !project.noLiveDemo ? (
+                        <Link href={project.liveLink} passHref legacyBehavior>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer" // Add rel attribute
+                            className="px-3 py-2 bg-theme-accent text-white rounded hover:bg-theme-accent-light transition-colors text-sm flex items-center whitespace-nowrap"
+                          >
+                            <FaExternalLinkAlt className="mr-1" />
+                            Live Demo
+                          </a>
+                        </Link>
+                      ) : (
+                        <button
+                          onClick={(e) => {
                             const card = e.currentTarget.closest(".flip-card");
                             card.setAttribute("data-flip-type", "demo");
                             card.classList.add("flipped");
-                          } else {
-                            window.open(project.liveLink, "_blank");
-                          }
-                        }}
-                        className="px-3 py-2 bg-theme-accent text-white rounded hover:bg-theme-accent-light transition-colors text-sm flex items-center whitespace-nowrap"
-                      >
-                        <FaExternalLinkAlt className="mr-1" />
-                        Live Demo
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          if (project.isClosedSource) {
+                          }}
+                          className="px-3 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 transition-colors text-sm flex items-center whitespace-nowrap"
+                        >
+                          <FaExternalLinkAlt className="mr-1" />
+                          Live Demo
+                        </button>
+                      )}
+
+                      {project.githubLink && !project.isClosedSource ? (
+                        <Link href={project.githubLink} passHref legacyBehavior>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer" // Add rel attribute
+                            className="px-3 py-2 bg-theme-secondary text-white rounded hover:bg-gray-700 transition-colors text-sm flex items-center whitespace-nowrap"
+                          >
+                            <FaGithub className="mr-1" />
+                            GitHub
+                          </a>
+                        </Link>
+                      ) : (
+                        <button
+                          onClick={(e) => {
                             const card = e.currentTarget.closest(".flip-card");
                             card.setAttribute("data-flip-type", "github");
                             card.classList.add("flipped");
-                          } else {
-                            window.open(project.githubLink, "_blank");
-                          }
-                        }}
-                        className="px-3 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 transition-colors text-sm flex items-center whitespace-nowrap"
-                      >
-                        <FaGithub className="mr-1" />
-                        GitHub
-                      </button>
+                          }}
+                          className="px-3 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 transition-colors text-sm flex items-center whitespace-nowrap"
+                        >
+                          <FaGithub className="mr-1" />
+                          GitHub
+                        </button>
+                      )}
                     </div>
                   </div>
 
