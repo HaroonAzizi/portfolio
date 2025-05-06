@@ -13,7 +13,7 @@ export default function DomainAd() {
       localStorage.getItem("domainAdClosedTime") || "0"
     );
     const currentTime = new Date().getTime();
-    const showAgainAfter = 60 * 60 * 1000; // 1 hour in milliseconds
+    const showAgainAfter = 60 * 60 * 1000; // 1 hr
 
     // Only keep it closed if it was closed recently
     if (adClosed === "true" && currentTime - closedTime < showAgainAfter) {

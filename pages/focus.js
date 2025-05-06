@@ -13,7 +13,7 @@ export default function Pomodoro() {
   // Timer states
   const [preset, setPreset] = useState("short");
   const [mode, setMode] = useState("focus"); // focus or break
-  const [timeLeft, setTimeLeft] = useState(timerPresets.short.focus); // default to short preset
+  const [timeLeft, setTimeLeft] = useState(timerPresets.short.focus);
   const [isActive, setIsActive] = useState(false);
   const [cycles, setCycles] = useState(0);
 

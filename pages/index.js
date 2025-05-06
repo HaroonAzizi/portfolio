@@ -6,20 +6,16 @@ import { useEffect, useState } from "react";
 // import clarity from "@microsoft/clarity";
 
 export default function Home() {
-  // In your Home component, add a new state for social icons
   const [text, setText] = useState("");
   const [showRole, setShowRole] = useState(false);
   const [showSocials, setShowSocials] = useState(false);
-  const [showButtons, setShowButtons] = useState(false); // New state for buttons animation
+  const [showButtons, setShowButtons] = useState(false);
   const fullText = "Hey, I'm Haroon";
 
   useEffect(() => {
     let currentIndex = 0;
-
-    // Set buttons to show immediately
     setShowButtons(true);
-    // Show social links sooner
-    setTimeout(() => setShowSocials(true), 800); // Reduced from 1500ms to 800ms
+    setTimeout(() => setShowSocials(true), 800);
 
     const intervalId = setInterval(() => {
       if (currentIndex <= fullText.length) {
@@ -28,12 +24,11 @@ export default function Home() {
 
         if (currentIndex > fullText.length) {
           setTimeout(() => setShowRole(true), 500);
-          // Social links are already set to show sooner
         }
       } else {
         clearInterval(intervalId);
       }
-    }, 100); // Keep original typing speed
+    }, 100);
 
     return () => clearInterval(intervalId);
   }, []);

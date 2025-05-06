@@ -5,12 +5,10 @@ import emailjs from "@emailjs/browser";
 import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-// import clarity from "@microsoft/clarity";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
-    // clarity.init("r4blj97gqw"); // Replace "yourProjectId" with your actual Clarity project ID
   }, []);
 
   return (
