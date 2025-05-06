@@ -298,7 +298,7 @@ export default function Portfolio() {
                             card.setAttribute("data-flip-type", "demo");
                             card.classList.add("flipped");
                           }}
-                          className="px-3 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 transition-colors text-sm flex items-center whitespace-nowrap"
+                          className="px-3 py-2 bg-theme-accent text-white rounded hover:bg-theme-accent-light transition-colors text-sm flex items-center whitespace-nowrap"
                         >
                           <FaExternalLinkAlt className="mr-1" />
                           Live Demo
