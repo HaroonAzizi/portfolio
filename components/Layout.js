@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/router"; // Import useRouter
+import { useRouter } from "next/router";
 import { FaClock, FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin, FaBrain } from "react-icons/fa";
@@ -10,10 +10,9 @@ import DomainAd from "./DomainAd";
 
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const router = useRouter(); // Get router instance
-  const currentPath = router.pathname; // Get current path
+  const router = useRouter();
+  const currentPath = router.pathname;
 
-  // Helper function to determine active state
   const isActive = (path) => currentPath === path;
 
   return (
@@ -38,7 +37,7 @@ export default function Layout({ children }) {
                 className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
                   isActive("/")
                     ? "text-theme-accent"
-                    : "hover:text-theme-accent" // Use accent color for active
+                    : "hover:text-theme-accent"
                 }`}
               >
                 Home
@@ -47,7 +46,7 @@ export default function Layout({ children }) {
                 href="/portfolio"
                 className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
                   isActive("/portfolio")
-                    ? "text-theme-accent" // Use accent color for active
+                    ? "text-theme-accent"
                     : "hover:text-theme-accent"
                 }`}
               >
@@ -57,7 +56,7 @@ export default function Layout({ children }) {
                 href="/blog"
                 className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
                   isActive("/blog") || currentPath.startsWith("/blog/")
-                    ? "text-theme-accent" // Use accent color for active
+                    ? "text-theme-accent"
                     : "hover:text-theme-accent"
                 }`}
               >
@@ -73,7 +72,7 @@ export default function Layout({ children }) {
                 href="/contact"
                 className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
                   isActive("/contact")
-                    ? "text-theme-accent" // Use accent color for active
+                    ? "text-theme-accent"
                     : "hover:text-theme-accent"
                 }`}
               >
@@ -124,7 +123,7 @@ export default function Layout({ children }) {
                   href="/"
                   className={`block px-3 py-2 rounded-md transition-colors relative group ${
                     isActive("/")
-                      ? "bg-theme-secondary text-theme-accent" // Keep accent text and secondary bg
+                      ? "bg-theme-secondary text-theme-accent"
                       : "hover:bg-theme-secondary"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
@@ -135,7 +134,7 @@ export default function Layout({ children }) {
                   href="/portfolio"
                   className={`block px-3 py-2 rounded-md transition-colors relative group ${
                     isActive("/portfolio")
-                      ? "bg-theme-secondary text-theme-accent" // Keep accent text and secondary bg
+                      ? "bg-theme-secondary text-theme-accent"
                       : "hover:bg-theme-secondary"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
@@ -146,7 +145,7 @@ export default function Layout({ children }) {
                   href="/blog"
                   className={`block px-3 py-2 rounded-md transition-colors relative group ${
                     isActive("/blog") || currentPath.startsWith("/blog/")
-                      ? "bg-theme-secondary text-theme-accent" // Keep accent text and secondary bg
+                      ? "bg-theme-secondary text-theme-accent"
                       : "hover:bg-theme-secondary"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
@@ -164,7 +163,7 @@ export default function Layout({ children }) {
                   href="/contact"
                   className={`block px-3 py-2 rounded-md transition-colors relative group ${
                     isActive("/contact")
-                      ? "bg-theme-secondary text-theme-accent" // Keep accent text and secondary bg
+                      ? "bg-theme-secondary text-theme-accent"
                       : "hover:bg-theme-secondary"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
@@ -176,7 +175,7 @@ export default function Layout({ children }) {
                   href="/focus"
                   className={`block px-3 py-2 rounded-md transition-colors relative group ${
                     isActive("/focus")
-                      ? "bg-theme-secondary text-theme-accent" // Keep accent text and secondary bg
+                      ? "bg-theme-secondary text-theme-accent"
                       : "hover:bg-theme-secondary"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
