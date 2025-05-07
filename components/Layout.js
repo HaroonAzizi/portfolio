@@ -69,9 +69,9 @@ export default function Layout({ children }) {
                 Typing Test
               </a>
               <Link
-                href="/tools/currency-converter"
+                href="/currency-converter"
                 className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
-                  isActive("/tools/currency-converter")
+                  isActive("/currency-converter")
                     ? "text-theme-accent"
                     : "hover:text-theme-accent"
                 }`}
@@ -170,9 +170,9 @@ export default function Layout({ children }) {
                   Typing Test
                 </a>
                 <Link
-                  href="/tools/currency-converter"
+                  href="/currency-converter"
                   className={`block px-3 py-2 rounded-md transition-colors relative group ${
-                    isActive("/tools/currency-converter")
+                    isActive("/currency-converter")
                       ? "bg-theme-secondary text-theme-accent"
                       : "hover:bg-theme-secondary"
                   }`}

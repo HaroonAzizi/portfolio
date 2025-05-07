@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import { FaExchangeAlt, FaChartLine, FaCalendarAlt } from "react-icons/fa";
+import {
+  FaExchangeAlt,
+  FaChartLine,
+  FaCalendarAlt,
+  FaMoneyBillWave,
+} from "react-icons/fa";
 
 const initialCurrencies = {
   usd: "US Dollar",
@@ -345,89 +350,115 @@ export default function CurrencyConverterComponent() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-theme-secondary p-6 rounded-lg shadow-lg">
+    <div className="w-full max-w-4xl mx-auto bg-theme-secondary/30 p-6 rounded-lg shadow-lg backdrop-blur-sm">
       {/* Converter Section */}
       <div className="space-y-8">
-        <div className="glass-card p-6 md:p-8">
-          <h2 className="text-2xl font-bold text-theme-text mb-6 text-center">
+        <div className="glass-card p-6 md:p-8 border border-theme-accent/10">
+          <h2 className="text-2xl font-bold text-theme-text mb-6 text-center flex items-center justify-center">
+            <FaMoneyBillWave className="mr-3 text-theme-accent" />
             Currency Converter
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
-            <div>
-              <label
-                htmlFor="amount"
-                className="block text-sm font-mono text-theme-text-muted mb-1"
-              >
-                Amount
-              </label>
-              <input
-                type="number"
-                id="amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder="1.00"
-                className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
-              />
-            </div>
-            <div> {/* Placeholder for alignment or future elements */} </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+            <div className="space-y-4">
+              <div>
+                <label
+                  htmlFor="amount"
+                  className="block text-sm font-mono text-theme-text-muted mb-2"
+                >
+                  Amount
+                </label>
+                <div className="relative">
+                  <input
+                    type="number"
+                    id="amount"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    placeholder="1.00"
+                    className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
+                  />
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 text-theme-text-muted">
+                    {fromCurrency.toUpperCase()}
+                  </div>
+                </div>
+              </div>
 
-            <div>
-              <label
-                htmlFor="fromCurrency"
-                className="block text-sm font-mono text-theme-text-muted mb-1"
-              >
-                From
-              </label>
-              <select
-                id="fromCurrency"
-                value={fromCurrency}
-                onChange={(e) => setFromCurrency(e.target.value)}
-                className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
-              >
-                {Object.entries(availableCurrencies).map(([code, name]) => (
-                  <option key={code} value={code}>
-                    {getFlagEmoji(code)} {code.toUpperCase()} - {name}
-                  </option>
-                ))}
-              </select>
+              <div>
+                <label
+                  htmlFor="fromCurrency"
+                  className="block text-sm font-mono text-theme-text-muted mb-2"
+                >
+                  From Currency
+                </label>
+                <select
+                  id="fromCurrency"
+                  value={fromCurrency}
+                  onChange={(e) => setFromCurrency(e.target.value)}
+                  className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
+                >
+                  {Object.entries(availableCurrencies).map(([code, name]) => (
+                    <option key={code} value={code}>
+                      {getFlagEmoji(code)} {code.toUpperCase()} - {name}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
 
-            <div className="flex justify-center items-center pt-5">
+            <div className="flex flex-col items-center justify-center space-y-4">
               <button
                 onClick={handleSwapCurrencies}
-                className="p-2 bg-theme-accent/20 text-theme-accent rounded-full hover:bg-theme-accent/30 transition-colors"
+                className="p-3 bg-theme-accent/20 text-theme-accent rounded-full hover:bg-theme-accent/30 transition-all duration-200 transform hover:scale-110"
                 title="Swap currencies"
               >
-                <FaExchangeAlt size={20} />
+                <FaExchangeAlt size={24} />
               </button>
             </div>
 
-            <div>
-              <label
-                htmlFor="toCurrency"
-                className="block text-sm font-mono text-theme-text-muted mb-1"
-              >
-                To
-              </label>
-              <select
-                id="toCurrency"
-                value={toCurrency}
-                onChange={(e) => setToCurrency(e.target.value)}
-                className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
-              >
-                {Object.entries(availableCurrencies).map(([code, name]) => (
-                  <option key={code} value={code}>
-                    {getFlagEmoji(code)} {code.toUpperCase()} - {name}
-                  </option>
-                ))}
-              </select>
+            <div className="space-y-4">
+              <div>
+                <label
+                  htmlFor="toCurrency"
+                  className="block text-sm font-mono text-theme-text-muted mb-2"
+                >
+                  To Currency
+                </label>
+                <select
+                  id="toCurrency"
+                  value={toCurrency}
+                  onChange={(e) => setToCurrency(e.target.value)}
+                  className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
+                >
+                  {Object.entries(availableCurrencies).map(([code, name]) => (
+                    <option key={code} value={code}>
+                      {getFlagEmoji(code)} {code.toUpperCase()} - {name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-mono text-theme-text-muted mb-2">
+                  Result
+                </label>
+                <div className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg text-theme-text">
+                  {result ? (
+                    <span className="text-theme-accent font-mono">
+                      {result.split("=")[1].trim()}
+                    </span>
+                  ) : (
+                    <span className="text-theme-text-muted">
+                      Convert to see result
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
           <button
             onClick={handleConvert}
             disabled={loading}
-            className="btn-modern w-full mt-6 flex items-center justify-center"
+            className="btn-modern w-full mt-8 flex items-center justify-center py-3 text-lg font-medium"
           >
             {loading ? (
               <>
@@ -459,26 +490,22 @@ export default function CurrencyConverterComponent() {
           </button>
 
           {error && (
-            <p className="mt-4 text-red-400 text-sm font-mono">{error}</p>
-          )}
-          {result && (
-            <p className="mt-4 text-xl text-theme-accent font-mono text-center py-3 bg-theme-accent/10 rounded-md">
-              {result}
+            <p className="mt-4 text-red-400 text-sm font-mono bg-red-400/10 p-3 rounded-lg">
+              {error}
             </p>
           )}
         </div>
 
         {/* History Section */}
-        <div className="glass-card p-6 md:p-8">
+        <div className="glass-card p-6 md:p-8 border border-theme-accent/10">
           <h2 className="text-2xl font-bold text-theme-text mb-6 flex items-center">
             <FaChartLine className="mr-3 text-theme-accent" /> Historical Rates
-            (Last 30-90 Days)
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
               <label
                 htmlFor="startDate"
-                className="block text-sm font-mono text-theme-text-muted mb-1"
+                className="block text-sm font-mono text-theme-text-muted mb-2"
               >
                 Start Date
               </label>
@@ -487,13 +514,13 @@ export default function CurrencyConverterComponent() {
                 id="startDate"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
+                className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
               />
             </div>
             <div>
               <label
                 htmlFor="endDate"
-                className="block text-sm font-mono text-theme-text-muted mb-1"
+                className="block text-sm font-mono text-theme-text-muted mb-2"
               >
                 End Date
               </label>
@@ -502,14 +529,14 @@ export default function CurrencyConverterComponent() {
                 id="endDate"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
+                className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
               />
             </div>
           </div>
           <button
             onClick={handleShowHistory}
             disabled={historyLoading}
-            className="btn-modern w-full mb-4 flex items-center justify-center"
+            className="btn-modern w-full mb-6 flex items-center justify-center py-3 text-lg font-medium"
           >
             {historyLoading ? (
               <>
@@ -537,16 +564,16 @@ export default function CurrencyConverterComponent() {
               </>
             ) : (
               <>
-                <FaCalendarAlt className="mr-2" /> Show History
+                <FaCalendarAlt className="mr-2" /> Show Historical Rates
               </>
             )}
           </button>
           {historyError && (
-            <p className="text-red-400 text-sm font-mono mb-4">
+            <p className="text-red-400 text-sm font-mono bg-red-400/10 p-3 rounded-lg mb-6">
               {historyError}
             </p>
           )}
-          <div className="h-96 bg-theme-secondary/30 p-2 rounded-lg">
+          <div className="h-[400px] bg-theme-secondary/30 p-4 rounded-lg border border-theme-accent/10">
             <canvas ref={chartRef}></canvas>
           </div>
         </div>
