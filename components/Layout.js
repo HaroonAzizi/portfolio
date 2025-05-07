@@ -27,7 +27,7 @@ export default function Layout({ children }) {
               className="text-2xl font-bold bg-gradient-to-r from-theme-accent to-theme-accent-light bg-clip-text text-transparent flex items-center"
             >
               <FaCode className="mr-2 text-theme-accent" />
-              <span className="font-mono">HaroonAzizi</span>
+              <span className="font-mono">haroonAzizi</span>
             </Link>
 
             {/* Desktop Navigation */}

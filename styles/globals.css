@@ -1,8 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap");
 
 @layer base {
   :root {
@@ -58,14 +58,16 @@
   body {
     @apply bg-background text-foreground font-['Inter',sans-serif];
   }
-  code, pre {
+  code,
+  pre {
     @apply font-['Fira_Code',monospace];
   }
 }
 
 /* Modern terminal cursor blink */
 @keyframes blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -75,7 +77,8 @@
 
 /* Purple glow effect for accent elements */
 @keyframes glow {
-  0%, 100% {
+  0%,
+  100% {
     text-shadow: 0 0 10px rgba(124, 58, 237, 0.5),
       0 0 20px rgba(124, 58, 237, 0.3), 0 0 30px rgba(124, 58, 237, 0.1);
   }
@@ -97,7 +100,8 @@
 }
 
 @keyframes float-slow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   50% {
@@ -106,7 +110,8 @@
 }
 
 @keyframes float-medium {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   50% {
@@ -115,7 +120,8 @@
 }
 
 @keyframes float-fast {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   50% {
@@ -161,7 +167,7 @@
 }
 
 .animate-matrix {
-  background: linear-gradient(90deg, #7C3AED, #A78BFA, #7C3AED);
+  background: linear-gradient(90deg, #7c3aed, #a78bfa, #7c3aed);
   background-size: 200% 200%;
   animation: matrix 3s ease infinite;
   -webkit-background-clip: text;
@@ -179,19 +185,20 @@
 
 /* Code block styling */
 .code-block {
-  background: #0D1117;
+  background: #0d1117;
   border-radius: 8px;
-  border-left: 3px solid #7C3AED;
-  font-family: 'Fira Code', monospace;
+  border-left: 3px solid #7c3aed;
+  font-family: "Fira Code", monospace;
 }
 
 /* Terminal styling */
 .terminal {
-  background: #0F172A;
+  background: #0f172a;
   border-radius: 8px;
-  border: 1px solid #1E293B;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  font-family: 'Fira Code', monospace;
+  border: 1px solid #1e293b;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-family: "Fira Code", monospace;
 }
 
 /* Modern button styling */
@@ -207,7 +214,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 15px 0 rgba(124, 58, 237, 0.5);
   }
   50% {
@@ -233,7 +241,8 @@
 }
 
 @keyframes bounce-subtle {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -242,7 +251,8 @@
 }
 
 @keyframes pulse-text {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -251,7 +261,8 @@
 }
 
 @keyframes pulse-text-delay {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0;
   }
   50% {
@@ -352,7 +363,8 @@
   transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -372,4 +384,16 @@
 
 .flip-card[data-flip-type="demo"] .demo-back {
   display: flex;
+}
+
+/* Remove spinner from number input fields (Chrome, Safari, Edge, Opera) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove spinner from number input fields (Firefox) */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
