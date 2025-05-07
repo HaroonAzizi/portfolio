@@ -158,12 +158,6 @@ export default function CurrencyConverterComponent() {
               updatedCurrencies[code] = initialCurrencies[code]; // fallback name
             }
           }
-          // Add any other fetched currencies not in initialCurrencies
-          // for (const code in fetchedCurrencies) {
-          //   if (!updatedCurrencies[code]) {
-          //      updatedCurrencies[code] = fetchedCurrencies[code];
-          //   }
-          // }
           setAvailableCurrencies(updatedCurrencies);
         }
       } catch (err) {
