@@ -141,6 +141,16 @@ export default function CurrencyConverterComponent() {
   const chartRef = useRef(null);
   const chartInstanceRef = useRef(null);
 
+  // Add state for historical conversion
+  const [useHistoricalConversion, setUseHistoricalConversion] = useState(false);
+  const [historicalDate, setHistoricalDate] = useState("");
+  const [historicalAmount, setHistoricalAmount] = useState("1");
+  const [historicalFrom, setHistoricalFrom] = useState("usd");
+  const [historicalTo, setHistoricalTo] = useState("afn");
+  const [historicalResult, setHistoricalResult] = useState("");
+  const [historicalLoading, setHistoricalLoading] = useState(false);
+  const [historicalError, setHistoricalError] = useState("");
+
   useEffect(() => {
     async function loadCurrencies() {
       try {
@@ -359,6 +369,50 @@ export default function CurrencyConverterComponent() {
       });
     }
     setHistoryLoading(false);
+  };
+
+  // Handler for historical conversion
+  const handleHistoricalConvert = async () => {
+    if (!historicalAmount || parseFloat(historicalAmount) <= 0) {
+      setHistoricalError("Please enter a valid positive amount.");
+      setHistoricalResult("");
+      return;
+    }
+    if (!historicalDate) {
+      setHistoricalError("Please select a date.");
+      setHistoricalResult("");
+      return;
+    }
+    if (historicalFrom === historicalTo) {
+      setHistoricalResult(
+        `${currencySymbols[historicalFrom]}${historicalAmount} = ${currencySymbols[historicalTo]}${historicalAmount}`
+      );
+      setHistoricalError("");
+      return;
+    }
+    setHistoricalLoading(true);
+    setHistoricalError("");
+    setHistoricalResult("");
+    try {
+      const rateObj = await fetchRateForDate(
+        historicalDate,
+        historicalFrom,
+        historicalTo
+      );
+      if (rateObj && rateObj.rate) {
+        const convertedAmount = parseFloat(historicalAmount) * rateObj.rate;
+        setHistoricalResult(
+          `${currencySymbols[historicalFrom]}${historicalAmount} = ${
+            currencySymbols[historicalTo]
+          }${convertedAmount.toFixed(4)}`
+        );
+      } else {
+        setHistoricalError(`Could not find rate for that date.`);
+      }
+    } catch (err) {
+      setHistoricalError(`Error: ${err.message}. Please try again.`);
+    }
+    setHistoricalLoading(false);
   };
 
   return (
@@ -586,9 +640,154 @@ export default function CurrencyConverterComponent() {
               {historyError}
             </p>
           )}
-          <div className="h-[400px] bg-theme-secondary/30 p-4 rounded-lg border border-theme-accent/10">
+          <div className="h-[400px] bg-theme-secondary/30 p-4 rounded-lg border border-theme-accent/10 mb-6">
             <canvas ref={chartRef}></canvas>
           </div>
+          {/* Historical Conversion Option */}
+          <div className="mb-4 flex items-center space-x-2">
+            <input
+              type="checkbox"
+              id="useHistoricalConversion"
+              checked={useHistoricalConversion}
+              onChange={() => setUseHistoricalConversion((v) => !v)}
+              className="form-checkbox h-5 w-5 text-theme-accent"
+            />
+            <label
+              htmlFor="useHistoricalConversion"
+              className="text-theme-text font-mono text-sm"
+            >
+              Convert on a specific date
+            </label>
+          </div>
+          {useHistoricalConversion && (
+            <div className="space-y-4 mb-4 p-4 rounded-lg bg-theme-secondary/40 border border-theme-accent/10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="historicalDate"
+                    className="block text-sm font-mono text-theme-text-muted mb-2"
+                  >
+                    Date
+                  </label>
+                  <input
+                    type="date"
+                    id="historicalDate"
+                    value={historicalDate}
+                    min={startDate}
+                    max={endDate}
+                    onChange={(e) => setHistoricalDate(e.target.value)}
+                    className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="historicalAmount"
+                    className="block text-sm font-mono text-theme-text-muted mb-2"
+                  >
+                    Amount
+                  </label>
+                  <div className="relative flex items-center">
+                    <span className="absolute left-3 text-theme-text-muted pointer-events-none">
+                      {currencySymbols[historicalFrom]}
+                    </span>
+                    <input
+                      type="number"
+                      id="historicalAmount"
+                      value={historicalAmount}
+                      onChange={(e) => setHistoricalAmount(e.target.value)}
+                      placeholder="1.00"
+                      className="w-full pl-8 pr-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="historicalFrom"
+                    className="block text-sm font-mono text-theme-text-muted mb-2"
+                  >
+                    From Currency
+                  </label>
+                  <select
+                    id="historicalFrom"
+                    value={historicalFrom}
+                    onChange={(e) => setHistoricalFrom(e.target.value)}
+                    className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
+                  >
+                    {Object.entries(availableCurrencies).map(([code, name]) => (
+                      <option key={code} value={code}>
+                        {getFlagEmoji(code)} {currencySymbols[code]} - {name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label
+                    htmlFor="historicalTo"
+                    className="block text-sm font-mono text-theme-text-muted mb-2"
+                  >
+                    To Currency
+                  </label>
+                  <select
+                    id="historicalTo"
+                    value={historicalTo}
+                    onChange={(e) => setHistoricalTo(e.target.value)}
+                    className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
+                  >
+                    {Object.entries(availableCurrencies).map(([code, name]) => (
+                      <option key={code} value={code}>
+                        {getFlagEmoji(code)} {currencySymbols[code]} - {name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <button
+                onClick={handleHistoricalConvert}
+                disabled={historicalLoading}
+                className="btn-modern w-full mt-4 flex items-center justify-center py-3 text-lg font-medium"
+              >
+                {historicalLoading ? (
+                  <>
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Converting...
+                  </>
+                ) : (
+                  "Convert on this date"
+                )}
+              </button>
+              {historicalError && (
+                <p className="mt-4 text-red-400 text-sm font-mono bg-red-400/10 p-3 rounded-lg">
+                  {historicalError}
+                </p>
+              )}
+              {historicalResult && !historicalError && (
+                <div className="mt-4 text-theme-accent font-mono text-lg bg-theme-secondary/30 p-3 rounded-lg">
+                  {historicalResult}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

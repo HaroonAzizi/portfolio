@@ -1,7 +1,6 @@
 import Head from "next/head";
 import CurrencyConverterComponent from "../components/CurrencyConverter";
 import { FaMoneyBillWave } from "react-icons/fa";
-
 export default function CurrencyConverterPage() {
   return (
     <>
