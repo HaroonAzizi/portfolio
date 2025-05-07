@@ -130,7 +130,6 @@ export default function CurrencyConverterComponent() {
   const [toCurrency, setToCurrency] = useState("afn");
   const [result, setResult] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const [availableCurrencies, setAvailableCurrencies] =
     useState(initialCurrencies);
 
@@ -184,47 +183,45 @@ export default function CurrencyConverterComponent() {
     setStartDate(thirtyDaysAgo.toISOString().split("T")[0]);
   }, []);
 
-  const handleConvert = async () => {
-    if (!amount || parseFloat(amount) <= 0) {
-      setError("Please enter a valid positive amount.");
-      setResult("");
-      return;
-    }
-    if (fromCurrency === toCurrency) {
-      setResult(
-        `${currencySymbols[fromCurrency]}${amount} = ${currencySymbols[toCurrency]}${amount}`
-      );
-      setError("");
-      return;
-    }
-    setLoading(true);
-    setError("");
-    setResult("");
-
-    const primaryApiUrl = `${primaryRateBaseUrl}${fromCurrency}.min.json`;
-    const fallbackApiUrl = `${fallbackRateBaseUrl}${fromCurrency}.min.json`;
-
-    try {
-      const data = await fetchWithFallback(primaryApiUrl, fallbackApiUrl);
-      const rate = data[fromCurrency]?.[toCurrency];
-      if (rate) {
-        const convertedAmount = parseFloat(amount) * rate;
-        setResult(
-          `${currencySymbols[fromCurrency]}${amount} = ${
-            currencySymbols[toCurrency]
-          }${convertedAmount.toFixed(4)}`
-        );
-      } else {
-        setError(
-          `Could not find rate for ${currencySymbols[fromCurrency]} to ${currencySymbols[toCurrency]}.`
-        );
+  useEffect(() => {
+    let intervalId;
+    const autoConvert = async () => {
+      if (!amount || parseFloat(amount) <= 0) {
+        setError("Please enter a valid positive amount.");
+        setResult("");
+        return;
       }
-    } catch (err) {
-      setError(`Error: ${err.message}. Please try again.`);
-      console.error(err);
-    }
-    setLoading(false);
-  };
+      if (fromCurrency === toCurrency) {
+        const newResult = `${currencySymbols[fromCurrency]}${amount} = ${currencySymbols[toCurrency]}${amount}`;
+        setError("");
+        setResult((prev) => (prev === newResult ? prev : newResult));
+        return;
+      }
+      setError("");
+      const primaryApiUrl = `${primaryRateBaseUrl}${fromCurrency}.min.json`;
+      const fallbackApiUrl = `${fallbackRateBaseUrl}${fromCurrency}.min.json`;
+      try {
+        const data = await fetchWithFallback(primaryApiUrl, fallbackApiUrl);
+        const rate = data[fromCurrency]?.[toCurrency];
+        if (rate) {
+          const convertedAmount = parseFloat(amount) * rate;
+          const newResult = `${currencySymbols[fromCurrency]}${amount} = ${
+            currencySymbols[toCurrency]
+          }${convertedAmount.toFixed(4)}`;
+          setResult((prev) => (prev === newResult ? prev : newResult));
+        } else {
+          setError(
+            `Could not find rate for ${currencySymbols[fromCurrency]} to ${currencySymbols[toCurrency]}.`
+          );
+        }
+      } catch (err) {
+        setError(`Error: ${err.message}. Please try again.`);
+      }
+    };
+    autoConvert(); // Run immediately on mount and on changes
+    intervalId = setInterval(autoConvert, 1000); // Run every second
+    return () => clearInterval(intervalId);
+  }, [amount, fromCurrency, toCurrency]);
 
   const handleSwapCurrencies = () => {
     setFromCurrency(toCurrency);
@@ -511,55 +508,11 @@ export default function CurrencyConverterComponent() {
                     <span className="text-theme-accent font-mono">
                       {result.split("=")[1].trim()}
                     </span>
-                  ) : (
-                    <span className="text-theme-text-muted">
-                      Convert to see result
-                    </span>
-                  )}
+                  ) : null}
                 </div>
               </div>
             </div>
           </div>
-
-          <button
-            onClick={handleConvert}
-            disabled={loading}
-            className="btn-modern w-full mt-8 flex items-center justify-center py-3 text-lg font-medium"
-          >
-            {loading ? (
-              <>
-                <svg
-                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Converting...
-              </>
-            ) : (
-              "Convert"
-            )}
-          </button>
-
-          {error && (
-            <p className="mt-4 text-red-400 text-sm font-mono bg-red-400/10 p-3 rounded-lg">
-              {error}
-            </p>
-          )}
         </div>
 
         {/* History Section */}
