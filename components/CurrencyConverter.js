@@ -373,7 +373,7 @@ export default function CurrencyConverterComponent() {
       <div className="space-y-8">
         <div className="glass-card p-6 md:p-8 border border-theme-accent/10">
           <h2 className="text-2xl font-bold text-theme-text mb-6 text-center flex items-center justify-center">
-            <FaMoneyBillWave className="mr-3 text-theme-accent" />
+            {/* <FaMoneyBillWave className="mr-3 text-theme-accent" /> */}
             Currency Converter
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
