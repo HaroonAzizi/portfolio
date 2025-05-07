@@ -101,7 +101,7 @@ async function fetchWithFallback(primaryUrl, fallbackUrl, date = "latest") {
   }
 }
 
-export default function CurrencyConverter() {
+export default function CurrencyConverterComponent() {
   const [amount, setAmount] = useState("1");
   const [fromCurrency, setFromCurrency] = useState("usd");
   const [toCurrency, setToCurrency] = useState("afn");
@@ -345,206 +345,210 @@ export default function CurrencyConverter() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="w-full max-w-md mx-auto bg-theme-secondary p-6 rounded-lg shadow-lg">
       {/* Converter Section */}
-      <div className="glass-card p-6 md:p-8">
-        <h2 className="text-2xl font-bold text-theme-text mb-6">
-          Currency Converter
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
-          <div>
-            <label
-              htmlFor="amount"
-              className="block text-sm font-mono text-theme-text-muted mb-1"
-            >
-              Amount
-            </label>
-            <input
-              type="number"
-              id="amount"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              placeholder="1.00"
-              className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
-            />
-          </div>
-          <div> {/* Placeholder for alignment or future elements */} </div>
+      <div className="space-y-8">
+        <div className="glass-card p-6 md:p-8">
+          <h2 className="text-2xl font-bold text-theme-text mb-6 text-center">
+            Currency Converter
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+            <div>
+              <label
+                htmlFor="amount"
+                className="block text-sm font-mono text-theme-text-muted mb-1"
+              >
+                Amount
+              </label>
+              <input
+                type="number"
+                id="amount"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                placeholder="1.00"
+                className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
+              />
+            </div>
+            <div> {/* Placeholder for alignment or future elements */} </div>
 
-          <div>
-            <label
-              htmlFor="fromCurrency"
-              className="block text-sm font-mono text-theme-text-muted mb-1"
-            >
-              From
-            </label>
-            <select
-              id="fromCurrency"
-              value={fromCurrency}
-              onChange={(e) => setFromCurrency(e.target.value)}
-              className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
-            >
-              {Object.entries(availableCurrencies).map(([code, name]) => (
-                <option key={code} value={code}>
-                  {getFlagEmoji(code)} {code.toUpperCase()} - {name}
-                </option>
-              ))}
-            </select>
+            <div>
+              <label
+                htmlFor="fromCurrency"
+                className="block text-sm font-mono text-theme-text-muted mb-1"
+              >
+                From
+              </label>
+              <select
+                id="fromCurrency"
+                value={fromCurrency}
+                onChange={(e) => setFromCurrency(e.target.value)}
+                className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
+              >
+                {Object.entries(availableCurrencies).map(([code, name]) => (
+                  <option key={code} value={code}>
+                    {getFlagEmoji(code)} {code.toUpperCase()} - {name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex justify-center items-center pt-5">
+              <button
+                onClick={handleSwapCurrencies}
+                className="p-2 bg-theme-accent/20 text-theme-accent rounded-full hover:bg-theme-accent/30 transition-colors"
+                title="Swap currencies"
+              >
+                <FaExchangeAlt size={20} />
+              </button>
+            </div>
+
+            <div>
+              <label
+                htmlFor="toCurrency"
+                className="block text-sm font-mono text-theme-text-muted mb-1"
+              >
+                To
+              </label>
+              <select
+                id="toCurrency"
+                value={toCurrency}
+                onChange={(e) => setToCurrency(e.target.value)}
+                className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
+              >
+                {Object.entries(availableCurrencies).map(([code, name]) => (
+                  <option key={code} value={code}>
+                    {getFlagEmoji(code)} {code.toUpperCase()} - {name}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
-          <div className="flex justify-center items-center pt-5">
-            <button
-              onClick={handleSwapCurrencies}
-              className="p-2 bg-theme-accent/20 text-theme-accent rounded-full hover:bg-theme-accent/30 transition-colors"
-              title="Swap currencies"
-            >
-              <FaExchangeAlt size={20} />
-            </button>
-          </div>
+          <button
+            onClick={handleConvert}
+            disabled={loading}
+            className="btn-modern w-full mt-6 flex items-center justify-center"
+          >
+            {loading ? (
+              <>
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Converting...
+              </>
+            ) : (
+              "Convert"
+            )}
+          </button>
 
-          <div>
-            <label
-              htmlFor="toCurrency"
-              className="block text-sm font-mono text-theme-text-muted mb-1"
-            >
-              To
-            </label>
-            <select
-              id="toCurrency"
-              value={toCurrency}
-              onChange={(e) => setToCurrency(e.target.value)}
-              className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
-            >
-              {Object.entries(availableCurrencies).map(([code, name]) => (
-                <option key={code} value={code}>
-                  {getFlagEmoji(code)} {code.toUpperCase()} - {name}
-                </option>
-              ))}
-            </select>
-          </div>
+          {error && (
+            <p className="mt-4 text-red-400 text-sm font-mono">{error}</p>
+          )}
+          {result && (
+            <p className="mt-4 text-xl text-theme-accent font-mono text-center py-3 bg-theme-accent/10 rounded-md">
+              {result}
+            </p>
+          )}
         </div>
 
-        <button
-          onClick={handleConvert}
-          disabled={loading}
-          className="btn-modern w-full mt-6 flex items-center justify-center"
-        >
-          {loading ? (
-            <>
-              <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
+        {/* History Section */}
+        <div className="glass-card p-6 md:p-8">
+          <h2 className="text-2xl font-bold text-theme-text mb-6 flex items-center">
+            <FaChartLine className="mr-3 text-theme-accent" /> Historical Rates
+            (Last 30-90 Days)
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label
+                htmlFor="startDate"
+                className="block text-sm font-mono text-theme-text-muted mb-1"
               >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-              Converting...
-            </>
-          ) : (
-            "Convert"
-          )}
-        </button>
-
-        {error && (
-          <p className="mt-4 text-red-400 text-sm font-mono">{error}</p>
-        )}
-        {result && (
-          <p className="mt-4 text-xl text-theme-accent font-mono text-center py-3 bg-theme-accent/10 rounded-md">
-            {result}
-          </p>
-        )}
-      </div>
-
-      {/* History Section */}
-      <div className="glass-card p-6 md:p-8">
-        <h2 className="text-2xl font-bold text-theme-text mb-6 flex items-center">
-          <FaChartLine className="mr-3 text-theme-accent" /> Historical Rates
-          (Last 30-90 Days)
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div>
-            <label
-              htmlFor="startDate"
-              className="block text-sm font-mono text-theme-text-muted mb-1"
-            >
-              Start Date
-            </label>
-            <input
-              type="date"
-              id="startDate"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="endDate"
-              className="block text-sm font-mono text-theme-text-muted mb-1"
-            >
-              End Date
-            </label>
-            <input
-              type="date"
-              id="endDate"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
-            />
-          </div>
-        </div>
-        <button
-          onClick={handleShowHistory}
-          disabled={historyLoading}
-          className="btn-modern w-full mb-4 flex items-center justify-center"
-        >
-          {historyLoading ? (
-            <>
-              <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
+                Start Date
+              </label>
+              <input
+                type="date"
+                id="startDate"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="endDate"
+                className="block text-sm font-mono text-theme-text-muted mb-1"
               >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-              Loading History...
-            </>
-          ) : (
-            <>
-              <FaCalendarAlt className="mr-2" /> Show History
-            </>
+                End Date
+              </label>
+              <input
+                type="date"
+                id="endDate"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="w-full px-4 py-2 bg-theme-secondary border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text"
+              />
+            </div>
+          </div>
+          <button
+            onClick={handleShowHistory}
+            disabled={historyLoading}
+            className="btn-modern w-full mb-4 flex items-center justify-center"
+          >
+            {historyLoading ? (
+              <>
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Loading History...
+              </>
+            ) : (
+              <>
+                <FaCalendarAlt className="mr-2" /> Show History
+              </>
+            )}
+          </button>
+          {historyError && (
+            <p className="text-red-400 text-sm font-mono mb-4">
+              {historyError}
+            </p>
           )}
-        </button>
-        {historyError && (
-          <p className="text-red-400 text-sm font-mono mb-4">{historyError}</p>
-        )}
-        <div className="h-96 bg-theme-secondary/30 p-2 rounded-lg">
-          <canvas ref={chartRef}></canvas>
+          <div className="h-96 bg-theme-secondary/30 p-2 rounded-lg">
+            <canvas ref={chartRef}></canvas>
+          </div>
         </div>
       </div>
     </div>
