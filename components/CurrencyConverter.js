@@ -9,7 +9,7 @@ import {
 
 const initialCurrencies = {
   usd: "US Dollar",
-  afn: "Afghan Afghani",
+  afn: "Afghani",
   eur: "Euro",
   gbp: "British Pound",
   pkr: "Pakistani Rupee",
@@ -22,6 +22,24 @@ const initialCurrencies = {
   aed: "UAE Dirham",
   sar: "Saudi Riyal",
   try: "Turkish Lira",
+};
+
+// Currency symbols mapping
+const currencySymbols = {
+  usd: "$",
+  afn: "؋",
+  eur: "€",
+  gbp: "£",
+  pkr: "₨",
+  inr: "₹",
+  irr: "﷼",
+  cad: "C$",
+  aud: "A$",
+  jpy: "¥",
+  cny: "¥",
+  aed: "د.إ",
+  sar: "﷼",
+  try: "₺",
 };
 
 // Mapping currency codes to country codes for flags
@@ -170,7 +188,7 @@ export default function CurrencyConverterComponent() {
     }
     if (fromCurrency === toCurrency) {
       setResult(
-        `${amount} ${fromCurrency.toUpperCase()} = ${amount} ${toCurrency.toUpperCase()}`
+        `${currencySymbols[fromCurrency]}${amount} = ${currencySymbols[toCurrency]}${amount}`
       );
       setError("");
       return;
@@ -188,13 +206,13 @@ export default function CurrencyConverterComponent() {
       if (rate) {
         const convertedAmount = parseFloat(amount) * rate;
         setResult(
-          `${amount} ${fromCurrency.toUpperCase()} = ${convertedAmount.toFixed(
-            4
-          )} ${toCurrency.toUpperCase()}`
+          `${currencySymbols[fromCurrency]}${amount} = ${
+            currencySymbols[toCurrency]
+          }${convertedAmount.toFixed(4)}`
         );
       } else {
         setError(
-          `Could not find rate for ${fromCurrency.toUpperCase()} to ${toCurrency.toUpperCase()}.`
+          `Could not find rate for ${currencySymbols[fromCurrency]} to ${currencySymbols[toCurrency]}.`
         );
       }
     } catch (err) {
@@ -367,18 +385,18 @@ export default function CurrencyConverterComponent() {
                 >
                   Amount
                 </label>
-                <div className="relative">
+                <div className="relative flex items-center">
+                  <span className="absolute left-3 text-theme-text-muted pointer-events-none">
+                    {currencySymbols[fromCurrency]}
+                  </span>
                   <input
                     type="number"
                     id="amount"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     placeholder="1.00"
-                    className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
+                    className="w-full pl-8 pr-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
                   />
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 text-theme-text-muted">
-                    {fromCurrency.toUpperCase()}
-                  </div>
                 </div>
               </div>
 
@@ -397,7 +415,7 @@ export default function CurrencyConverterComponent() {
                 >
                   {Object.entries(availableCurrencies).map(([code, name]) => (
                     <option key={code} value={code}>
-                      {getFlagEmoji(code)} {code.toUpperCase()} - {name}
+                      {getFlagEmoji(code)} {currencySymbols[code]} - {name}
                     </option>
                   ))}
                 </select>
@@ -430,7 +448,7 @@ export default function CurrencyConverterComponent() {
                 >
                   {Object.entries(availableCurrencies).map(([code, name]) => (
                     <option key={code} value={code}>
-                      {getFlagEmoji(code)} {code.toUpperCase()} - {name}
+                      {getFlagEmoji(code)} {currencySymbols[code]} - {name}
                     </option>
                   ))}
                 </select>
