@@ -223,6 +223,11 @@ export default function CurrencyConverterComponent() {
     return () => clearInterval(intervalId);
   }, [amount, fromCurrency, toCurrency]);
 
+  useEffect(() => {
+    handleShowHistory();
+    // eslint-disable-next-line
+  }, [fromCurrency, toCurrency, startDate, endDate]);
+
   const handleSwapCurrencies = () => {
     setFromCurrency(toCurrency);
     setToCurrency(fromCurrency);
@@ -412,6 +417,14 @@ export default function CurrencyConverterComponent() {
     setHistoricalLoading(false);
   };
 
+  // Restrict startDate and endDate to max 88 days before today
+  const today = new Date();
+  const maxDaysAgo = 88;
+  const minAllowedDate = new Date(today);
+  minAllowedDate.setDate(today.getDate() - maxDaysAgo);
+  const minAllowedDateStr = minAllowedDate.toISOString().split("T")[0];
+  const todayStr = today.toISOString().split("T")[0];
+
   return (
     <div className="w-full max-w-4xl mx-auto bg-theme-secondary/30 p-6 rounded-lg shadow-lg backdrop-blur-sm">
       {/* Converter Section */}
@@ -532,6 +545,8 @@ export default function CurrencyConverterComponent() {
                 type="date"
                 id="startDate"
                 value={startDate}
+                min={minAllowedDateStr}
+                max={endDate}
                 onChange={(e) => setStartDate(e.target.value)}
                 className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
               />
@@ -547,52 +562,14 @@ export default function CurrencyConverterComponent() {
                 type="date"
                 id="endDate"
                 value={endDate}
+                min={startDate}
+                max={todayStr}
                 onChange={(e) => setEndDate(e.target.value)}
                 className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
               />
             </div>
             {/* comment */}
           </div>
-          <button
-            onClick={handleShowHistory}
-            disabled={historyLoading}
-            className="btn-modern w-full mb-6 flex items-center justify-center py-3 text-lg font-medium"
-          >
-            {historyLoading ? (
-              <>
-                <svg
-                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Loading History...
-              </>
-            ) : (
-              <>
-                <FaCalendarAlt className="mr-2" /> Show Historical Rates
-              </>
-            )}
-          </button>
-          {historyError && (
-            <p className="text-red-400 text-sm font-mono bg-red-400/10 p-3 rounded-lg mb-6">
-              {historyError}
-            </p>
-          )}
           <div className="h-[400px] bg-theme-secondary/30 p-4 rounded-lg border border-theme-accent/10 mb-6">
             <canvas ref={chartRef}></canvas>
           </div>
