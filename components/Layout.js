@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { FaClock, FaGithub } from "react-icons/fa";
+import { FaClock, FaGithub, FaMoneyBillWave } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -68,6 +68,16 @@ export default function Layout({ children }) {
               >
                 Typing Test
               </a>
+              <Link
+                href="/tools/currency-converter"
+                className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
+                  isActive("/tools/currency-converter")
+                    ? "text-theme-accent"
+                    : "hover:text-theme-accent"
+                }`}
+              >
+                Converter
+              </Link>
               <Link
                 href="/contact"
                 className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
@@ -159,6 +169,17 @@ export default function Layout({ children }) {
                 >
                   Typing Test
                 </a>
+                <Link
+                  href="/tools/currency-converter"
+                  className={`block px-3 py-2 rounded-md transition-colors relative group ${
+                    isActive("/tools/currency-converter")
+                      ? "bg-theme-secondary text-theme-accent"
+                      : "hover:bg-theme-secondary"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Converter
+                </Link>
                 <Link
                   href="/contact"
                   className={`block px-3 py-2 rounded-md transition-colors relative group ${
