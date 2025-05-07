@@ -1,5 +1,11 @@
 import Head from "next/head";
-import { FaGithub, FaLinkedin, FaCode, FaClock } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaCode,
+  FaClock,
+  FaDollarSign,
+} from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -217,6 +223,19 @@ function Developer() {
               >
                 <FaClock className="mr-2" />
                 Focus
+              </button>
+            </Link>
+
+            <Link href="/currency-converter">
+              <button
+                className={`btn-modern w-full sm:w-auto bg-green-500 hover:bg-green-600 flex items-center justify-center transition-all duration-500 ${
+                  showButtons
+                    ? "opacity-100 translate-y-0 delay-200"
+                    : "opacity-0 translate-y-10"
+                }`}
+              >
+                <span className="mr-2 font-bold text-lg">؋</span>
+                Exchange Rates
               </button>
             </Link>
           </div>

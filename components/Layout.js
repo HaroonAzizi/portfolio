@@ -62,12 +62,6 @@ export default function Layout({ children }) {
               >
                 Blog
               </Link>
-              <a
-                href="https://type.haroonazizi.com"
-                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
-              >
-                Typing Test
-              </a>
               <Link
                 href="/currency-converter"
                 className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
@@ -78,6 +72,13 @@ export default function Layout({ children }) {
               >
                 Converter
               </Link>
+              <a
+                href="https://type.haroonazizi.com"
+                className="mt-2 hover:text-theme-accent transition-colors text-lg relative group font-medium overflow-hidden"
+              >
+                Typing Test
+              </a>
+
               <Link
                 href="/contact"
                 className={`mt-2 transition-colors text-lg relative group font-medium overflow-hidden ${
@@ -86,7 +87,7 @@ export default function Layout({ children }) {
                     : "hover:text-theme-accent"
                 }`}
               >
-                Contact
+                Contact Me
               </Link>
 
               <Link
