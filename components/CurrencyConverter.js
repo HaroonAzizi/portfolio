@@ -544,6 +544,7 @@ export default function CurrencyConverterComponent() {
                 className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg focus:outline-none focus:border-theme-accent text-theme-text transition-all duration-200"
               />
             </div>
+            {/* comment */}
           </div>
           <button
             onClick={handleShowHistory}
