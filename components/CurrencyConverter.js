@@ -1,11 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import {
-  FaExchangeAlt,
-  FaChartLine,
-  FaCalendarAlt,
-  FaMoneyBillWave,
-} from "react-icons/fa";
+import { FaExchangeAlt, FaChartLine } from "react-icons/fa";
 
 const initialCurrencies = {
   usd: "US Dollar",
@@ -513,9 +508,9 @@ export default function CurrencyConverterComponent() {
               </div>
 
               <div>
-                <label className="block text-sm font-mono text-theme-text-muted mb-2">
+                {/* <label className="block text-sm font-mono text-theme-text-muted mb-2">
                   Result
-                </label>
+                </label> */}
                 <div className="w-full px-4 py-3 bg-theme-secondary/50 border border-theme-accent/20 rounded-lg text-theme-text">
                   {result ? (
                     <span className="text-theme-accent font-mono">
