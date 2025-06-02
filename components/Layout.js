@@ -242,15 +242,24 @@ export default function Layout({ children }) {
               <div className="text-theme-text-muted text-sm">
                 <span className="font-mono">
                   © {new Date().getFullYear()}{" "}
-                  <a
+                  {/* <a
                     className="hover: text-white"
                     href="https://haroonazizi.com"
                   >
                     Haroon Azizi
+                  </a> */}{" "}
+                </span>
+                <span className="font-mono text-xs">
+                  {" "}
+                  Developed and maintained by{" "}
+                </span>
+
+                <span className="font-mono">
+                  <a className="hover: text-white" href="https://code.af">
+                    code.af
                   </a>
                   .{" "}
                 </span>
-                <span className="font-mono text-xs"> All rights reserved</span>
               </div>
               <div className="flex items-center space-x-6 mt-4 md:mt-0">
                 <a
