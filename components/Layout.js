@@ -33,6 +33,11 @@ export default function Layout({ children }) {
             `,
           }}
         />
+        <script
+          defer
+          data-domain="haroonazizi.com"
+          src="https://analytics.had.af/js/script.js"
+        ></script>
       </Head>
       <div className="min-h-screen bg-theme-primary text-theme-text flex flex-col">
         {/* Navigation */}
