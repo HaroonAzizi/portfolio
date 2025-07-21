@@ -7,20 +7,21 @@ const postsDirectory = path.join(process.cwd(), "_posts");
 export function getPostBySlug(slug) {
   try {
     const fullPath = path.join(postsDirectory, slug);
-    
+
     // Check if file exists
     if (!fs.existsSync(fullPath)) {
       console.warn(`Post file not found: ${slug}`);
       return null;
     }
 
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
 
     // Convert date to YYYY-MM-DD format
-    const date = data.date instanceof Date ? 
-      data.date.toISOString().split('T')[0] : 
-      data.date;
+    const date =
+      data.date instanceof Date
+        ? data.date.toISOString().split("T")[0]
+        : data.date;
 
     return {
       slug,
@@ -33,7 +34,7 @@ export function getPostBySlug(slug) {
       ...data,
     };
   } catch (error) {
-    console.error('Error reading blog post:', error);
+    console.error("Error reading blog post:", error);
     return null;
   }
 }
@@ -55,16 +56,19 @@ export function getAllPosts() {
         const { data } = matter(fileContents);
 
         // Convert date to YYYY-MM-DD format
-        const date = data.date instanceof Date ? 
-          data.date.toISOString().split('T')[0] : 
-          data.date;
+        const date =
+          data.date instanceof Date
+            ? data.date.toISOString().split("T")[0]
+            : data.date;
 
         return {
           id,
           ...data,
           date,
         };
-      });
+      })
+      // Filter out posts where unlisted is true
+      .filter((post) => post.unlisted !== true);
 
     return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
   } catch (error) {
