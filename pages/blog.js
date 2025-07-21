@@ -152,7 +152,12 @@ export default function Blog({ blogPosts = [] }) {
                     Featured
                   </span>
                   <h2 className="text-2xl font-bold text-theme-text mb-4">
-                    {featuredPost.title}
+                    <Link
+                      href={`/blog/${featuredPost.id}`}
+                      className="transition-colors duration-200 hover:text-purple-500 focus:text-purple-500"
+                    >
+                      {featuredPost.title}
+                    </Link>
                   </h2>
                   <p className="text-theme-text-muted mb-6">
                     {featuredPost.excerpt}
@@ -205,7 +210,12 @@ export default function Blog({ blogPosts = [] }) {
                     </span>
                   </div>
                   <h3 className="text-xl font-bold text-theme-text mb-3">
-                    {post.title}
+                    <Link
+                      href={`/blog/${post.id}`}
+                      className="transition-colors duration-200 hover:text-purple-500 focus:text-purple-500"
+                    >
+                      {post.title}
+                    </Link>
                   </h3>
                   <p className="text-theme-text-muted mb-6 flex-grow line-clamp-3">
                     {post.excerpt}
