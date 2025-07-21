@@ -282,7 +282,6 @@ It also ensures that technology respects and supports social and ethical values.
 
 ---
 
-THERE'S A CHANACE THAT I HAVE GOTTEN THE LECTURE NOTES WRONG (BETWEEN ADVANCED TOPICS AND SPM)
 (18 - June - 2025) - after eid qurban
 
 ## Integration testing:
