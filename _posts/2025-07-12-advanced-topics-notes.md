@@ -1,6 +1,6 @@
 ---
 title: "Advanced Topics in Software Engineering | Haroon's Notes"
-excerpt: "Haroon's Notes - this isn't completed"
+excerpt: "Haroon's Notes - this isn't complete and you should read your own notes too."
 date: "2025-07-21"
 readTime: "30 min read"
 category: "Notes"
