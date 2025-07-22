@@ -282,6 +282,109 @@ It also ensures that technology respects and supports social and ethical values.
 
 ---
 
+4 June 2025
+
+## Software Testing:
+
+We have three steps for software testing.
+
+**Most of the final project's questions will be from this.**
+
+**Test planning:**
+
+We decide who to test the software, how to do that, what are the resources, and so on. The main objective is to make sure the quality is software is good.
+
+Differences between quality assurance and quality control?
+
+Quality assurance contains requirement gathering and design and testing and deployment and stuff.
+
+what happens at the end of requirement engineering? and design process? at the end of code? at the end of testing?
+requirement engineering: srs, and stakeholder acceptance. end product: srs.  
+design: FDR and peer review. end product: design documnet.
+code: the program.
+testing: test document. what was the strategy, who coducted it, how it was conducted, and so on.
+
+how to make sure the code is good? we do code inspection (CI).
+
+the whole process we talked about is called **quality assurance.**
+
+What's **quality control** then?
+
+when we have the end product, we compare that with the user requirements and that is called quality control. if it met the user requirements that is called a quality product and if it didn't that is not a quality product.
+
+Software testing steps:
+
+- test strategy
+- test planning
+- quality assurance
+- test execution
+
+## What is software testing?
+
+Testing is the processs of executing a program with the intention of finding ERRORS!
+
+A successful testing is when you find an error but when you don't find an error even after testing you can say that you have gotten a successful execution.
+
+Who performs testing? Testing specialist and the software engineer himself.
+
+Software engineer:
+SE is the person who is involoved in the system development process, he knows the system very well and will need less effort to test the software.But sometiems software engineer ingores some of the errors because of time pressure, budget or maybe because he loves his software sooooo much.
+
+Testing specialist:
+TE is a person who is outside from the team, the first need to understand the system, which maybe time consuming and may require etra budget but will test the system more and b testing each function he will try to break / fail the system.
+
+### Software Testing Strategies:
+
+google: what's the big bang model?
+
+We have two strategies: verification and validation.
+
+Verification: tests the internal structure of the software.
+Validatoin: validates the software according to the user requirements.
+
+Testing strategies apply to conventional software:
+
+Unit testing: each unit of the software must be tested for its functionality and effeciency. A unit can be a funciton, class or an object.
+
+Integration testing: after unit test of components and we combine two components and test and then three and then test and so on.
+
+Validation testing: in this testing the software is tested for user requirements by giving input and against the input by checking the behavoir of the system.
+
+System testing: system test is when the system is tested with users, dashboard hardware and software. One of the common system test is ster testing where the tuser tests the system for the load it can take.
+
+Targets for unit test cases: (these are the activities that we do in unit testing)
+
+- Module interfcace: test interface between module and its external enviornment.
+- Basic path: Focuses on testing the primary execution paths through the code.
+- Respond to error: verifies how the module handels error conditions.
+- Local data structure: tests the integrity and manipulation of data structures (arrays, lists).
+- Boundary value: examines the module's behavoir at the edge of input ranges.
+
+Module interface example:
+
+```cpp
+int sum (int a, int b){
+  int sub = 0;
+  sum = a+b;
+  return sum;
+};
+```
+
+Example of basic path (picture in phone).
+
+Example of respond to error:
+In this we have to have proper error handling, like try and catch statement.
+
+google: what's local data structure.?
+
+#### Integration testing strategies:
+
+- bottom-up integration: starting from lower level functions and going to the higher. e.g going from utility functions and then going up.
+- top-down integraion: begins with testing higher level modules like (main control modules) and then going to the lower level.
+- sandwich integration: combination of bottom-up and top-down approaches. testing both simultaneously.
+
+---
+
 (18 - June - 2025) - after eid qurban
 
 ## Integration testing:
