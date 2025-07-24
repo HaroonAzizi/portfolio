@@ -9,7 +9,6 @@ import {
 import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-// import clarity from "@microsoft/clarity";
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -274,7 +273,7 @@ function Developer() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About sec */}
       <section className="py-20 bg-theme-primary">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">
