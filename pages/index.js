@@ -1,14 +1,13 @@
 import Head from "next/head";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaCode,
-  FaClock,
-  FaDollarSign,
-} from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import {
+  FaClock,
+  FaCode,
+  FaGithub,
+  FaLinkedin
+} from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -120,7 +119,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-theme-primary">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-theme-primary"></div>
 
-        {/* Animated background shapes */}
+        {/* Animated background stuff */}
         <div className="absolute inset-0 opacity-20">
           <div className="animate-float-slow absolute top-1/4 left-1/4 w-96 h-96 bg-theme-accent rounded-full mix-blend-multiply filter blur-xl"></div>
           <div className="animate-float-medium absolute top-1/3 right-1/4 w-80 h-80 bg-theme-accent-light rounded-full mix-blend-multiply filter blur-xl"></div>
