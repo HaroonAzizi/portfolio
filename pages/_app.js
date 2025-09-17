@@ -1,10 +1,10 @@
-import Layout from "../components/Layout";
-import "../styles/globals.css";
-import Head from "next/head";
 import emailjs from "@emailjs/browser";
-import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Head from "next/head";
+import { useEffect } from "react";
+import Layout from "../components/Layout";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {/* Google Analytics */}
+        {/* Google Analytics - Not being used anymore */}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-8TY1JXQTN4"
