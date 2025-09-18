@@ -79,6 +79,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="canonical" href="https://haroonazizi.com" />
 
         {/* Preload fonts */}
+        {/* deploy */}
         <link
           rel="preload"
           href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
