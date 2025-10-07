@@ -1,13 +1,21 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { FaClock, FaGithub, FaMoneyBillWave } from "react-icons/fa";
+import { FaClock, FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaCode } from "react-icons/fa";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { FaCode } from "react-icons/fa";
 import DomainAd from "./DomainAd";
 import Head from "next/head";
+import LaunchAnnouncement from "./LaunchAnnouncement";
+import Script from "next/script";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
 
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,27 +27,34 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-8TY1JXQTN4"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-8TY1JXQTN4');
-            `,
-          }}
-        />
-        <script
-          defer
-          data-domain="haroonazizi.com"
-          src="https://analytics.had.af/js/script.js"
-        ></script>
+        {/* Removed script tags + invalid body tag */}
+        {/* Add any meta tags here if needed */}
       </Head>
-      <div className="min-h-screen bg-theme-primary text-theme-text flex flex-col">
+      {/* Replaced raw <script> tags with Next.js <Script /> components */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-8TY1JXQTN4"
+        strategy="afterInteractive"
+      />
+      <Script id="ga-gtag" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-8TY1JXQTN4');
+        `}
+      </Script>
+      <Script
+        defer
+        data-domain="haroonazizi.com"
+        src="https://analytics.had.af/js/script.js"
+        strategy="afterInteractive"
+      />
+      {/* Added font variable to root div & moved LaunchAnnouncement here */}
+      <div
+        className={`${poppins.variable} min-h-screen bg-theme-primary text-theme-text flex flex-col`}
+      >
+        <LaunchAnnouncement />
         {/* Navigation */}
         <nav className="fixed w-full bg-theme-primary/95 shadow-lg border-b border-theme-accent/10 backdrop-blur-md z-50">
           <div className="max-w-7xl mx-auto px-4">
