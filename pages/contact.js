@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Script from "next/script";
 import emailjs from "@emailjs/browser";
 import {
   FaGithub,
@@ -75,20 +76,6 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-8TY1JXQTN4"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-8TY1JXQTN4');
-            `,
-          }}
-        />
         <title>Contact | Haroon Azizi - Get In Touch</title>
         <meta
           name="description"
@@ -116,29 +103,32 @@ export default function Contact() {
           name="twitter:description"
           content="Get in touch with Haroon Azizi for software development projects or collaborations."
         />
-
-        {/* Schema.org structured data for Contact Page */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ContactPage",
-            name: "Contact Haroon Azizi",
-            description:
-              "Get in touch with Haroon Azizi for software development projects or collaborations",
-            url: "https://haroonazizi.com/contact",
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": "https://haroonazizi.com/contact",
-            },
-            author: {
-              "@type": "Person",
-              name: "Haroon Azizi",
-              email: "hi@haroonazizi.com",
-              url: "https://haroonazizi.com",
-            },
-          })}
-        </script>
       </Head>
+
+      <Script
+        id="schema-contact"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Haroon Azizi",
+          description:
+            "Get in touch with Haroon Azizi for software development projects or collaborations",
+          url: "https://haroonazizi.com/contact",
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": "https://haroonazizi.com/contact",
+          },
+          author: {
+            "@type": "Person",
+            name: "Haroon Azizi",
+            email: "hi@haroonazizi.com",
+            url: "https://haroonazizi.com",
+          },
+        })}
+      </Script>
 
       {/* Hero Section */}
       <section className="py-20 bg-theme-primary">

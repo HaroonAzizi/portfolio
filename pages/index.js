@@ -1,12 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import Script from "next/script";
 import { useEffect, useState } from "react";
-import {
-  FaClock,
-  FaCode,
-  FaGithub,
-  FaLinkedin
-} from "react-icons/fa";
+import { FaClock, FaCode, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
 export default function Home() {
@@ -40,20 +36,6 @@ export default function Home() {
   return (
     <>
       <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-8TY1JXQTN4"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-8TY1JXQTN4');
-            `,
-          }}
-        />
         <title>Haroon Azizi | Software Developer & Full Stack Engineer</title>
         <meta
           name="description"
@@ -89,31 +71,34 @@ export default function Home() {
           @import
           url(&apos;https://fonts.googleapis.com/css2?family=Mr+Bedfort&display=swap&apos;);
         </style>
-
-        {/* Schema.org structured data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Haroon Azizi",
-            alternateName: "هارون عزیزی",
-            url: "https://haroonazizi.com",
-            image: "https://haroonazizi.com/images/haroon.png",
-            sameAs: [
-              "https://twitter.com/az_haroon",
-              "https://github.com/HaroonAzizi",
-              "https://linkedin.com/in/Haroon-Azizi",
-            ],
-            jobTitle: "Software Developer",
-            worksFor: {
-              "@type": "Organization",
-              name: "Freelance",
-            },
-            description:
-              "Full stack developer specializing in React, React Native, and Node.js",
-          })}
-        </script>
       </Head>
+
+      <Script
+        id="schema-person"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Haroon Azizi",
+          alternateName: "هارون عزیزی",
+          url: "https://haroonazizi.com",
+          image: "https://haroonazizi.com/images/haroon.png",
+          sameAs: [
+            "https://twitter.com/az_haroon",
+            "https://github.com/HaroonAzizi",
+            "https://linkedin.com/in/Haroon-Azizi",
+          ],
+          jobTitle: "Software Developer",
+          worksFor: {
+            "@type": "Organization",
+            name: "Freelance",
+          },
+          description:
+            "Full stack developer specializing in React, React Native, and Node.js",
+        })}
+      </Script>
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-theme-primary">

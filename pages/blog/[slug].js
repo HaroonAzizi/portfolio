@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Script from "next/script";
 import { getPostBySlug, getAllPosts } from "../../utils/blog";
 import { remark } from "remark";
 import html from "remark-html";
@@ -28,20 +29,6 @@ export default function BlogPost({ post }) {
   return (
     <>
       <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-8TY1JXQTN4"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-8TY1JXQTN4');
-            `,
-          }}
-        />
         <title>{post.title} | Haroon Azizi</title>
         <meta name="description" content={post.excerpt} />
         <meta
@@ -77,39 +64,42 @@ export default function BlogPost({ post }) {
             content={`https://haroonazizi.com${post.image}`}
           />
         )}
-
-        {/* Schema.org structured data for BlogPosting */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.title,
-            description: post.excerpt,
-            image: post.image
-              ? `https://haroonazizi.com${post.image}`
-              : "https://haroonazizi.com/images/og-image.jpg",
-            datePublished: post.date,
-            dateModified: post.date,
-            author: {
-              "@type": "Person",
-              name: "Haroon Azizi",
-              url: "https://haroonazizi.com",
-            },
-            publisher: {
-              "@type": "Person",
-              name: "Haroon Azizi",
-              url: "https://haroonazizi.com",
-            },
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": `https://haroonazizi.com/blog/${post.slug}`,
-            },
-            keywords: `${post.category}, blog, ${post.title.toLowerCase()}`,
-            articleSection: post.category,
-            wordCount: post.content.split(/\s+/).length,
-          })}
-        </script>
       </Head>
+
+      <Script
+        id="schema-blog-posting"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.excerpt,
+          image: post.image
+            ? `https://haroonazizi.com${post.image}`
+            : "https://haroonazizi.com/images/og-image.jpg",
+          datePublished: post.date,
+          dateModified: post.date,
+          author: {
+            "@type": "Person",
+            name: "Haroon Azizi",
+            url: "https://haroonazizi.com",
+          },
+          publisher: {
+            "@type": "Person",
+            name: "Haroon Azizi",
+            url: "https://haroonazizi.com",
+          },
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `https://haroonazizi.com/blog/${post.slug}`,
+          },
+          keywords: `${post.category}, blog, ${post.title.toLowerCase()}`,
+          articleSection: post.category,
+          wordCount: post.content.split(/\s+/).length,
+        })}
+      </Script>
 
       <article className="py-20 bg-theme-primary">
         <div className="max-w-4xl mx-auto px-4">

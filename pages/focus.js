@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
+import Script from "next/script";
 import { FaPlay, FaPause, FaRedo, FaCoffee, FaClock } from "react-icons/fa";
 
 export default function Pomodoro() {
@@ -104,20 +105,6 @@ export default function Pomodoro() {
   return (
     <>
       <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-8TY1JXQTN4"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-8TY1JXQTN4');
-            `,
-          }}
-        />
         <title>Focus Timer | Haroon Azizi - Pomodoro Technique</title>
         <meta
           name="description"
@@ -145,31 +132,34 @@ export default function Pomodoro() {
           name="twitter:description"
           content="Boost your productivity with this Pomodoro timer. Work efficiently with timed sessions."
         />
-
-        {/* Schema.org structured data for Web Application */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            name: "Pomodoro Focus Timer",
-            applicationCategory: "Productivity",
-            operatingSystem: "Any",
-            offers: {
-              "@type": "Offer",
-              price: "0",
-              priceCurrency: "USD",
-            },
-            author: {
-              "@type": "Person",
-              name: "Haroon Azizi",
-              url: "https://haroonazizi.com",
-            },
-            description:
-              "A minimalist Pomodoro timer to boost your productivity with timed work and break sessions",
-            url: "https://haroonazizi.com/focus",
-          })}
-        </script>
       </Head>
+
+      <Script
+        id="schema-pomodoro"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Pomodoro Focus Timer",
+          applicationCategory: "Productivity",
+          operatingSystem: "Any",
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          author: {
+            "@type": "Person",
+            name: "Haroon Azizi",
+            url: "https://haroonazizi.com",
+          },
+          description:
+            "A minimalist Pomodoro timer to boost your productivity with timed work and break sessions",
+          url: "https://haroonazizi.com/focus",
+        })}
+      </Script>
 
       {/* Hero Section */}
       <section className="py-20 bg-theme-primary">

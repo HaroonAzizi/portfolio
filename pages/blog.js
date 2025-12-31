@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Head from "next/head";
+import Script from "next/script";
 import { getAllPosts } from "../utils/blog";
 import Link from "next/link";
 import { FaSearch, FaCalendarAlt, FaClock } from "react-icons/fa";
@@ -19,20 +20,6 @@ export default function Blog({ blogPosts = [] }) {
   return (
     <>
       <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-8TY1JXQTN4"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-8TY1JXQTN4');
-            `,
-          }}
-        />
         <title>Blog | Haroon Azizi - Tech, Productivity, and Life</title>
         <meta
           name="description"
@@ -60,48 +47,55 @@ export default function Blog({ blogPosts = [] }) {
           name="twitter:description"
           content="Tech, Productivity, and Life—Unfiltered. Articles by Haroon Azizi."
         />
-
-        {/* Schema.org structured data for Blog */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            headline: "Haroon Azizi's Blog",
-            description:
-              "Articles about software development, productivity, and life experiences",
-            url: "https://haroonazizi.com/blog",
-            author: {
-              "@type": "Person",
-              name: "Haroon Azizi",
-              url: "https://haroonazizi.com",
-            },
-            publisher: {
-              "@type": "Person",
-              name: "Haroon Azizi",
-              url: "https://haroonazizi.com",
-            },
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": "https://haroonazizi.com/blog",
-            },
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            name: "Haroon Azizi's Blog",
-            description:
-              "Explore Haroon Azizi's blog about software development, productivity tips, and life experiences.",
-            url: "https://haroonazizi.com/blog",
-            author: {
-              "@type": "Person",
-              name: "Haroon Azizi",
-              url: "https://haroonazizi.com",
-            },
-          })}
-        </script>
       </Head>
+
+      <Script
+        id="schema-blog"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          headline: "Haroon Azizi's Blog",
+          description:
+            "Articles about software development, productivity, and life experiences",
+          url: "https://haroonazizi.com/blog",
+          author: {
+            "@type": "Person",
+            name: "Haroon Azizi",
+            url: "https://haroonazizi.com",
+          },
+          publisher: {
+            "@type": "Person",
+            name: "Haroon Azizi",
+            url: "https://haroonazizi.com",
+          },
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": "https://haroonazizi.com/blog",
+          },
+        })}
+      </Script>
+      <Script
+        id="schema-blog-alt"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "Haroon Azizi's Blog",
+          description:
+            "Explore Haroon Azizi's blog about software development, productivity tips, and life experiences.",
+          url: "https://haroonazizi.com/blog",
+          author: {
+            "@type": "Person",
+            name: "Haroon Azizi",
+            url: "https://haroonazizi.com",
+          },
+        })}
+      </Script>
 
       {/* Hero Section */}
       <section className="py-20 bg-theme-primary">
