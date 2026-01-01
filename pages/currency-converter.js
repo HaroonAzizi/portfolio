@@ -71,7 +71,8 @@ export default function CurrencyConverterPage() {
               <span className="text-theme-accent-light">exchange</span>
               <span className="text-white"> = </span>
               <span className="text-theme-text-muted">
-                "Convert currencies and explore historical exchange rate data."
+                &quot;Convert currencies and explore historical exchange rate
+                data.&quot;
               </span>
             </p>
           </div>
